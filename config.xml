@@ -32,9 +32,6 @@ Wifientertainment SAS - By Alejandro Osorio 2015-2017
    <feature name="http://api.phonegap.com/1.0/geolocation"/>
    <preference name="phonegap-version" value="3.7.0" />
    <preference name="target-device" value="universal" />
-<gap:plugin name="de.appplant.cordova.plugin.local-notification-ios9-fix" version="0.8.2" />
-<gap:plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay" />
-   <!-- Splash Screens -->
 
 <gap:splash src="splash/splash-320x480.png"   gap:platform="ios" width="320"  height="480"  /><!-- Regular iPhone4 -->
 <gap:splash src="splash/splash-640x960.png"   gap:platform="ios" width="640"  height="960"  /><!-- Retina iPhone4 -->
