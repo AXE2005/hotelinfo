@@ -1,0 +1,182 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="../favicon.ico">
+	<title>smartHotel</title>
+    
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <script src="js/jquery.min.js"></script>
+    <script>
+	var aliasx = localStorage.getItem("mem_alias");
+	if(aliasx){document.location.href = "hotel.html";}
+	
+ $('<link rel="stylesheet" href="css/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/theme/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/bootstrap.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/font-awesome.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/style.css">').appendTo("head");
+    
+    </script>    
+    <script src="js/jquery.mobile-1.4.3.min.js"></script>
+
+<!--Estilos Daniel-->  
+<link rel="stylesheet" href="css/daniel.css" />
+<!--Fin Estilos Daniel-->   
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>
+	function redirection() { document.location.href = "index.html#page2"; }
+	
+	
+	function timeoutgo() {
+  deamon = setInterval(redirection, 20000);
+}  
+    
+    </script>
+
+<link rel="stylesheet" href="jquery.loader.min.css" /><script src="jquery.loader.min.js"></script> </head>
+<body onLoad="timeoutgo()">
+    
+<!-- Start of second page: #one -->
+    <div class="page bg" data-role="page" id="page1" data-theme="">
+        
+        <div class="intro" role="main">
+            <div class="sliderIntro">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                 <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="images/splash1.jpg" width="100%" height="auto" alt="...">
+                            <div class="carousel-caption"></div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/splash2.jpg" width="100%" height="auto" alt="...">
+                            <div class="carousel-caption"></div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/splash3.jpg" width="100%" height="auto" alt="">
+                            <div class="carousel-caption"></div>
+                        </div>
+                    </div>
+
+    
+                </div>
+            </div>
+            
+        </div><!-- /content -->
+        <div class="footer" id="footerx" >
+            <div class="skipBtn"><a href="#page2" data-transition="slide"><h4>Saltar</h4></a></div>
+        </div><!-- /footer -->
+
+    </div><!-- /page one -->
+    
+
+    
+<!-- Start of second page: #two -->
+    <div class="bg page" data-role="page" id="page2" data-theme="a">
+        
+        <div class="pag_tablet" role="main">
+            <div class="logoSmart">
+                <img src="images/smarthotelLogo.png" width="200" height="auto" alt="">
+            </div>
+            
+            <div class="introForm"><p style="font-size: smaller;">Esta aplicaci&oacute;n require conexi&oacute;n a internet para funcionar.</p>
+                <p style="font-size: medium;">Por favor ingrese el código de su hotel</p>
+                <div data-role="controlgroup" data-type="horizontal">
+                    <input type="text" id="search-control-group" placeholder="Código" data-wrapper-class="controlgroup-textinput ui-btn">
+                    
+                    <button class="btnIntro btn-sm" data-theme="a" style=" color:#FFF;" onClick="login()">
+                        Go!
+                    </button>
+                    
+                   
+                </div>
+                </br>
+                    </br>
+                <div data-role="controlgroup" data-type="horizontal">
+                  <button class="btnIntro btn-sm" data-theme="a" style=" color:#FFF;" onClick="scanear()">
+                        Escanear C&oacute;digo QR
+                    </button>
+                </div>
+            </div>
+            
+            <div class="logoWifiIntro">
+                <img src="images/wifiLogo.png" width="120px" height="auto">
+            </div>
+            
+        </div><!-- /content -->
+
+    </div><!-- /page two -->
+    
+    
+    <div class="bg page" data-role="page" id="qr" data-theme="a">
+        
+        <div class="pag_tablet" role="main">
+            <div class="logoSmart">
+                <img src="images/smarthotelLogo.png" width="200" height="auto" alt="">
+            </div>
+            
+            <div class="introForm">
+                <p style="font-size: medium;">Autenticaci&oacute;n QR</p>
+                <div data-role="controlgroup" data-type="horizontal">
+                 <div id="print_qr"></div>             
+                </div>
+                </br>
+                    </br>
+              </div>
+            
+            <div class="logoWifiIntro">
+                <img src="images/wifiLogo.png" width="120px" height="auto">
+            </div>
+            
+        </div><!-- /content -->
+
+    </div><!-- /page two -->
+    
+        <script type="text/javascript" src="js/control.js"></script>        
+ <script charset="utf&minus;8" type="text/javascript">
+function login()
+{
+ var control = $("#search-control-group").val();	
+ $.get("http://190.145.24.146/app/hotel_login.php",{id_hotel: control}, loginres, "jsonp");
+ 
+ function loginres(respuesta){
+				if (respuesta.licencia != "" && respuesta.licencia != "no") {
+                        var licencia = respuesta.licencia;
+                        var alias = respuesta.alias;	
+						var contenido = respuesta.contenido;					
+					                            localStorage.setItem("mem_licencia", licencia);
+												localStorage.setItem("mem_alias", alias);
+												localStorage.setItem("mem_varcont", contenido);												
+						console.log("Acceso a hotel" + alias);
+		
+						document.location.href = "hotel.html";
+                    } else {
+						console.log("Acceso denegado" + respuesta);
+                        alert("Hotel no encontrado, porfavor solicita el código de tu hotel en recepción... Gracias!");
+						document.location.href = "index.html#page2";
+                           }
+				
+				    }
+}
+
+</script>    
+    
+    
+    <script type="text/javascript">
+    	
+			</script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/notificaciones.js"></script>
+        <!-- initialize -->
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+</body>
+</html>

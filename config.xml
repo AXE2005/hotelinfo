@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns		= "http://www.w3.org/ns/widgets"
+        xmlns:gap	= "http://phonegap.com/ns/1.0"
+        id		   = "http___wifienter.com"
+        version 	= "2.6.0">
+
+   <name>Hotel Info</name>
+
+<content src="index.html"/>
+
+<description>
+Powerfull Guest Tools for hospitality services.
+</description>
+
+ <author href="http://wifienter.com" email="alejandro.c@wifienter.net">
+Wifientertainment SAS - By Alejandro Osorio 2015-2017
+</author>
+
+   <icon src="icon.png" />
+   
+<platform name="android">
+	<icon density="ldpi" src="res/icons/android/drawable-ldpi-icon.png" />
+	<icon density="mdpi" src="res/icons/android/drawable-mdpi-icon.png" />
+	<icon density="hdpi" src="res/icons/android/drawable-hdpi-icon.png" />
+	<icon density="xhdpi" src="res/icons/android/drawable-xhdpi-icon.png" />
+	<icon density="xxhdpi" src="res/icons/android/drawable-xxhdpi-icon.png" />
+	<icon density="xxxhdpi" src="res/icons/android/drawable-xxxhdpi-icon.png" />
+</platform>
+
+
+   <feature name="http://api.phonegap.com/1.0/network"/>
+   <feature name="http://api.phonegap.com/1.0/geolocation"/>
+   <preference name="phonegap-version" value="3.7.0" />
+   <preference name="target-device" value="universal" />
+   <gap:plugin name="com.phonegap.plugins.barcodescanner" version="2.0.0" />
+<gap:plugin name="de.appplant.cordova.plugin.local-notification-ios9-fix" version="0.8.2" />
+<gap:plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay" />
+   <!-- Splash Screens -->
+
+<gap:splash src="splash/splash-320x480.png"   gap:platform="ios" width="320"  height="480"  /><!-- Regular iPhone4 -->
+<gap:splash src="splash/splash-640x960.png"   gap:platform="ios" width="640"  height="960"  /><!-- Retina iPhone4 -->
+<gap:splash src="splash/splash-640x1136.png"  gap:platform="ios" width="640"  height="1136" /><!-- iPhone5 -->
+<gap:splash src="splash/splash-768x1004.png"  gap:platform="ios" width="768"  height="1004" /><!-- iPad Portrait -->
+<gap:splash src="splash/splash-1024x748.png"  gap:platform="ios" width="1024" height="748"  /><!-- iPad Landscape -->
+<gap:splash src="splash/splash-1536x2008.png" gap:platform="ios" width="1536" height="2008" /><!-- Retina iPad Portrait - Requires PhoneGap 2.5.0+ -->
+<gap:splash src="splash/splash-2048x1496.png" gap:platform="ios" width="2048" height="1496" /><!-- Retina iPad Landscape - Requires PhoneGap 2.5.0+ -->
+<gap:splash src="splash/splash-750x1334.png"  gap:platform="ios" width="750" height="1334"  /><!-- iPhone6 Portrait -->
+<gap:splash src="splash/splash-1242x2208.png"  gap:platform="ios" width="1242" height="2208"  /><!-- iPhone6+ Portrait -->
+<gap:splash src="splash/splash-2208x1242.png"  gap:platform="ios" width="2208" height="1242"  /><!-- iPhone6+ Landscape -->
+
+<gap:splash src="splash/splash-320x426.png" gap:platform="android" gap:density="ldpi"  width="320" height="426" />
+<gap:splash src="splash/splash-320x470.png" gap:platform="android" gap:density="mdpi"  width="320" height="470" />
+<gap:splash src="splash.png" gap:platform="android" gap:density="hdpi"  width="480" height="640" />
+<gap:splash src="splash.png" gap:platform="android" gap:density="xhdpi"/>
+<gap:splash src="splash.png" gap:platform="android" gap:density="xxhdpi"/>
+<gap:splash src="splash.png" gap:platform="android" gap:density="xxxhdpi"/>
+
+<access origin="*" browserOnly="true" />
+</widget>

@@ -1,0 +1,114 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="../favicon.ico">
+	<title>smartHotel</title>
+    
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <script src="js/jquery.min.js"></script>
+    <script>
+    if(screen.width < 768){
+
+ $('<link rel="stylesheet" href="cssi/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/theme/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/bootstrap.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/font-awesome.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/style.css">').appendTo("head");
+
+}else{
+
+ $('<link rel="stylesheet" href="css/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/theme/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/bootstrap.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/font-awesome.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/style.css">').appendTo("head");}	
+	</script>    
+    <script src="js/jquery.mobile-1.4.3.min.js"></script>
+    <script src="js/funciones.js"></script>
+
+<!--Estilos Daniel-->  
+<link rel="stylesheet" href="css/daniel.css" />
+<!--Fin Estilos Daniel-->   
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<link rel="stylesheet" href="jquery.loader.min.css" /><script src="jquery.loader.min.js"></script> </head>
+<body id="landscape">
+
+            <!--Se finaliza la información de usuario-->
+        
+        
+        <div class="brand"><img src="images/wifiLogo.png" alt="Wifi" height="22px" width="auto"></div>
+    </div>
+        
+<!-- Start of page -->           
+    <div class="mainContenido page" data-role="page" id="mapas" data-theme="a">
+                <div class="revisionCuenta">
+                <div class="barTitle"><p class="titulo">Ajustes</p></div>
+                
+            <!--img nueva con nombre de la seccion-->
+            <div class="imagen_account">
+            <img src="images/setting.jpg" width="448" height="336" alt=""/> 
+            </div>
+            <!--Fin img nueva con nombre de la seccion-->
+
+                <div class="ajustes">
+                    <div class="spacer"></div>
+                    <h4 id="titulosContenido">Notificaciones:</h4>
+                <p id="txtContenido"><label for="flip-1">Desea recibir notificaciones de SmartHotel ?:</label>
+<select name="n_flip" id="n_flip" data-role="slider">
+	<option value="si">Si</option>
+	<option value="no">No</option>
+</select> </p>
+<button class="btnCheckIn" onClick="cargando(),ycargando()">
+                    <span class="checkIn">Guardar</span>
+                </button></p>
+<hr>
+                    <div class="btn-group-vertical btn-group-sm">
+                        <div type="button" class="btn btn-default"><a href="http://wifienter.net/app/terminos.html"> T&eacute;rminos y Condiciones </a> <div class="pull-right fa fa-arrow-circle-right"></div></div>
+                        <div type="button" class="btn btn-default"><a href="http://wifienter.com">Acerca de nosotros</a> <div class="pull-right fa fa-arrow-circle-right"></div></div>
+                        <div type="button" class="btn btn-default" ><a id="califique" href="itms-apps://itunes.apple.com/app/id1049023388"> Califique la Aplicación </a><div class="pull-right fa fa-arrow-circle-right"></div></div>  <script>var urlapp = device.platform == 'Android' ? 'market://details?id=http___wifienter.com' : 'itms-apps://itunes.apple.com/app/id1049023388';$("#califique").html("<a id='califique' href='"+urlapp+"'> Califique la Aplicación </a>");</script>
+                        <div type="button" class="btn btn-default"><a href="mailto:info@wifienter.net">Contáctenos</a> <div class="pull-right fa fa-arrow-circle-right"></div></div>
+                        <div type="button" class="btn btn-default"><a href="mailto:soporte@wifienter.net">Soporte</a> <div class="pull-right fa fa-arrow-circle-right"></div></div>
+                    </div>
+                </div>
+            </div>
+
+    </div><!-- /page -->
+
+</body>
+<script>
+
+function handle_settings()
+{
+ var notificar = $("#n_flip").val();
+ 	if(notificar){ 
+	localStorage.setItem("notificaciones", notificar);
+						$("#n_flip").val(notificar);
+						console.log("Se envia solicitud de notificaciones: " + notificar);
+						}
+		if(notificar == "si"){alert("Notificaciones Activadas");}
+		if(notificar == "no"){alert("Notificaciones Desactivadas");}
+		registerPermission();					
+
+}
+
+</script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/notificaciones.js"></script>
+        <!-- initialize -->
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+		<script type="text/javascript" src="js/servicios.js"></script> 
+</html>
+
+
+
+
+
+

@@ -1,0 +1,151 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="../favicon.ico">
+	<title>smartHotel</title>
+    
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <script src="js/jquery.min.js"></script>
+    <script>
+    if(screen.width < 768){
+
+ $('<link rel="stylesheet" href="cssi/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/theme/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/bootstrap.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/font-awesome.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/style.css">').appendTo("head");
+
+}else{
+
+ $('<link rel="stylesheet" href="css/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/theme/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/bootstrap.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/font-awesome.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/style.css">').appendTo("head");}	
+	</script>    
+    <script src="js/jquery.mobile-1.4.3.min.js"></script>
+    <script src="js/funciones.js"></script>
+
+<!--Estilos Daniel-->  
+<link rel="stylesheet" href="css/daniel.css" />
+<!--Fin Estilos Daniel-->   
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<link rel="stylesheet" href="jquery.loader.min.css" /><script src="jquery.loader.min.js"></script> </head>
+<body id="landscape" onLoad="actualizarchat()">
+
+    
+    
+
+    <div class="mainContenido page" data-role="page" id="chat" data-theme="a">
+        <div class="sideNavSubmenu">
+            <div class="barTitle"><p class="titulo">Request</p></div>
+
+            <div id="bg submenu">
+                <a href="request.html#amallaves" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                   Ama de llaves
+                </button></a>
+               <a onClick="print_lavanderia();" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Lavandería
+                </button></a>
+                <a href="request.html#mantenimiento" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                   Mantenimiento
+                </button></a>
+                <a href="#" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Chat
+                </button></a>
+                <div id="accordion8">
+                    <button class="btnSubMenuA">
+                        <div data-toggle="collapse" data-parent="#accordion8" href="#collapse8">Reserva de Servicios</div>
+                    </button>
+                    <div id="collapse8" class="panel-collapse collapse">   
+                        <a href="#transporte" data-transition="slide"><button class="btnSubMenuC">Transporte
+                        </button></a>
+                        <a href="#restaurantes" data-transition="slide"><button class="btnSubMenuC">Restaurantes
+                        </button></a>
+                        <a href="#spa" data-transition="slide"><button class="btnSubMenuC">Spa
+                        </button></a>
+                        <a href="#saladejuntas" data-transition="slide"><button class="btnSubMenuC">Sala de Juntas
+                        </button></a>
+                        
+                    </div>
+                </div>
+                <a href="request.html#encuestas" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Encuestas de <br>satisfacción
+                </button></a>
+            </div>
+        </div>
+
+        <div class="contenido">
+        
+        	<!--Barra y img nueva con nombre de la seccion-->
+            <div class="barTitle"><p class="titulo">Chat</p></div>
+            <div class="imagen_account">
+            <img src="images/chat.jpg" width="380" height="280" alt=""/> 
+            </div>
+            <!--Fin Barra y img nueva con nombre de la seccion-->
+            <div id="info">
+                <h5 id="titulosContenido">Chat</h5>
+                <div id="chatArea"><b>Recepci&oacute;n:</b> Puedo servirle en algo ?</div>
+            </div>
+            <div class="introForm" style=" allign:center; width: 90%;""><input type="text" id="envio_chat" placeholder="Mensaje..." data-wrapper-class="controlgroup-textinput ui-btn">
+                    
+                    <button class="btnIntro btn-sm" data-theme="a" onClick="handle_chat()">
+                        <a class="btnIntro" data-ajax="false">enviar</a>
+                    </button></div>
+                    <div id="info">
+               
+                <div style="padding-left: 20px; allign:center; width: 90%;" ><p><b>In House Chat:</b> Si desea enviar y recibir mensajes de chat de otra Habitaci&oacute;n ingresela aqui :<div class="introForm" style=" allign:center; width: 20%;""><input type="text" id="leo_chat" placeholder="Habitación " maxlength="4" data-wrapper-class="controlgroup-textinput ui-btn"><p>
+                                        
+            </div>
+            
+        <p></div>
+        </div>
+    </div> 
+    </div><!-- /page two -->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/notificaciones.js"></script>
+        <!-- initialize -->
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+		<script type="text/javascript" >
+document.addEventListener('deviceready', function () {				
+			
+			var control_notificar = localStorage.getItem("notificaciones");
+			
+			if(!control_notificar){
+			localStorage.setItem("notificaciones", "si");
+			control_notificar = "si";
+			}
+			
+			if(control_notificar == "si"){
+			minimoparaseg();
+			console.log("mande minimo seg");
+			var not_chat = localStorage.getItem("not_chat");
+			
+										
+			var controln_lavanderiacodigo = localStorage.getItem("mem_lavanderiacodigo");
+			if(controln_lavanderiacodigo){
+				checknot_lavanderia();}
+			
+			
+			
+			}
+						
+
+	}, false);        
+        </script>     
+</body>
+</html>
+
+
+
+
+
+

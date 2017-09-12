@@ -1,0 +1,293 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="../favicon.ico">
+	<title>smartHotel</title>
+    
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <script src="js/jquery.min.js"></script>
+    <script>
+    if(screen.width < 768){
+
+ $('<link rel="stylesheet" href="cssi/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/theme/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/bootstrap.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/font-awesome.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/style.css">').appendTo("head");
+
+}else{
+
+ $('<link rel="stylesheet" href="css/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/theme/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/bootstrap.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/font-awesome.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/style.css">').appendTo("head");}	
+	</script>    
+    <script src="js/jquery.mobile-1.4.3.min.js"></script>
+    <script src="js/funciones.js"></script>
+
+<!--Estilos Daniel-->  
+<link rel="stylesheet" href="css/daniel.css" />
+<!--Fin Estilos Daniel-->   
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<link rel="stylesheet" href="jquery.loader.min.css" /><script src="jquery.loader.min.js"></script> </head>
+<body onLoad="controlsesion()" id="landscape">
+
+        
+    <!-- Start of second page: #page1 -->
+    <div class="mainContenido page" data-role="page" id="res_amadellaves" data-theme="a">
+        <div class="sideNavSubmenu">
+            <div class="barTitle"><p class="titulo">Request</p></div>
+
+            <div id="bg submenu">
+               <a href="request.html" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                   Ama de llaves
+                </button></a>
+                <a onClick="print_lavanderia();" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Lavandería
+                </button></a>
+                <a href="request.html#mantenimiento" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                   Mantenimiento
+                </button></a>
+                <a href="chat.html" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Chat
+                </button></a>
+                <a onclick="print_encuestas();" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Encuestas de <br>satisfacción
+                </button></a>
+            </div>
+        </div>
+
+        <div class="contenido">
+            <div id="info">
+                <h5 id="titulosContenido">Ama de llaves</h5>
+                <p id="p_solicitudenviadaadll" class="clasepadding">Su solicitud ha sido enviada correctamente al departamento de Ama de llaves y la estamos procesando internamente, pronto personal del Hotel dar&aacute; respuesta a su requerimiento. Solicitud No:<b><span></span></b></p>
+                <script>var control_amadellavescodigop = localStorage.getItem("mem_amadellavescodigo");$("#p_solicitudenviadaadll span").html(control_amadellavescodigop);</script>
+            </div>
+        </div>
+    </div>
+<!-- /page two -->
+<div class="mainContenido page" data-role="page" id="res_mantenimiento" data-theme="a">
+        <div class="sideNavSubmenu">
+            <div class="barTitle"><p class="titulo">Request</p></div>
+
+            <div id="bg submenu">
+               <a href="request.html" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                   Ama de llaves
+                </button></a>
+                <a onClick="print_lavanderia();" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Lavandería
+                </button></a>
+                <a href="request.html#mantenimiento" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                   Mantenimiento
+                </button></a>
+                <a href="chat.html" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Chat
+                </button></a>
+                <a onclick="print_encuestas();" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Encuestas de <br>satisfacción
+                </button></a>
+            </div>
+        </div>
+
+        <div class="contenido">
+            <div id="info">
+                <h5 id="titulosContenido">Mantenimiento</h5>
+                <p id="p_solicitudenviadamantenimiento" class="clasepadding">Su solicitud ha sido enviada correctamente al departamento de Mantenimiento y la estamos procesando internamente, pronto personal del Hotel dar&aacute; respuesta a su requerimiento. Solicitud No:<b><span></span></b></p>
+                <script>var control_mantenimientocodigop = localStorage.getItem("mem_mantenimiento");$("#p_solicitudenviadamantenimiento span").html(control_mantenimientocodigop);
+                console.log("MEMmantenimiento: " + control_mantenimientocodigop);
+                </script>
+            </div>
+        </div>
+    </div>
+    
+<div class="mainContenido page" data-role="page" id="lavanderiaenespera" data-theme="a">
+        <div class="sideNavSubmenu">
+            <div class="barTitle"><p class="titulo">Request</p></div>
+
+            <div id="bg submenu">
+               <a href="request.html" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                   Ama de llaves
+                </button></a>
+                <a onClick="print_lavanderia();" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Lavandería
+                </button></a>
+                <a href="request.html#mantenimiento" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                   Mantenimiento
+                </button></a>
+                <a href="chat.html" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Chat
+                </button></a>
+                <a onclick="print_encuestas();" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Encuestas de <br>satisfacción
+                </button></a>
+            </div>
+        </div>
+
+   <div class="contenido">
+            <div id="infolav1">
+            <!--Barra nueva con nombre de la seccion-->
+            <div class="barTitle"><p class="titulo">El servicio ha sido solicitado</p></div>
+            <!--Fin Barra nueva con nombre de la seccion-->
+                <img src="images/lavanderia.jpg" width="100%" height="auto" alt="...">
+
+                <h5 id="titulosContenido">Servicio de Lavander&iacute;a</h5>
+                <p id="p_enespera" class="clasepadding">El servicio de lavander&iacute;a ya ha sido solicitado para esta habitaci&oacute;n con el c&oacute;digo <b><span></span></b> porfavor espere a que recojamos sus prendas y podr&aacute; saber mediante esta misma pantalla cuando sus prendas esten listas.</p>
+                <script>var control_lavanderiacodigo = localStorage.getItem("mem_lavanderiacodigo");$("#p_enespera span").html(control_lavanderiacodigo);</script>
+                
+            </div>
+        </div>
+    </div>
+
+<div class="mainContenido page" data-role="page" id="lavanderiaenproceso" data-theme="a">
+        <div class="sideNavSubmenu">
+            <div class="barTitle"><p class="titulo">Request</p></div>
+
+            <div id="bg submenu">
+               <a href="request.html" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                   Ama de llaves
+                </button></a>
+                <a onClick="print_lavanderia();" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Lavandería
+                </button></a>
+                <a href="request.html#mantenimiento" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                   Mantenimiento
+                </button></a>
+                <a href="chat.html" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Chat
+                </button></a>
+                <a onclick="print_encuestas();" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Encuestas de <br>satisfacción
+                </button></a>
+            </div>
+        </div>
+
+   <div class="contenido">
+            <div id="info2">
+                <img src="images/lavanderia.jpg" width="100%" height="auto" alt="...">
+
+                <h5 id="titulosContenido">Servicio de Lavander&iacute;a</h5>
+                <p id="p_enproceso" class="clasepadding">El servicio de lavander&iacute;a ya ha sido solicitado con el c&oacute;digo no <b><span></span></b> y sus prendas han sido recogidas para esta habitaci&oacute;n, tan pronto terminemos le notificaremos en la aplicaci&oacute;n y dejaremos sus prendas en su habitaci&oacute;n. </p> <p id="p_enprocesotiempo" class="clasepadding">El tiempo de espera m&aacute;ximo para sus prendas es de: <b><span></span></b>,</p>
+                <script>var control_lavanderiacodigo = localStorage.getItem("mem_lavanderiacodigo");$("#p_enproceso span").html(control_lavanderiacodigo);var tiempoestimadolavanderia = localStorage.getItem("mem_lavanderiatiempo");$("#p_enprocesotiempo span").html(tiempoestimadolavanderia);</script>
+            </div>
+        </div>
+    </div>
+    
+<div class="mainContenido page" data-role="page" id="lavanderiafinalizada" data-theme="a">
+        <div class="sideNavSubmenu">
+            <div class="barTitle"><p class="titulo">Request</p></div>
+
+            <div id="bg submenu">
+               <a href="request.html" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                   Ama de llaves
+                </button></a>
+                <a onClick="print_lavanderia();" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Lavandería
+                </button></a>
+                <a href="request.html#mantenimiento" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                   Mantenimiento
+                </button></a>
+                <a href="chat.html" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Chat
+                </button></a>
+                <a onclick="print_encuestas();" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Encuestas de <br>satisfacción
+                </button></a>
+            </div>
+        </div>
+
+   <div class="contenido">
+            <div id="info3">
+                <img src="images/lavanderia.jpg" width="100%" height="auto" alt="...">
+
+                <h5 id="titulosContenido">Servicio de Lavander&iacute;a</h5>
+                <p id="p_finalizado" class="clasepadding">El servicio de lavander&iacute;a ya ha terminado con la solicitud no. <span></span> , sus prendas estan listas y ser&aacute;n dejadas en su habitaci&oacute;n.</p>
+                <script>var control_lavanderiacodigo = localStorage.getItem("mem_lavanderiacodigo");$("#p_finalizado span").html(control_lavanderiacodigo);</script>
+            </div>
+        </div>
+    </div>
+<div class="mainContenido page" data-role="page" id="encuestas" data-theme="a">
+        <div class="sideNavSubmenu">
+            <div class="barTitle"><p class="titulo">Request</p></div>
+
+            <div id="bg submenu">
+               <a href="request.html" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                   Ama de llaves
+                </button></a>
+                <a onClick="print_lavanderia();" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Lavandería
+                </button></a>
+                <a href="request.html#mantenimiento" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                   Mantenimiento
+                </button></a>
+                <a href="chat.html" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Chat
+                </button></a>
+                <a onclick="print_encuestas();" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Encuestas de <br>satisfacción
+                </button></a>
+            </div>
+        </div>
+
+        <div class="contenido">
+            <div id="info">
+                <h5 id="titulosContenido">Encuestas de Servicio</h5>
+                <p id="p_solicitudenviadaencuestas" class="clasepadding">Gracias por tomarse el tiempo de llenar la encuesta!, tomaremos muy en cuenta cada una de sus calificaciones, Esta encuesta nos ayudara decididamente a mejorar nuestro servicio y atenci&oacute;n, Encuesta registrada con No:<b><span></span></b></p>
+                <script>var control_encuestascodigop = localStorage.getItem("mem_encuestascodigo");$("#p_solicitudenviadaencuestas span").html(control_encuestascodigop);console.log("Imprimo encuestas: " + control_encuestascodigop);</script>
+            </div>
+        </div>
+    </div>
+ 
+ 
+ <div class="mainContenido page" data-role="page" id="res_reservasserv" data-theme="a">
+        <div class="sideNavSubmenu">
+            <div class="barTitle"><p class="titulo">Request</p></div>
+
+            <div id="bg submenu">
+               <a href="request.html" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                   Ama de llaves
+                </button></a>
+                <a onClick="print_lavanderia();" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Lavandería
+                </button></a>
+                <a href="request.html#mantenimiento" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                   Mantenimiento
+                </button></a>
+                <a href="chat.html" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Chat
+                </button></a>
+                <a onclick="print_encuestas();" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Encuestas de <br>satisfacción
+                </button></a>
+            </div>
+        </div>
+
+        <div class="contenido">
+            <div id="info">
+                <h5 id="titulosContenido">Reserva Realizada</h5>
+                <p id="p_solicitudenviada" class="clasepadding">Su solicitud de reserva ha sido enviada correctamente al departamento corresondiente y la estamos procesando internamente, pronto personal del Hotel dar&aacute; confirmaci&oacute;n a la misma. Reserva No:<b><span></span></b></p>
+                <script>var control_amadellavescodigop = localStorage.getItem("mem_resservcodigo");$("#p_solicitudenviada span").html(control_amadellavescodigop);</script>
+            </div>
+        </div>
+    </div>
+         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/notificaciones.js"></script>
+        <!-- initialize -->
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+		<script type="text/javascript" src="js/servicios.js"></script>            
+</body>
+</html>
+
+
+
+
+
+

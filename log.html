@@ -1,0 +1,328 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="../favicon.ico">
+	<title>smartHotel</title>
+    
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.3.css" />
+    <link rel="stylesheet" href="css/theme/jquery.mobile-1.4.3.css">
+    <link rel="stylesheet" href="css/theme/jquery.mobile.theme-1.4.3.css">    
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.mobile-1.4.3.min.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+<link rel="stylesheet" href="jquery.loader.min.css" /><script src="jquery.loader.min.js"></script> </head>
+<body id="landscape">
+    
+<div class="bg" data-role="page" >
+    <div class="bgLog">
+        <div class="txtLog">
+            <form >
+                <div class="form-group">
+                    <input type="text" class="form-control input-sm" id="exampleInputEmail1" placeholder="Nombre o Apellido">
+                </div>
+                <div class="form-group ">
+                    <input type="text" class="form-control input-sm" id="exampleInputPassword1" placeholder="Habitación">
+                </div>
+                <input type="checkbox"> <div class="terminosCond">
+                  <p>Acepto terminos y condiciones.</p>
+                </div>
+                <button class="btnCheckIn " onClick="login_guest()"><a class="txtWhite" data-ajax="false">Check In</a></button>
+             </br>
+             </br>
+            <p>A&uacute;n no esta registrado ? Adelante su proceso de checkin: Express Check In</p>  
+            <button class="btnCheckIn" onclick="location.href='#precheckin';"  ><a class="txtWhite">Pre - Check In</a></button>
+            </br></br>
+            <p>Tiene un C&oacute;digo QR?</p>  
+            <button class="btnCheckIn" onclick="scanear()"  ><a class="txtWhite">Escanear QR</a></button>     
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="bg" data-role="page" id="precheckin">
+    <div class="bgLog">
+        <div class="txtLog">
+            <form >
+				<div class="form-group ">
+                    <input type="text" class="form-control input-sm" id="pre_reserv" placeholder="Reserva No.">
+                </div>  
+                <div class="form-group">
+                    <input type="text" class="form-control input-sm" id="pre_identi" placeholder="Identificaci&oacute;n">
+                </div>
+                <div class="form-group ">
+                    <input type="text" class="form-control input-sm" id="pre_expedi" placeholder="Expedici&oacute;n">
+                </div>                
+                <div class="form-group ">
+                    <input type="text" class="form-control input-sm" id="pre_nombre" placeholder="Nombre Completo">
+                </div>
+                <div class="form-group ">
+                    <input type="text" class="form-control input-sm" id="pre_dire" placeholder="Direcci&oacute;n">
+                </div>
+                <div class="form-group ">
+                    <input type="text" class="form-control input-sm" id="pre_ciudad" placeholder="Ciudad">
+                </div>
+                <div class="form-group ">
+                    <input type="text" class="form-control input-sm" id="pre_nacionalidad" placeholder="Nacionalidad">
+                </div>                
+                <div class="form-group ">
+                    <input type="text" class="form-control input-sm" id="pre_tel" placeholder="Tel&eacute;fono">
+                </div>
+                <div class="form-group ">
+                    <input type="text" class="form-control input-sm" id="pre_empresa" placeholder="Empresa">
+                </div>
+                <div class="form-group ">
+                    <input type="text" class="form-control input-sm" id="pre_oficio" placeholder="Oficio">
+                </div>                                
+                <div class="form-group ">
+                    <input type="text" class="form-control input-sm" id="pre_email" placeholder="e-mail">
+                </div>                              
+           
+                <input type="date" id="pre_nacimiento"  data-wrapper-class="controlgroup-textinput ui-btn" placeholder="Fecha de Nacimiento"><br>
+                                    <label for="envio_reserva">Fecha de Llegada:</label>
+                    <input type="date" id="pre_llegada"  data-wrapper-class="controlgroup-textinput ui-btn"><br>
+                    <label for="envio_reserva">Fecha de Salida:</label>
+                    <input type="date" id="pre_salida"  data-wrapper-class="controlgroup-textinput ui-btn"><br>
+                    
+                   <label class="labelTxt"><input type="checkbox" id="pre_familiar"> Registro Familiar ?</label>
+               
+                
+                   <label class="labelTxt"><input type="checkbox" id="pre_credito"> Desea Cr&eacute;dito Libre en su cuenta ?</label>
+                <br>
+                <label class="txt">Comentarios</label>
+                <textarea class="form-control" id="pre_comentarios" rows="3"></textarea>
+                 
+                
+                
+                
+                
+                
+                <button class="btnCheckIn " onClick="pre_login2()"><a class="txtWhite" data-ajax="false">Pre - Check In</a></button>
+             </br>
+             </br>
+             </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="bg" data-role="page" id="res_pre" >
+    <div class="bgLog">
+        <div class="txtLog">
+            <form >
+                <div class="form-group">
+                    <input type="text" class="form-control input-sm" id="exampleInputEmail1" placeholder="Nombre o Apellido">
+                </div>
+                <div class="form-group ">
+                    <input type="text" class="form-control input-sm" id="exampleInputPassword1" placeholder="Habitación">
+                </div>
+                <input type="checkbox"> <div class="terminosCond">
+                  <p>Acepto terminos y condiciones.</p>
+                </div>
+                <button class="btnCheckIn" onClick="login_guest()"><a class="txtWhite" data-ajax="false">Check In</a></button>
+             </br>
+             </br>
+            <p id="p_pre_gracias">Gracias por tomarse el tiempo de enviarnos esta informaci&oacute;n, esto reducir&aacute; el tiempo para registrarlo y hacerle entrega de la habitaci&oacute;n </p> </br>
+                        <p id="p_pre_cod">Porfavor presentese en recepci&oacute;n indicando que usted ya realizo el proceso de checkin con el c&oacute;digo <span></span>. Si ya realiz&oacute; su proceso de checkin ingrese sus credenciales arriba o de lo contrario haga click en volver.</p> <script>$("#p_pre_gracias span").html(pre_nombre);</script>
+					
+            <button class="btnCheckIn" onclick="location.href='hotel.html';"  ><a class="txtWhite">Volver</a></button>     
+            </form>
+        </div>
+    </div>
+</div>
+
+   <div class="bg page" data-role="page" id="qr" data-theme="a">
+        
+        <div class="pag_tablet" role="main">
+            <div class="logoSmart">
+                <img src="images/smarthotelLogo.png" width="200" height="auto" alt="">
+            </div>
+            
+            <div class="introForm">
+                <p style="font-size: medium;">Autenticaci&oacute;n QR</p>
+                <div data-role="controlgroup" data-type="horizontal">
+                 <div id="print_qr"></div>             
+                </div>
+                </br>
+                    </br>
+              </div>
+            
+            <div class="logoWifiIntro">
+                <img src="images/wifiLogo.png" width="120px" height="auto">
+            </div>
+            
+        </div><!-- /content -->
+
+    </div><!-- /page two -->
+
+<script charset="utf&minus;8" type="text/javascript">
+
+function handleQR(data){
+	
+	var datos = data;
+	console.log("Esto es loq ue bota esa vaina: "+datos);
+
+//{"smartqr" : [{"hotel" : "10010","hab" : "211"}]}
+
+var obj = jQuery.parseJSON(datos);
+var hotelqr = obj.smartqr[0].hotel;
+var habqr = obj.smartqr[0].hab;
+
+ 	   	function loginr()
+{                     
+						$.get("http://190.145.24.146/app/busquedaqr.php",{room: habqr}, loginres2, "jsonp");
+ function loginres2(respuesta){
+	 
+	var largo = respuesta.length;
+	console.log("# de huespedes: " + largo);
+	 html ='';
+		
+				
+						console.log("parseo respuesta loginr: " + respuesta);
+		 if(respuesta){
+
+						html += '<div class="roomUsuario">Habitaci&oacute;n registrada y ocupada.</div>';
+
+						}else{
+						html +='<div class="roomUsuario"> Habitaci&oacute;n no Ocupada. </div>';
+						}
+											
+						html +='<table class="table table-condensed">';
+						html += '<tr class="headCuenta">';
+						html += '<td>Porfavor haga click en su nombre para seguir:</td>';
+						html += '</tr>';
+	 $.each(respuesta, function() {
+						
+			var nombreloop = "'"+this['nombre']+"'";
+			if(largo < 2){
+			loginqr(this['nombre']);}else{
+						html += '<tr class="datosCuenta">';
+						html += '<td>'+this['nombre']+'<button class="btnIntro btn-sm" data-theme="a" style=" color:#FFF;" onClick="loginqr('+nombreloop+')">Soy Yo.</button></td>';
+						html += '</tr>';}
+                                  
+                     
+                        
+                            
+	 
+	 });
+	                    
+						html += '</table>';
+	 $('#print_qr').html(html);
+	 document.location.href = "index.html#qr";
+			}}
+
+
+
+
+
+
+if(habqr){loginh();loginr();}
+				
+}
+
+
+
+function loginqr(nombreqr)
+{
+           var pass = nombreqr;
+		   var user = localStorage.getItem("roomdb");		
+ $.get("http://190.145.24.146/app/testoi.php",{username: user, password: pass }, loginres2, "jsonp");
+ 
+ function loginres2(respuesta){
+				if (respuesta.room != "no") {
+						var nom_db = respuesta.nombre;
+						var fol_db = respuesta.folio;
+						var sal_db = respuesta.salida;
+						var lle_db = respuesta.llegada;	
+
+												localStorage.setItem("nombredb", nom_db);
+												localStorage.setItem("foliodb", fol_db);
+												localStorage.setItem("salidadb", sal_db);
+												localStorage.setItem("llegadadb", lle_db);					
+						console.log("logeado FINISH QR Sr" + nom_db);
+						document.location.href = "hotelLog.html";
+                    } else {
+						console.log("Acceso denegado QR" + respuesta);
+                        document.location.href = "hotel.html";
+                           }
+				
+				    }
+}
+
+function login_guest()
+{
+           var pass = $("#exampleInputEmail1").val();
+           var user = $("#exampleInputPassword1").val();	
+ $.get("http://190.145.24.146/app/testoi.php",{username: user, password: pass }, loginres2, "jsonp");
+ 
+ function loginres2(respuesta){
+				if (respuesta.room != "no") {
+                        var hab_db = respuesta.room;
+						var nom_db = respuesta.nombre;
+						var fol_db = respuesta.folio;
+						var sal_db = respuesta.salida;
+						var lle_db = respuesta.llegada;	
+						                        localStorage.setItem("roomdb", hab_db);
+												localStorage.setItem("nombredb", nom_db);
+												localStorage.setItem("foliodb", fol_db);
+												localStorage.setItem("salidadb", sal_db);
+												localStorage.setItem("llegadadb", lle_db);					
+						console.log("logeado Sr" + nom_db);
+						document.location.href = "hotelLog.html";
+                    } else {
+						console.log("Acceso denegado" + respuesta);
+                        document.location.href = "hotel.html";
+                           }
+				
+				    }
+}
+
+
+function pre_login2()
+{
+ 
+ var pre_reserv = $("#pre_reserv").val();
+ var pre_identi = $("#pre_identi").val();
+ var pre_expedi = $("#pre_expedi").val();
+ var pre_nombre = $("#pre_nombre").val();
+ var pre_direcc = $("#pre_dire").val();
+ var pre_ciudad = $("#pre_ciudad").val();
+ var pre_nacion = $("#pre_nacionalidad").val();
+ var pre_telefo = $("#pre_tel").val();
+ var pre_empres = $("#pre_empresa").val();
+ var pre_oficio = $("#pre_oficio").val();
+ var pre_email = $("#pre_email").val();
+ var pre_nacimi = $("#pre_nacimiento").val();
+ var pre_llegad = $("#pre_llegada").val(); 
+ var pre_salida = $("#pre_salida").val();
+ var pre_famili = $("#pre_familiar").val();
+ var pre_credit = $("#pre_credito").val();
+ var pre_coment = $("#pre_comentarios").val();
+	
+	
+$.get("http://190.145.24.146/app/pre_checkin.php",{reserv: pre_reserv, identi: pre_identi, expedi: pre_expedi, nombre: pre_nombre, direcc: pre_direcc, cuidad: pre_ciudad, nacion: pre_nacion, telefo: pre_telefo, empres: pre_empres, oficio: pre_oficio, email: pre_email, nacimi: pre_nacimi, llegad: pre_llegad, salida: pre_salida, famili: pre_famili, credit: pre_credit, coment: pre_coment}, pre_checkin, "jsonp");
+
+ function pre_checkin(respuesta){
+				        var precheckin_codigosolicitud = respuesta.codigosolicitud;
+                                              
+						console.log("Se envio precheckin cod: " + precheckin_codigosolicitud);
+						document.location.href = "#res_pre";
+						}
+}       
+
+</script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <!-- initialize -->
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+</body>
+</html>

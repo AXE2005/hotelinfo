@@ -1,0 +1,991 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>smartHotel</title>
+    
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <script src="js/jquery.min.js"></script>
+    <script>
+    if(screen.width < 768){
+
+ $('<link rel="stylesheet" href="cssi/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/theme/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/bootstrap.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/font-awesome.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/style.css">').appendTo("head");
+
+}else{
+
+ $('<link rel="stylesheet" href="css/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/theme/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/bootstrap.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/font-awesome.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/style.css">').appendTo("head");}	
+	</script>    
+    <script src="js/jquery.mobile-1.4.3.min.js"></script>
+    <script src="js/funciones.js"></script>
+
+<!--Estilos Daniel-->  
+<link rel="stylesheet" href="css/daniel.css" />
+<!--Fin Estilos Daniel-->   
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <style type="text/css">
+    #landscape #cena .contenido #info {
+	font-weight: bold;
+}
+    .poli {
+	font-size: 36px;
+}
+    .texto {
+	font-size: 12em;
+}
+    #landscape #suite .contenido ul li {
+	font-size: 13px;
+}
+    .st {
+	font-size: 14px;
+	}
+    #landscape #suitep .contenido ul li {
+	font-size: 13px;
+	}
+    #landscape #grands .contenido ul li {
+	font-size: 13px;
+}
+    .amen {
+	font-size: 16px;
+}
+    .as {
+	font-size: 18px;
+}
+    </style>
+
+<link rel="stylesheet" href="jquery.loader.min.css" /><script src="jquery.loader.min.js"></script> </head>
+<body id="landscape" >
+
+<!-- Start of page: #hotel -->    
+        <div class="page sideNav">
+            <div class="barTitle">
+            <div class="barTitle"><p class="titulo" id="p_alias_hotel"><img height="24%" width="24%" src="http://image.prntscr.com/image/21424f23f8d748b9aed215ca40b54a3c.png" alt=""/></p>
+          </div><!--se quito porque causa conflicto<p class="titulo"><span></span></p>--></div>
+  <div id="navPrincipal">
+            <div class="col-xs-4">
+                <a href="hotelLog.html" data-ajax="false"><button class="btnPrincipal txtBtnPrincipal">
+                    <span class="fa fa-h-square fa-2x icoBtnPrincipal"></span><p>Info</p>
+                </button></a>
+            </div>
+            <div class="col-xs-4">
+                <a href="request.html" data-ajax="false"><button class="btnPrincipal txtBtnPrincipal">
+                    <span class="fa fa-headphones fa-2x icoBtnPrincipal"></span><p>Request</p>
+                </button></a>
+            </div>
+            <div class="col-xs-4">
+                <a href="tools.html" data-ajax="false"><button class="btnPrincipal txtBtnPrincipal">
+                    <span class="fa fa-plane fa-2x icoBtnPrincipal"></span><p>Tools</p>
+                </button></a>
+            </div>
+            <div class="col-xs-4">
+                <a href="http://wifienter.net/app/mapas/index.html" data-ajax="false"><button class="btnPrincipal txtBtnPrincipal">
+                    <span class="fa fa-bullseye fa-2x icoBtnPrincipal"></span><p>Remote</p>
+                </button></a>
+            </div>
+            <div class="col-xs-4">
+                <a href="account.html" data-ajax="false"><button class="btnPrincipal txtBtnPrincipal">
+                    <span class="fa fa-usd fa-2x icoBtnPrincipal"></span><p>Account</p>
+                </button></a>
+            </div>
+            <div class="col-xs-4">
+                <a href="settings.html" data-ajax="false"><button class="btnPrincipal txtBtnPrincipal">
+                    <span class="fa fa-cogs fa-2x icoBtnPrincipal"></span><p>Settings</p>
+                </button></a>
+            </div>
+        </div>
+            <div class="clearfix"></div>
+            <div id="infoUser" class="area">
+                <p class="txt">Welcome</p>
+                <button class="btnCheckIn "><a class="txtWhite" href="log.html" data-ajax="false">Check In</a></button>
+            </div>
+            <div class="brand">Alejandro Osorio <img src="images/wifiLogo.png" alt="Wifi" height="22px" width="auto"></div>
+        </div>
+            
+            
+<div class="mainContenido page" data-role="page" id="hotel" data-theme="a">
+            <div class="sideNavSubmenu">
+                <div class="barTitle"><p class="titulo">Acerca del Hotel</p></div>
+
+                         <div id="bg submenu">
+                    <a href="#hotel" data-transition="slide"><button class="btnSubMenuA">
+                       Acerca del Hotel
+                    </button></a>
+                    <a href="#servicios" data-transition="slide"><button class="btnSubMenuA">
+                        Servicios 
+                    </button></a>
+                     <div id="accordionOne">
+                        <button class="btnSubMenuA">
+                            <div data-toggle="collapse" data-parent="#accordionOne" href="#collapseOne">Habitaciones</div>
+                        </button></a>
+                        <div id="collapseOne" class="panel-collapse collapse">   
+                            <a href="#suite" data-transition="slide"><button class="btnSubMenuC">Suite Master King
+                            </button></a>
+                            <a href="#suitep" data-transition="slide"><button class="btnSubMenuC">Suite Presidencial
+                            </button></a>
+                       </div>
+                    </div>
+                    <a href="#cena" data-transition="slide"><button class="btnSubMenuA">
+                        Gastronomía y Bares
+                    </button></a>
+                    <a href="#eventos" data-transition="slide"><button class="btnSubMenuA">
+                        Salones para eventos
+                    </button></a>
+                    <a href="#ofertas" data-transition="slide"><button class="btnSubMenuA">
+                        Ofertas especiales <br>y proximas reservas
+                    </button></a>
+              </div>
+            </div>
+        
+            <div class="contenido">
+            
+            <!--Barra nueva con nombre de la seccion-->
+             <!--Barra nueva con nombre de la seccion-->
+            <div class="barTitle"><p class="titulo">Acerca del Hotel</p></div>
+            <!--Fin Barra nueva con nombre de la seccion-->
+            
+                <div id="info">
+                    <div id="carousel-hotel" class="carousel slide" data-ride="carousel">
+                      <div class="carousel-inner">
+                        <div class="item active">
+                          <table width="400">
+                            <tr>
+                              <td><iframe width="540" height="390" src="https://www.youtube.com/embed/qoYWnA-i3gE" frameborder="0" allowfullscreen></iframe></td>
+                            </tr>
+                          </table>
+                          <div class="carousel-caption"></div>
+                        </div>
+                      </div>
+                  </div> </div>
+ <div id="info">
+                    <h5 id="titulosContenido">Sobre Nosotros</h5>
+                    <p>&nbsp;</p>
+                    <p id="txtContenido">
+                    
+El <strong>Hotel Tequendama Bogotá</strong>, ubicado en pleno centro de Bogotá y a tan sólo 15 minutos del <strong>Aeropuerto Internacional El Dorado</strong>, ofrece todos los servicios de un hotel 5 estrellas.
+
+</p>
+                    <p id="txtContenido">Dispone de 573 habitaciones de estilo clásico totalmente reformadas y dotadas con la última tecnología, todo lo necesario para garantizar el máximo confort de nuestros clientes.
+                    Además, el hotel ofrece wifi gratuito, restaurante, spa y 39 salones que lo convierten en la mejor opción para celebrar cualquier tipo de reunión de negocios o evento empresarial en Bogotá. </p>
+
+                </div>
+           
+        </div>
+    </div><!-- /page hotel -->
+    
+
+<!-- Start of second page: #cena -->
+<div class="mainContenido page" data-role="page" id="cena" data-theme="a">
+        <div class="sideNavSubmenu">
+            <div class="barTitle"><p class="titulo">Información</p></div>
+        
+            <div id="bg submenu">
+                    <a href="#hotel" data-transition="slide"><button class="btnSubMenuA">
+                       Acerca del Hotel
+                    </button></a>
+                    <a href="#servicios" data-transition="slide"><button class="btnSubMenuA">
+                        Servicios 
+                    </button></a>
+                     <div id="accordion2">
+                        <button class="btnSubMenuA">
+                            <div data-toggle="collapse" data-parent="#accordion2" href="#collapse3">Habitaciones</div>
+                        </button></a>
+                        <div id="collapse3" class="panel-collapse collapse">   
+                            <a href="#suite" data-transition="slide"><button class="btnSubMenuC">Suite Master King
+                            </button></a>
+                            <a href="#suitep" data-transition="slide"><button class="btnSubMenuC">Suite Presidencial
+                            </button></a>
+                       </div>
+                    </div>
+                    <a href="#cena" data-transition="slide"><button class="btnSubMenuA">
+                        Gastronomía y Bares
+                    </button></a>
+                    <a href="#eventos" data-transition="slide"><button class="btnSubMenuA">
+                        Salones para eventos
+                    </button></a>
+                    <a href="#ofertas" data-transition="slide"><button class="btnSubMenuA">
+                        Ofertas especiales <br>y proximas reservas
+                    </button></a>
+          </div>
+        </div>
+      
+        
+         <div class="contenido">
+        	<!--Barra nueva con nombre de la seccion-->
+            <div class="barTitle"><p class="titulo">Gastronomía y bares: <span style="font-weight:500;">Restaurante</span></p></div>
+            <!--Fin Barra nueva con nombre de la seccion-->
+            <div id="info">
+                <div id="carousel-cena" class="carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#carousel-cena" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-cena" data-slide-to="1"></li>
+                    <li data-target="#carousel-cena" data-slide-to="2"></li>
+                    <li data-target="#carousel-cena" data-slide-to="3"></li>
+                    <li data-target="#carousel-cena" data-slide-to="4"></li>
+                    <li data-target="#carousel-cena" data-slide-to="5"></li>
+                    <li data-target="#carousel-cena" data-slide-to="6"></li>
+                 
+                  </ol>
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner">
+                    <div class="item active">
+                      <img src="images/menu1.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                    <div class="item ui-flipswitch-active">
+                      <img src="images/menu2.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                    <div class="item">
+                     <img src="images/menu3.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                    <div class="item">
+                     <img src="images/menu4.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                    <div class="item">
+                      <img src="images/menu5.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                    <div class="item">
+                      <img src="images/menu6.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                    <div class="item">
+                      <img src="images/menu7.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                  </div>
+                <!-- Controls -->
+                  <a class="left carousel-control" href="#carousel-cena" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                  </a>
+                  <a class="right carousel-control" href="#carousel-cena" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                  </a>
+                </div>
+               <strong> <h4>Platos Destacados del M&eacute;nu</h4> 
+              </strong>
+              <p id="txtContenido"><ul><h4><span class="mtitulo"><strong>SANDWICH</strong></span></h4> 
+          
+                <span >Panes: Ciabatta, Baguette, Baguette integral</span><br>
+                    <span >Breads: Ciabatta, Baguette, Whole Wheat Baguette</span><br>
+             	<br>
+                <h2><span class="mstitulo"><strong>CLUB</strong></span></h2>
+                <span >Pollo org&aacute;nico, roast beef, lomo de cerdo, huevo, queso, tocineta, vegetales</span><br>
+                    <span >Organic chicken, roast beef, pork loin, egg, cheese, beacon, vegetables<span class="vprecio">$36.000</span></span></span><br>
+                    <hr>
+                  <h2><span class="mstitulo"><strong>AT&Uacute;N/TUNA</strong></span></h2> 
+                  <span >At&uacute;n, zanahoria, piment&oacute;n, perejil, pepino cohombro, lechuga, tomate</span><br>
+                    <span >Tuna, carrot, pepper, parsley, cucumber, lettuce, tomato<span class="vprecio">$21.000</span><br>
+                    <hr>
+                  <h3><span class="mstitulo"><strong>POLLO Y QUESO/CHICKEN & CHEESE</strong></span></h3> 
+                  <span >Pollo de campo, queso mozzarella, lechuga, tomate</span><br>
+                    <span >Field chicken, Mozzarella cheese, lettuce, tomato<span class="vprecio">$24.000</span></span></span><br>
+                    
+                     <hr>
+                     
+                  <h2><span class="mstitulo"><strong>VEGETALES/VEGETABLES</strong></span></h2> 
+                  <span >Aguacate, sukinis, tomates confitados, cebolla caramelizada,</span><br>
+                  <span >esp&aacute;rragos</span><br>
+                   <span >Avocado, sukinis, tomato confit, caramelized onions, </span><br>
+                    <span >asparagus<span class="vprecio">$16.000</span></span></span><br>
+                    <hr>
+                    
+                    <h1><span class="mstitulo"><strong>CL&Aacute;SICO/CLASSIC</strong></span></h1> 
+                  <span >Pan, jam&oacute;n, queso mozzarella</span><br>
+                    <span >Bread, ham, Mozzarella cheese<span class="vprecio">$9.000</span></span></span><br>
+                    <hr>
+                    <h2><span class="mstitulo"><strong>LUXURY</strong></span></h2> 
+                  <span >Roast beef, crema y pan de la casa, cogollos de lechuga,</span><br>
+                  <span >cebolla caramelizada y pimientos asados</span><br>
+                  <span >Roast beef, cream and homemade bread, lettuce hearts,</span><br>
+                    <span >caramelized onions and roasted peppers<span class="vprecio">$28.000</span></span></span><br>
+                    <hr>
+                    <h2><span class="mtitulo"><strong>HAMBURGUESAS/HAMBURGER</strong></span></h2> 
+                    <h3><span class="mstitulo"><strong>RES/BEEF</strong></span></h3> 
+                  <span >Queso sabana, lechuga, tomate crudo, cebolla frita</span><br>
+                    <span >Savannah cheese, lettuce, tomato, fried onion<span class="vprecio">$23.000</span></span></span>
+                    <hr>
+                    <h2><span class="mstitulo"><strong>RES ESPECIAL/SPECIAL BEEFC</strong></span></h2> 
+                  <span >Tocineta, huevo, queso sabana, lechuga, tomate, jam&oacute;n</span><br>
+                    <span >Bacon, egg, Savannah cheese, lettuce, tomato, ham<span class="vprecio">$28.000</span></span></span><br><hr> 
+                   <span >*Acompañadas de papa frita ó chips de arracacha</span><br>
+                   <span >*Served with French fries or arracacha chips</span>  <br>
+                   <h2><span class="mtitulo"><strong>PARA COMPARTIR/TO SHARE</strong></span></h2> 
+                    <h3><span class="mstitulo"><strong>CROQUETAS DE JAM&Oacute;N YORK/YORK HAM CROQUETTES</strong></span></h3>
+                    <span >6 unidades / 6 units<span class="vprecio">$18.000</span></span></span><br><hr>
+                    
+                     <h2><span class="mstitulo"><strong>CROQUETAS DE QUESO AZUL/BLUE CHEESE CROQUETTES</strong></span></h2> 
+                    <span >6 unidades / 6 units<span class="vprecio">$19.000 </span></span></span><br><hr>
+                    
+                   <h2><span class="mstitulo"><strong>CALAMARES A LA ROMANA </strong> <span class="vprecio">$22.000</span></span></span><br><hr></span></h2> <hr>
+                   
+                   <h3><span class="mstitulo"><strong>PATATAS FRITAS, EN SALSA DE QUESO AZUL, <br>
+                   SALSA DE RAVIGOTE PICANTE Y MAYONESA DE <br> CILANTRO/FRENCH FRIES, WITH BLUE CHESSE SAUCE,<br> RAVIGOTE SPICY SAUCE & CORIANDER <br> MAYONNAISE</strong> <span class="vprecio">$22.000 </span></span></span><br></span></h3> 
+                   
+                   <h2><span class="mstitulo"><strong>TABLA DE QUESOS/CHEESE PLATTER</strong></span></h2> 
+                  <span >(brie, manchiego, azul)</span><br>
+                    <span >(brie, manchiego, blue) <span class="vprecio">$32.000</span></span></span><br><hr> 
+                    
+                    <h2><span class="mstitulo"><strong>TABLA DE JAM&Oacute;N IB&Eacute;RICO/IBERIAN HAM PLATTER</strong></span></h2> 
+                    <span >1 Rack<span class="vprecio">$110.000</span></span></span><br><hr>
+                    
+                    <h3><span class="mstitulo"><strong>MIX DE ACEITUNAS/OLIVE MIX</strong> <span class="vprecio">$17.000</span></span></span><br></span></h3> 
+                    
+                    <h3><span class="mstitulo"><strong>ALMENDRAS TOSTADAS PICANTES/SPICY ROASTED ALMONDS</strong></span></h3>
+                     <span >40gr <span class="v">$9.000</span></span></span>
+                    <hr> 
+                  
+
+                     <h2><span class="mstitulo"><strong>CREMAS/CREAM SOUPS</strong></span></h2> 
+                    <h3><span class="mstitulo"><strong>CREMA DE ALCACHOFA/ARTICHOKE </strong></span></h3> 
+                  <span >(con queso parmesano y tomate confitado)</span><br>
+                    <span >(with parmesan cheese and tomato confit) <span class="vprecio">$12.000</span></span></span>
+                    <hr>
+                    
+                     <h3><span class="mstitulo"><strong>CREMA DE TOMATE/TOMATO</strong></span></h3> 
+                  <span >(con suero costeño, aguacate y brotes de albahaca)</span><br>
+                    <span >(with suero costeño, avocado and basil shoots) <span class="vprecio">$14.000</span></span></span>
+                    <hr>
+                    <h2><span class="mstitulo"><strong>CREMA DE BERROS/WATERCRESS</strong></span></h2> 
+                  <span >(con pollo de campo y flores) </span><br>
+                    <span >(with field chicken and flowers) <span class="vprecio">$14.000</span></span></span>
+                    <hr></ul></p>
+
+            </div>
+        </div>
+    </div><!-- /page cena -->
+    
+<!-- Start of second page: #eventos -->
+<div class="mainContenido page" data-role="page" id="eventos" data-theme="a">
+        <div class="sideNavSubmenu">
+                <div class="barTitle"><p class="titulo">Información</p></div>
+
+                         <div id="bg submenu">
+                    <a href="#hotel" data-transition="slide"><button class="btnSubMenuA">
+                       Acerca del Hotel
+                    </button></a>
+                    <a href="#servicios" data-transition="slide"><button class="btnSubMenuA">
+                        Servicios 
+                    </button></a>
+                     <div id="accordion44">
+                        <button class="btnSubMenuA">
+                            <div data-toggle="collapse" data-parent="#accordion44" href="#collapse44">Habitaciones</div>
+                        </button></a>
+                        <div id="collapse44" class="panel-collapse collapse">   
+                            <a href="#suite" data-transition="slide"><button class="btnSubMenuC">Suite Master King
+                            </button></a>
+                            <a href="#suitep" data-transition="slide"><button class="btnSubMenuC">Suite Presidencial
+                            </button></a>
+                       </div>
+                    </div>
+                    <a href="#cena" data-transition="slide"><button class="btnSubMenuA">
+                        Gastronomía y Bares
+                    </button></a>
+                    <a href="#eventos" data-transition="slide"><button class="btnSubMenuA">
+                        Salones para eventos
+                    </button></a>
+                    <a href="#ofertas" data-transition="slide"><button class="btnSubMenuA">
+                        Ofertas especiales <br>y proximas reservas
+                    </button></a>
+             </div>
+            </div>
+
+        <div class="contenido">
+        	<!--Barra nueva con nombre de la seccion-->
+            <div class="barTitle"><p class="titulo">Salones para eventos</p></div>
+            <!--Fin Barra nueva con nombre de la seccion-->
+            <div id="info">
+                <div id="carousel-salonese" class="carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#carousel-salones para eventos" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-salones para eventos" data-slide-to="1"></li>
+                    <li data-target="#carousel-salones para eventos" data-slide-to="2"></li> 
+                    <li data-target="#carousel-salones para eventos" data-slide-to="3"></li> 
+
+                  </ol>
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner">
+                    <div class="item active">
+                      <img src="http://directorioparaeventos.com.co/uploads/venue/photo/thumbs613x407/rojo-0002.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                    <div class="item acrive">
+                      <img src="http://directorioparaeventos.com.co/uploads/venue/photo/thumbs613x407/Salones_1.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                    <div class="item">
+                      <img src="http://portal.dafp.gov.co/portal/pls/portal/modulos.retrive_imano?no=843" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                    <div class="item">
+                      <img src="http://directorioparaeventos.com.co/uploads/venue/photo/thumbs613x407/rojo-0002.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                  </div>
+                  <!-- Controls -->
+                   <!-- Controls -->
+                  <a class="left carousel-control" href="#carousel-" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                  </a>
+                  <a class="right carousel-control" href="#carousel-salonese" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                  </a>
+                </div>
+
+                <h4>Centro de convenciones Hotel Tequendama</h4>
+                <div data-subtype="1">
+                  <div>
+                    <p id="txtContenido"><strong>Reuniones de negocios en Bogotá</strong></p>
+                  </div>
+                  <div></div>
+                </div>
+                <div data-subtype="1">
+                  <div>
+                    <p id="txtContenido">El Hotel Tequendama, ubicado en el centro financiero de Bogotá, dispone de uno de los centros de convenciones más exclusivos. Ofrece hasta 42 salones, ajustables a las necesidades particulares de cada evento, convención o congreso.
+</p>
+                    <p id="txtContenido">Tiene una capacidad de 10 a 2.000 personas y está dotado de la mejor tecnología domótica, además de ofrecer servicio de catering con diferentes opciones de menús nacionales e internacionales. Todos los salones cuenta con cobertura de Internet de alta velocidad.</p>
+                    
+                    <p id="txtContenido"><strong>SALONES</strong></p>
+                    <h4>GOLFISTAS</h4>
+                    <p>El <strong>Salón Ejecutivo</strong> es un espacio combinado que ofrece la opción de adaptarse a tres ambientes diferentes según las características del evento. Equipado con tecnología avanzada, es ideal para eventos de negocios o sociales.</p>
+                    <ul>
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/K.png" width="24px" height="24px" title="Cóctel" alt="Cóctel"> Cóctel: 100</li>
+                    
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/B.png" width="24px" height="24px" title="Banquete" alt="Banquete"> Banquete: 50</li>
+                   
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/I.png" width="24px" height="24px" title="Imperial" alt="Imperial"> Imperial: 70</li>
+                    </ul>
+                    <p><br></p>
+                    <h4>GOLFISTAS</h4>
+                    <p>Este Salón dispone de vistas a la terraza del putting green, en el 3r piso del <strong>Hotel Tequendama Bogotá</strong>, un espacio moderno equipado con la última tecnología, la mejor opción para organizar su evento empresarial, conferencias de prensa, entre otros.</p>
+                    <div>
+                      <div></div>
+                    </div>
+                    <ul>
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/I.png" width="24px" height="24px" title="Imperial" alt="Imperial"> Imperial: 90</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/B.png" width="24px" height="24px" title="Banquete" alt="Banquete"> Banquete: 60</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/E.png" width="24px" height="24px" title="Escuela" alt="Escuela"> Escuela: 60</li>
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/K.png" width="24px" height="24px" title="Cóctel" alt="Cóctel"> Cóctel: 100</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/U.png" width="24px" height="24px" title="Forma U" alt="Forma U"> Forma U: 40</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/T.png" width="24px" height="24px" title="Teatro" alt="Teatro"> Teatro: 100</li>
+                    </ul>
+                    <p id="txtContenido">&nbsp;</p>
+                    <h4>BOLIVAR</h4>
+                    <p>En el <strong>Salón Bolívar</strong> encontrará un ambiente de lujo y confort, garantía de la marca Tequendama. Organice en este lugar único en Bogotá, su reunión empresarial o social con un excelente servicio y atención de nuestro equipo de profesionales.</p>
+                    <div>
+                      <div></div>
+                    </div>
+                    <ul>
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/B.png" width="24px" height="24px" title="Banquete" alt="Banquete"> Banquete: 180</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/E.png" width="24px" height="24px" title="Escuela" alt="Escuela"> Escuela: 160</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/I.png" width="24px" height="24px" title="Imperial" alt="Imperial"> Imperial: 320</li>
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/K.png" width="24px" height="24px" title="Cóctel" alt="Cóctel"> Cóctel: 550</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/U.png" width="24px" height="24px" title="Forma U" alt="Forma U"> Forma U: 70</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/T.png" width="24px" height="24px" title="Teatro" alt="Teatro"> Teatro: 350</li>
+                    </ul>
+                    <h4>&nbsp;</h4>
+                    <h4>ESMERALDA</h4>
+                    <p>El <strong>Salón Esmeralda</strong> se caracteriza por al elegancia y el confort de un espacio totalmente adaptable a las necesidades de cada evento o celebración. Ubicado en el lobby del Hotel, ofrece acceso rápido y fácil.</p>
+                    <div>
+                      <div></div>
+                    </div>
+                    <ul>
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/E.png" width="24px" height="24px" title="Escuela" alt="Escuela"> Escuela: 180</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/I.png" width="24px" height="24px" title="Imperial" alt="Imperial"> Imperial: 320</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/K.png" width="24px" height="24px" title="Cóctel" alt="Cóctel"> Cóctel: 400</li>
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/B.png" width="24px" height="24px" title="Banquete" alt="Banquete"> Banquete: 180</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/T.png" width="24px" height="24px" title="Teatro" alt="Teatro"> Teatro: 350</li>
+                    </ul>
+                    <p>&nbsp;</p>
+                    <h4>PRESIDENCIAL</h4>
+                    <p>El <strong>Salón Presidencial</strong> pone a su disposición un espacio equipado con tecnología punta y el servicio especializado de nuestros profesionales para garantizar el éxito de cualquier cóctel, boda, cumpleaños o evento empresarial que organice.</p>
+                    <div>
+                      <div></div>
+                    </div>
+                    <ul>
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/B.png" width="24px" height="24px" title="Banquete" alt="Banquete"> Banquete: 80</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/E.png" width="24px" height="24px" title="Escuela" alt="Escuela"> Escuela: 30</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/I.png" width="24px" height="24px" title="Imperial" alt="Imperial"> Imperial: 80</li>
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/K.png" width="24px" height="24px" title="Cóctel" alt="Cóctel"> Cóctel: 100</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/U.png" width="24px" height="24px" title="Forma U" alt="Forma U"> Forma U: 35</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/T.png" width="24px" height="24px" title="Teatro" alt="Teatro"> Teatro: 50</li>
+                    </ul>
+                    <p>&nbsp;</p>
+                    <h4>GUADALUPE</h4>
+                    <p>El <strong>Salón Guadalupe</strong> está situado en la planta 17, con unas magníficas vistas a los Cerros Orientales, es la sala perfecta para albergar cualquier tipo de reunión de negocios o evento social. Todas la comodidades y el servicio de un 5 estrellas.</p>
+                    <div>
+                      <div></div>
+                    </div>
+                    <ul>
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/B.png" width="24px" height="24px" title="Banquete" alt="Banquete"> Banquete: 60</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/E.png" width="24px" height="24px" title="Escuela" alt="Escuela"> Escuela: 60</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/I.png" width="24px" height="24px" title="Imperial" alt="Imperial"> Imperial: 100</li>
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/K.png" width="24px" height="24px" title="Cóctel" alt="Cóctel"> Cóctel: 130</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/U.png" width="24px" height="24px" title="Forma U" alt="Forma U"> Forma U: 40</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/T.png" width="24px" height="24px" title="Teatro" alt="Teatro"> Teatro: 100</li>
+                    </ul>
+                    <h4>MONSERRATE</h4>
+                    <p>El <strong>Salón Monserrate</strong> le ofrece 360 metros cuadrados para organizar sus reuniones sociales o eventos empresariales; desde innovadoras bodas y 15 años a convenciones o conferencias, entre otras muchas celebraciones.</p>
+                    <div>
+                      <div></div>
+                    </div>
+                    <ul>
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/U.png" width="24px" height="24px" title="Forma U" alt="Forma U"> Forma U: 60</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/K.png" width="24px" height="24px" title="Cóctel" alt="Cóctel"> Cóctel: 400</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/B.png" width="24px" height="24px" title="Banquete" alt="Banquete"> Banquete: 180</li>
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/E.png" width="24px" height="24px" title="Escuela" alt="Escuela"> Escuela: 180</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/T.png" width="24px" height="24px" title="Teatro" alt="Teatro"> Teatro: 300</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/I.png" width="24px" height="24px" title="Imperial" alt="Imperial"> Imperial: 350</li>
+                    </ul>
+                    <h4>ROJO</h4>
+                    <p>El <strong>Salón Rojo</strong> es la sede de los eventos políticos, sociales y culturales más reconocidos del país. Equipado con la última tecnología, es un espacio moderno ideal para albergar eventos, congresos y convenciones a nivel mundial.</p>
+                    <div>
+                      <div></div>
+                    </div>
+                    <ul>
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/I.png" width="24px" height="24px" title="Imperial" alt="Imperial"> Imperial: 1300</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/K.png" width="24px" height="24px" title="Cóctel" alt="Cóctel"> Cóctel: 2000</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/B.png" width="24px" height="24px" title="Banquete" alt="Banquete"> Banquete: 700</li>
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/E.png" width="24px" height="24px" title="Escuela" alt="Escuela"> Escuela: 500</li>
+                      
+                      <li><img src="http://www.tequendamahotel.com/meetingroom_engine/static/images/T.png" width="24px" height="24px" title="Teatro" alt="Teatro"> Teatro: 1300</li>
+                    </ul>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                  </div>
+                </div>
+                <p id="txtContenido">&nbsp;</p>
+            </div>
+        </div>
+    </div><!-- /page eventos -->
+    
+    
+<!-- Start of second page: #ofertas -->
+<div class="mainContenido page" data-role="page" id="ofertas" data-theme="a">
+        <div class="sideNavSubmenu">
+                <div class="barTitle"><p class="titulo">Información</p></div>
+
+                         <div id="bg submenu">
+                    <a href="#hotel" data-transition="slide"><button class="btnSubMenuA">
+                       Acerca del Hotel
+                    </button></a>
+                    <a href="#servicios" data-transition="slide"><button class="btnSubMenuA">
+                        Servicios 
+                    </button></a>
+                     <div id="accordion55">
+                        <button class="btnSubMenuA">
+                            <div data-toggle="collapse" data-parent="#accordion55" href="#collapse55">Habitaciones</div>
+                        </button></a>
+                        <div id="collapse55" class="panel-collapse collapse">   
+                            <a href="#suite" data-transition="slide"><button class="btnSubMenuC">Suite Master King
+                            </button></a>
+                            <a href="#suitep" data-transition="slide"><button class="btnSubMenuC">Suite Presidencial
+                            </button></a>
+                       </div>
+                    </div>
+                    <a href="#cena" data-transition="slide"><button class="btnSubMenuA">
+                        Gastronomía y Bares
+                    </button></a>
+                    <a href="#eventos" data-transition="slide"><button class="btnSubMenuA">
+                        Salones para eventos
+                    </button></a>
+                    <a href="#ofertas" data-transition="slide"><button class="btnSubMenuA">
+                        Ofertas especiales <br>y proximas reservas
+                    </button></a>
+             </div>
+            </div>
+        <div class="contenido">
+            <div id="info">
+                <img src="http://www.unipymes.com/wp-content/uploads/2016/02/tequendama-hotel.jpg" width="100%" height="auto" alt="...">
+
+                <h4>Reservaciones</h4>
+                <p id="txtContenido">Aqui podr&aacute; realizar reservas para sus pr&oacute;ximas estad&iacute;as incluso cuando este fuera del hotel, porfavor ingrese fecha apr&oacute;ximada de llegada y salida para iniciar la reservaci&oacute;n ... Gracias !!.</p>
+                    <div class="introForm" style=" allign:center; width: 90%;"">
+                    <label for="envio_reserva">Fecha de Llegada:</label>
+                    <input type="date" id="llegada_reserva"  data-wrapper-class="controlgroup-textinput ui-btn"><br>
+                    <label for="envio_reserva">Fecha de Llegada:</label>
+                    <input type="date" id="salida_reserva"  data-wrapper-class="controlgroup-textinput ui-btn"><br>
+                    
+                    <button class="btnIntro btn-sm" data-theme="a" onClick="handle_reserva()">
+                        <a class="btnIntro" data-ajax="false">Reservar !</a>
+                    </button></div>
+                    
+                     </div>
+        </div>
+    </div><!-- /page habitaciones --> 
+    
+        <!-- Start of second page: #servicios -->
+<div class="mainContenido page" data-role="page" id="servicios" data-theme="a">
+        <div class="sideNavSubmenu">
+            <div class="barTitle"><p class="titulo">Información</p></div>
+        
+            <div id="bg submenu">
+                    <a href="#hotel" data-transition="slide"><button class="btnSubMenuA">
+                       Acerca del Hotel
+                    </button></a>
+                    <a href="#servicios" data-transition="slide"><button class="btnSubMenuA">
+                        Servicios 
+                    </button></a>
+                     <div id="accordion77">
+                        <button class="btnSubMenuA">
+                            <div data-toggle="collapse" data-parent="#accordion77" href="#collapse77">Habitaciones</div>
+                        </button>
+                        <div id="collapse77" class="panel-collapse collapse">   
+                            <a href="#suite" data-transition="slide"><button class="btnSubMenuC">Suite Master King
+                            </button></a>
+                            <a href="#suitep" data-transition="slide"><button class="btnSubMenuC">Suite Presidencial
+                            </button></a>
+                       </div>
+                    </div>
+                    <a href="#cena" data-transition="slide"><button class="btnSubMenuA">
+                        Gastronomía y Bares
+                    </button></a>
+                    <a href="#eventos" data-transition="slide"><button class="btnSubMenuA">
+                        Salones para eventos
+                    </button></a>
+                    <a href="#ofertas" data-transition="slide"><button class="btnSubMenuA">
+                        Ofertas especiales <br>y proximas reservas
+                    </button></a>
+             </div>
+        </div>
+        
+       <div class="contenido">
+        	<!--Barra nueva con nombre de la seccion-->
+           <div class="barTitle"><p class="titulo">Servicios </p></div>
+           <div class="imagen_account">
+               	    <img src="http://r-ec.bstatic.com/images/hotel/840x460/331/33115848.jpg" width="100%" alt=""/> 
+                    </div>
+            <!--Fin Barra nueva con nombre de la seccion-->
+            <div id="info">
+            <br>
+            <h2 data-wow-duration="1s" data-wow-delay=".6s">Servicios Hotel Tequendama</h2>
+            <h3 data-wow-duration="1s" data-wow-delay=".6s">Servicios del hotel de negocios en Bogotá</h3>
+            <p data-wow-duration="1s" data-wow-delay=".7s">En el <strong>Hotel Tequendama, en Bogotá</strong>, podrá gozar de los mejores servicios de un <strong>hotel 5 estrellas</strong>, dotado de la última tecnología y con unas excelentes instalaciones.<br>
+              <br>
+              Desde la zona de spa con jacuzzi, sauna, salón de belleza, masajes (bajo petición)… hasta su gimnasio propio con piscina interior climatizada para mantenerse en forma durante el viaje.<br>
+              <br>
+              Además, podrá elegir entre 3 restaurantes diferentes; El Virrey, de cocina típica local e internacional, Piazza Roma, de cocina italiana, y Café Vienés, ideal para tomar un snack.<br>
+              <br>
+              Nuestro establecimiento también ofrece servicio de lavandería y tintorería, <strong>wifi gratuito</strong>, opción de alquiler de coches y cambio de moneda. Cuenta con acceso para minusválidos y dispone de parqueadero cerrado con 770 plazas.</p>
+            <p data-wow-duration="1s" data-wow-delay=".7s">&nbsp;</p>
+            <div>
+              <h4>OTROS SERVICIOS</h4>
+            </div>
+            <div>
+              <div>  ACCESO PARA MINUSVÁLIDOS</div>
+              <div>  LAVANDERÍA Y TINTORERÍA</div>
+              <div>  SPA</div>
+              <div>  SAUNA</div>
+              <div>  MASAJES - BAJO PETICIÓN</div>
+              <div>  RESTAURANTE</div>
+              <div>  PISCINA CLIMATIZADA</div>
+              <div>  SNACK BAR</div>
+              <div>  ALQUILER DE COCHES</div>
+              <div>  PISCINA EXTERIOR</div>
+              <div>  GIMNASIO</div>
+              <div>  CAMBIO DE MONEDA</div>
+              <div>  CAFETERÍA</div>
+              <div>  JACCUZZI</div>
+              <div>  SALÓN DE BELLEZA</div>
+              <div>  GARAJE</div>
+              <div>  TIENDA DE REGALOS</div>
+              <div>  PARKING</div>
+              <div>  PISCINA INTERIOR CON SPA</div>
+              <div>  WIFI GRATUITO EN TODO EL HOTEL</div>
+              <div>  SIN PREPAGO DE LA RESERVA</div>
+            </div>
+            <p data-wow-duration="1s" data-wow-delay=".7s">&nbsp;</p>
+            </div>
+ </div> 
+ </div>
+ 
+     
+ <!-- Start of second page: #Suite -->
+<div class="mainContenido page" data-role="page" id="suite" data-theme="a">
+        <div class="sideNavSubmenu">
+            <div class="barTitle"><p class="titulo">Suite Master King</p></div>
+        
+            <div id="bg submenu">
+                    <a href="#hotel" data-transition="slide"><button class="btnSubMenuA">
+                       Acerca del Hotel
+                    </button></a>
+                    <a href="#servicios" data-transition="slide"><button class="btnSubMenuA">
+                        Servicios 
+                    </button></a>
+                     <div id="accordionSE">
+                        <button class="btnSubMenuA">
+                            <div data-toggle="collapse" data-parent="#accordionSE" href="#collapseSE">Habitaciones</div>
+                        </button></a>
+                        <div id="collapseSE" class="panel-collapse collapse">   
+                            <a href="#suite" data-transition="slide"><button class="btnSubMenuC">Suite Master King
+                            </button></a>
+                            <a href="#suitep" data-transition="slide"><button class="btnSubMenuC">Suite Presidencial
+                            </button></a>
+                       </div>
+                    </div>
+                    <a href="#cena" data-transition="slide"><button class="btnSubMenuA">
+                        Gastronomía y Bares
+                    </button></a>
+                    <a href="#eventos" data-transition="slide"><button class="btnSubMenuA">
+                        Salones para eventos
+                    </button></a>
+                    <a href="#ofertas" data-transition="slide"><button class="btnSubMenuA">
+                        Ofertas especiales <br>y proximas reservas
+                    </button></a>
+             </div>
+        </div>
+        
+        <div class="contenido">
+        	<!--Barra nueva con nombre de la seccion-->
+            <div class="barTitle"><p class="titulo">Habitaciones</p></div>
+            <!--Fin Barra nueva con nombre de la seccion-->
+            <div id="info">
+                <div id="carousel-habitaciones" class="carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#carousel-habitaciones" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-habitaciones" data-slide-to="1"></li>
+                    <li data-target="#carousel-habitaciones" data-slide-to="2"></li>
+                  </ol>
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner">
+                    <div class="item active">
+                      <img src="http://q-ec.bstatic.com/images/hotel/840x460/371/37193469.jpg" alt=""><div class="carousel-caption"></div>
+                    </div>
+                    <div class="item">
+                      <img src="https://media-cdn.tripadvisor.com/media/photo-s/06/77/57/31/crowne-plaza-tequendama.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                    <div class="item">
+                      <img src="http://www.tequendamasuites.com/uploads/galeriahoteles/16-hotel-sercotel-tequendama-suites-bogota-habitacion.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                  </div>
+                  <!-- Controls -->
+                  <a class="left carousel-control" href="#carousel-habitaciones" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                  </a>
+                  <a class="right carousel-control" href="#carousel-habitaciones" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                  </a>
+                </div>
+
+                <h5 id="titulosContenido">Suite Master King</h5>
+                    <p id="txtContenido">
+                </div>
+                <p id="txtContenido">Las <strong>habitaciones Master King</strong> ofrecen 41 m² divididos en una sala y una habitación con una cama King para garantizar el máximo confort de nuestros clientes. Todas son exteriores y están bañadas por luz natural. Disponen de menú de almohadas, conexión wifi de alta velocidad, caja de seguridad con espacio para laptops, canal de seguridad…</p>
+                
+            </div>
+        </div>
+    </div><!-- /page Suite Master King -->
+    
+    <!-- Start of second page: #grand -->
+<div class="mainContenido page" data-role="page" id="grands" data-theme="a">
+        <div class="sideNavSubmenu">
+            <div class="barTitle"><p class="titulo">Grand Suite Platinum</p></div>
+        
+            <div id="bg submenu">
+                    <a href="#hotel" data-transition="slide"><button class="btnSubMenuA">
+                       Acerca del Hotel
+                    </button></a>
+                    <a href="#servicios" data-transition="slide"><button class="btnSubMenuA">
+                        Servicios 
+                    </button></a>
+                     <div id="accordionGS">
+                        <button class="btnSubMenuA">
+                            <div data-toggle="collapse" data-parent="#accordionGS" href="#collapseGS">Habitaciones</div>
+                        </button></a>
+                        <div id="collapseGS" class="panel-collapse collapse">   
+                            <a href="#suite" data-transition="slide"><button class="btnSubMenuC">Suite Master King
+                            </button></a>
+                            <a href="#suitep" data-transition="slide"><button class="btnSubMenuC">Suite Presidencial
+                            </button></a>
+                       </div>
+                    </div>
+                    <a href="#cena" data-transition="slide"><button class="btnSubMenuA">
+                        Gastronomía y Bares
+                    </button></a>
+                    <a href="#eventos" data-transition="slide"><button class="btnSubMenuA">
+                        Salones para eventos
+                    </button></a>
+                    <a href="#ofertas" data-transition="slide"><button class="btnSubMenuA">
+                        Ofertas especiales <br>y proximas reservas
+                    </button></a>
+             </div>
+        </div>
+        
+        <div class="contenido">
+        	<!--Barra nueva con nombre de la seccion-->
+            <div class="barTitle"><p class="titulo">Grand Suite </p></div>
+            <!--Fin Barra nueva con nombre de la seccion-->
+            <div id="info">
+                <div id="carousel-suit" class="carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#carousel-suit" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-suit" data-slide-to="1"></li>
+                    <li data-target="#carousel-suit" data-slide-to="2"></li>
+                  </ol>
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner">
+                    <div class="item active">
+                      <img src="images/suit1.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                    <div class="item">
+                      <img src="images/suit2.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                    <div class="item">
+                      <img src="images/suit3.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                  </div>
+                  <!-- Controls -->
+                  <a class="left carousel-control" href="#carousel-suit" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                  </a>
+                  <a class="right carousel-control" href="#carousel-suit" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                  </a>
+                </div>
+   
+                <h5 id="titulosContenido">Grand Suite Platinum</h5>
+                <p id="txtContenido">Apartamentos de 2 alcobas entre 70 y 100 m2. Dos y Tres baños, lenceria de lujo, sábanas de 400 hilos, amenities Hermès, Apple iPad en la habitación, Sistema de sonido BOSE, Cocina completa, Televisores Full HD con Directv.</br></br> Amenidades:</p>
+
+                  <ul>
+                  <li>2 Alcobas</li>
+                  <li>Apple iPad</li>
+                  <li>BOSE Sound dock system</li>
+                  <li>Amenities Hermès</li>
+                  <li>Cocina completa</li>
+                  <li>Escritorio de trabajo</li>
+                  <li>Conexión a Internet</li>
+                  <li>Closet Amplio</li>
+                  <li>Cajilla de seguridad</li>
+                  <li>2 o 3 Baños</li>
+                  <li>Sala</li>
+                  <li>Comedor</li>
+                </ul>
+                 
+            </div>
+        </div>
+    </div><!-- /page suite -->
+
+<!-- Start of second page: #suitep -->
+<div class="mainContenido page" data-role="page" id="suitep" data-theme="a">
+        <div class="sideNavSubmenu">
+            <div class="barTitle"><p class="titulo">Habitaciones</p></div>
+        
+            <div id="bg submenu">
+                    <a href="#hotel" data-transition="slide"><button class="btnSubMenuA">
+                       Acerca del Hotel
+                    </button></a>
+                    <a href="#servicios" data-transition="slide"><button class="btnSubMenuA">
+                        Servicios 
+                    </button></a>
+                     <div id="accordionSP">
+                        <button class="btnSubMenuA">
+                            <div data-toggle="collapse" data-parent="#accordionSP" href="#collapseSP">Habitaciones</div>
+                        </button></a>
+                        <div id="collapseSP" class="panel-collapse collapse">   
+                            <a href="#suite" data-transition="slide"><button class="btnSubMenuC">Suite Master King
+                            </button></a>
+                            <a href="#suitep" data-transition="slide"><button class="btnSubMenuC">Suite Presidencial
+                            </button></a>
+                       </div>
+                    </div>
+                    <a href="#cena" data-transition="slide"><button class="btnSubMenuA">
+                        Gastronomía y Bares
+                    </button></a>
+                    <a href="#eventos" data-transition="slide"><button class="btnSubMenuA">
+                        Salones para eventos
+                    </button></a>
+                    <a href="#ofertas" data-transition="slide"><button class="btnSubMenuA">
+                        Ofertas especiales <br>y proximas reservas
+                    </button></a>
+             </div>
+        </div>
+        
+        <div class="contenido">
+        	<!--Barra nueva con nombre de la seccion-->
+            <div class="barTitle"><p class="titulo">Suite Presidencial</p></div>
+            <!--Fin Barra nueva con nombre de la seccion-->
+            <div id="info">
+                <div id="carousel-grands" class="carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#carousel-suitep" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-grands" data-slide-to="1"></li>
+                    <li data-target="#carousel-grands" data-slide-to="2"></li>
+                  </ol>
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner">
+                    <div class="item active">
+                      <img src="images/grandsuite1.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                    <div class="item">
+                      <img src="images/gransuite2.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                    <div class="item">
+                      <img src="images/gransuit3.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                  </div>
+                  <!-- Controls -->
+                  <a class="left carousel-control" href="#carousel-grands" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                  </a>
+                  <a class="right carousel-control" href="#carousel-grands" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                  </a>
+                </div>
+                
+                 <h5 id="titulosContenido">Suite Presidencial</h5>
+                <p id="txtContenido">La <strong>Suite Presidencial</strong> del hotel Tequendama en Bogotá ofrece 217 m² con habitación principal con cama King, dos habitaciones auxiliares con cama doble, cocina, comedor, estudio y sala. Descubre sus maravillosas vistas y su sistema de tecnología domótica.</p>
+                  
+            </div>
+        </div>
+    </div><!-- /page habitaciones --> 
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/notificaciones.js"></script>
+        <!-- initialize -->
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+		<script type="text/javascript" src="js/servicios.js"></script> 
+</body>
+</html>
+
+
+
+
+
+

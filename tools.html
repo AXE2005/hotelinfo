@@ -1,0 +1,205 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="../favicon.ico">
+	<title>smartHotel</title>
+    
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <script src="js/jquery.min.js"></script>
+    <script>
+    if(screen.width < 768){
+
+ $('<link rel="stylesheet" href="cssi/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/theme/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/bootstrap.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/font-awesome.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/style.css">').appendTo("head");
+
+}else{
+
+ $('<link rel="stylesheet" href="css/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/theme/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/bootstrap.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/font-awesome.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/style.css">').appendTo("head");}	
+	</script>    
+    <script src="js/jquery.mobile-1.4.3.min.js"></script>
+    <script src="js/funciones.js"></script>
+
+<!--Estilos Daniel-->  
+<link rel="stylesheet" href="css/daniel.css" />
+<!--Fin Estilos Daniel-->   
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<link rel="stylesheet" href="jquery.loader.min.css" /><script src="jquery.loader.min.js"></script> </head>
+<body id="landscape" onLoad="controlsesion(),print_vuelos()">
+
+    
+        <!--Se finaliza la información de usuario-->
+        
+        </div>
+        <div class="brand"><img src="images/wifiLogo.png" alt="Wifi" height="22px" width="auto"></div>
+    </div>
+        
+<!-- Start of page -->           
+        <div class="mainContenido page" data-role="page" id="vuelos" data-theme="a">
+            <div class="sideNavSubmenu">
+                <div class="barTitle"><p class="titulo">Tools</p></div>
+                <div id="bg submenu">
+                    <button class="btnSubMenuA" onClick="cargando()">
+                       <a href="#vuelos" data-transition="slide">Horario de vuelos</a>
+                    </button>
+                    <button class="btnSubMenuA" onClick="cargando()">
+                        <a href="#impresion" data-transition="slide">Impresion de pasabordos <br>y documentos</a>
+                    </button>
+                    <button class="btnSubMenuA" onClick="cargando()">
+                       <a href="#" target="_blank" data-transition="slide">Guía local</a>
+                    </button>
+                    <button class="btnSubMenuA" onClick="cargando()">
+                        <a href="#mapas" data-transition="slide">Mapas offline</a>
+                    </button>
+                    <button class="btnSubMenuA" onClick="cargando()">
+                        <a href="http://www.youtube.com/user/viveintv" target="_blank" data-transition="slide">Videos de sitios de <br>interés</a>
+                    </button>
+                </div>
+            </div>
+        
+            <div class="contenido">
+            <!--Barra y img nueva con nombre de la seccion-->
+            <div class="barTitle"><p class="titulo">Horario de Vuelos</p></div>
+            <div class="imagen_account">
+            <img src="images/horariovuelos.jpg" width="1024" height="683" alt=""/> 
+            </div>
+            <!--Fin Barra y img nueva con nombre de la seccion-->
+                <div id="infoxvuelo">  
+                        
+            <div id="info">
+                <h4 id="titulosContenido">Busca Tu Vuelo</h4>
+
+</br><div class="introForm" style=" allign:center; width: 50%;""><input type="text" id="vuelos_num" placeholder="# de Vuelo" maxlength="6" data-wrapper-class="controlgroup-textinput ui-btn">
+<p>Coloca el n&uacute;mero o codigo de tu vuelo sin espacios, ej: AV8174.</p></div>               
+
+                                              
+</br><p id="txtContenido"><label for="v_flip"><b>Deseas Activar el Sistema de Siguimiento a Tu Vuelo?</b></label>
+<select name="v_flip" id="v_flip" data-role="slider">
+	<option value="no">No</option>
+	<option value="si">Si</option>
+</select> 
+
+    </p>
+    <div class="introForm" style=" allign:center; width: 90%;"">
+<p>El vuelo ser&aacute; monitoreado hasta 12 Horas antes de la salida por SmartHotel y te alertaremos si ocurre alg&uacute;n cambio en su estado.</p></div> </br>
+<button type="submit" onClick="handle_vuelos()" class="btnCheckIn">
+                    <span class="checkIn">Buscar</span>
+                </button>
+
+            </div>                        
+                        
+                        
+                    </div>   
+                    </div>
+                    </div>
+
+    
+<!-- Start of page -->           
+    <div class="mainContenido page" data-role="page" id="impresion" data-theme="a">
+        <div class="sideNavSubmenu">
+                <div class="barTitle"><p class="titulo">Tools</p></div>
+                <div id="bg submenu">
+                    <button class="btnSubMenuA" onClick="cargando()">
+                       <a href="#vuelos" data-transition="slide">Horario de vuelos</a>
+                    </button>
+                    <button class="btnSubMenuA" onClick="cargando()">
+                        <a href="#impresion" data-transition="slide">Impresion de <br>pasabordos y <br>documentos</a>
+                    </button>
+                    <button class="btnSubMenuA" onClick="cargando()">
+                       <a href="http://vivein.com" target="_blank" data-transition="slide">Guía local</a>
+                    </button>
+                    <button class="btnSubMenuA" onClick="cargando()">
+                        <a href="#mapas" data-transition="slide">Mapas offline</a>
+                    </button>
+                    <button class="btnSubMenuA" onClick="cargando()">
+                        <a href="http://www.youtube.com/user/viveintv" target="_blank" data-transition="slide">Videos de sitios <br>de interés</a>
+                    </button>
+                </div>
+            </div>
+        <div class="contenido">
+        	<!--Barra y img nueva con nombre de la seccion-->
+            <div class="barTitle"><p class="titulo">Impresion de pasabordos y documentos</p></div>
+            <div class="imagen_account">
+            <img src="images/pass.png" width="1024" height="683" alt=""/> 
+            </div>
+            <!--Fin Barra y img nueva con nombre de la seccion-->
+            <div id="info">
+                <div class="infoPasabordo">
+                    <a href="http://www.avianca.com/" target="_blank"><div class="aerolinea">Avianca Airlines <span class="pull-right fa fa-arrow-circle-right"></span></div></a>
+                </div>
+                <div class="infoPasabordo">
+                    <a href="https://checkin.copaair.com/web/check-in?execution=e1s1" target="_blank"><div class="aerolinea">Copa Airlines <span class="pull-right fa fa-arrow-circle-right"></span></div></a>
+                </div>
+                <div class="infoPasabordo">
+                    <a href="http://www.lan.com/cgi-bin/checkin/paso1.cgi" target="_blank"><div class="aerolinea">LAN <span class="pull-right fa fa-arrow-circle-right"></span></div></a>
+                </div>
+                <div class="infoPasabordo">
+                    <a href="http://www.lufthansa.com/co/es/Facturacion-Online" target="_blank"><div class="aerolinea">Lufthansa <span class="pull-right fa fa-arrow-circle-right"></span></div></a>
+                </div>
+            </div>
+        </div>
+    </div><!-- /page ofertas -->
+    
+<!-- Start of page -->           
+    <div class="mainContenido page" data-role="page" id="mapas" data-theme="a">
+        <div class="sideNavSubmenu">
+                <div class="barTitle"><p class="titulo">Tools</p></div>
+                <div id="bg submenu">
+                    <button class="btnSubMenuA" onClick="cargando()">
+                       <a href="#vuelos" data-transition="slide">Horario de vuelos</a>
+                    </button>
+                    <button class="btnSubMenuA" onClick="cargando()">
+                        <a href="#impresion" data-transition="slide">Impresion de <br>pasabordos y <br>documentos</a>
+                    </button>
+                    <button class="btnSubMenuA" onClick="cargando()">
+                       <a href="#" target="_blank" data-transition="slide">Guía local</a>
+                    </button>
+                    <button class="btnSubMenuA" onClick="cargando()">
+                        <a href="#mapas" target="_blank" data-transition="slide">Mapas offline</a>
+                    </button>
+                    <button class="btnSubMenuA" onClick="cargando()">
+                        <a href="http://www.youtube.com/user/viveintv" target="_blank" data-transition="slide">Videos de sitios <br>de interés</a>
+                    </button>
+                </div>
+            </div>
+        <div class="contenido">
+        	<!--Barra y img nueva con nombre de la seccion-->
+            <div class="barTitle"><p class="titulo">Mapas offline</p></div>
+            <div class="imagen_account">
+            <img src="images/map.jpg" width="1024" height="683" alt=""/> 
+            </div>
+            <!--Fin Barra y img nueva con nombre de la seccion-->
+            <div id="info">
+                <button class="btnSubMenuA" onClick="cargando()">
+                        <a href="http://wifienter.net/app/smartmaps/index.html" target="_blank" data-transition="slide">Iniciar GeoLocalizaci&oacute;n</a>
+                    </button>
+            </div>
+        </div>
+    </div><!-- /page ofertas -->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/notificaciones.js"></script>
+        <!-- initialize -->
+        <script type="text/javascript">
+            app.initialize();	
+        </script>
+		<script type="text/javascript" src="js/servicios.js"></script> 
+</body>
+</html>
+
+
+
+
+
+
