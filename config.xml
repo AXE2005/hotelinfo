@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns		= "http://www.w3.org/ns/widgets"
         xmlns:gap	= "http://phonegap.com/ns/1.0"
-        id		   = "http___wifienterrequest.com"
+        id		   = "http___wifienterherramientas.com"
         version 	= "1.0.0">
 
-   <name>Solicitar al Hotel</name>
+   <name>Herramientas</name>
 
 <content src="index.html"/>
 
