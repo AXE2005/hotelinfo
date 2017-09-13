@@ -38,59 +38,7 @@
 <link rel="stylesheet" href="jquery.loader.min.css" /><script src="jquery.loader.min.js"></script> </head>
 <body id="landscape" onLoad="controlsesion(), print_cuenta()">
 
-    <div class="page sideNav">
-        <div class="barTitle"><p class="titulo" id="p_alias">Nombre de Hotel</p></div><!-- se quito porque casusa conflicto<p class="titulo"><span></span></p>-->
-            <script>var p_alias = localStorage.getItem("mem_alias");$("#p_alias").html(p_alias);</script>
-        <div id="navPrincipal">
-            <div class="col-xs-4">
-                <a href="hotelLog.html" data-ajax="false"><button class="btnPrincipal txtBtnPrincipal">
-                    <span class="fa fa-h-square fa-2x icoBtnPrincipal"></span><p>Info</p>
-                </button></a>
-            </div>
-            <div class="col-xs-4">
-                <a href="request.html" data-ajax="false"><button class="btnPrincipal txtBtnPrincipal">
-                    <span class="fa fa-headphones fa-2x icoBtnPrincipal"></span><p>Request</p>
-                </button></a>
-            </div>
-            <div class="col-xs-4">
-                <a href="tools.html" data-ajax="false"><button class="btnPrincipal txtBtnPrincipal">
-                    <span class="fa fa-plane fa-2x icoBtnPrincipal"></span><p>Tools</p>
-                </button></a>
-            </div>
-            <div class="col-xs-4">
-                <a href="http://wifienter.net/app/mapas/index.html" data-ajax="false"><button class="btnPrincipal txtBtnPrincipal">
-                    <span class="fa fa-bullseye fa-2x icoBtnPrincipal"></span><p>Remote</p>
-                </button></a>
-            </div>
-            <div class="col-xs-4">
-                <a href="account.html" data-ajax="false"><button class="btnPrincipal txtBtnPrincipal">
-                    <span class="fa fa-usd fa-2x icoBtnPrincipal"></span><p>Account</p>
-                </button></a>
-            </div>
-            <div class="col-xs-4">
-                <a href="settings.html" data-ajax="false"><button class="btnPrincipal txtBtnPrincipal">
-                    <span class="fa fa-cogs fa-2x icoBtnPrincipal"></span><p>Settings</p>
-                </button></a>
-            </div>
-        </div>
-        <div class="clearfix"></div>
-        <div id="infoUser" class="area">
-            <!--<p class="txt">Welcome</p>
-            <button class="btnCheckIn"><span class="checkIn">Check In</span></button>-->
-            
-            <!--Se coloco información de usuario que antes no estaba-->
-                <div class="txt">Welcome</div>
-                <button class="btnCheckIn" onClick=" clearall();"><span class="checkIn">Check Out</span></button>
-                <div id="p_nombre" class="bgUsuarioLog nombreUsuarioLog line"><span>Nombre usuario</span></div>
-            <script>var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);</script>
-                <div id="p_llegada" class="datosUsuario line">Check In:<span></span></div>
-                <script>var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);</script>
-                <div id="p_salida" class="datosUsuario line">Check Out: <span></span></div>
-                <script>var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);</script>
-                <div id="p_room" class="datosUsuario line">Room: <span></span></div>
-                <script>var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);</script>
-            </div>
-        </div>
+   
         <!--Se finaliza la información de usuario-->
         </div>
         <div class="brand"><img src="images/wifiLogo.png" alt="Wifi" height="22px" width="auto"></div>
