@@ -30,7 +30,7 @@ Wifientertainment SAS - By Alejandro Osorio 2015-2017
 
    <feature name="http://api.phonegap.com/1.0/network"/>
    <feature name="http://api.phonegap.com/1.0/geolocation"/>
-   <preference name="phonegap-version" value="3.7.0" />
+   <preference name="phonegap-version" value="cli-6.5.0" />
    <preference name="target-device" value="universal" />
 
 <access origin="*" browserOnly="true" />
