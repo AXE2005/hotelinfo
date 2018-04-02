@@ -30,13 +30,13 @@
 	
 	
 	function timeoutgo() {
-  deamon = setInterval(redirection, 3000);
+  deamon = setInterval(redirection, 20000);
 }  
     
     </script>
 
 <link rel="stylesheet" href="jquery.loader.min.css" /><script src="jquery.loader.min.js"></script> </head>
-<body onLoad="timeoutgo()">
+<body onLoad="redirection()">
     
 <!-- Start of second page: #one -->
     <div class="page bg" data-role="page" id="page1" data-theme="">
@@ -68,7 +68,7 @@
             
         </div><!-- /content -->
         <div class="footer" id="footerx" >
-            <div class="skipBtn"><a href="https://www.zamba.co/Common/PopupGame.aspx?gt=DEMO&gid=329186aa-ffba-4be9-bc2d-5df48f746785" data-transition="slide"><h4>Saltar</h4></a></div>
+            <div class="skipBtn"><a href="#page2" data-transition="slide"><h4>Saltar</h4></a></div>
         </div><!-- /footer -->
 
     </div><!-- /page one -->
