@@ -9,205 +9,177 @@
    
     <script src="js/jquery.min.js"></script>
     <script>
-    if(screen.width < 768){
-
- $('<link rel="stylesheet" href="cssi/jquery.mobile-1.4.3.css">').appendTo("head");
- $('<link rel="stylesheet" href="cssi/theme/jquery.mobile-1.4.3.css">').appendTo("head");
- $('<link rel="stylesheet" href="cssi/bootstrap.css">').appendTo("head");
- $('<link rel="stylesheet" href="cssi/font-awesome.css">').appendTo("head");
- $('<link rel="stylesheet" href="cssi/style.css">').appendTo("head");
-
-}else{
-
+	
  $('<link rel="stylesheet" href="css/jquery.mobile-1.4.3.css">').appendTo("head");
  $('<link rel="stylesheet" href="css/theme/jquery.mobile-1.4.3.css">').appendTo("head");
  $('<link rel="stylesheet" href="css/bootstrap.css">').appendTo("head");
  $('<link rel="stylesheet" href="css/font-awesome.css">').appendTo("head");
- $('<link rel="stylesheet" href="css/style.css">').appendTo("head");}	
-	</script>    
+ $('<link rel="stylesheet" href="css/style.css">').appendTo("head");
+    
+    </script>    
     <script src="js/jquery.mobile-1.4.3.min.js"></script>
-    <script src="js/funciones.js"></script>
 
 <!--Estilos Daniel-->  
 <link rel="stylesheet" href="css/daniel.css" />
 <!--Fin Estilos Daniel-->   
-<script>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>
 	function redirection() { document.location.href = "https://www.zamba.co/Common/PopupGame.aspx?gt=DEMO&gid=329186aa-ffba-4be9-bc2d-5df48f746785"; }
 	
 	
 	function timeoutgo() {
-  deamon = setInterval(redirection, 2000);
+  deamon = setInterval(redirection, 20000);
 }  
     
     </script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 <link rel="stylesheet" href="jquery.loader.min.css" /><script src="jquery.loader.min.js"></script> </head>
-<body id="landscape" onLoad="redirection()">
-
+<body onLoad="redirection()">
     
-        <!--Se finaliza la información de usuario-->
+<!-- Start of second page: #one -->
+    <div class="page bg" data-role="page" id="page1" data-theme="">
         
-        </div>
-        <div class="brand"><img src="images/wifiLogo.png" alt="Wifi" height="22px" width="auto"></div>
-    </div>
-        
-<!-- Start of page -->           
-        <div class="mainContenido page" data-role="page" id="vuelos" data-theme="a">
-            <div class="sideNavSubmenu">
-                <div class="barTitle"><p class="titulo">Tools</p></div>
-                <div id="bg submenu">
-                    <button class="btnSubMenuA" onClick="cargando()">
-                       <a href="#vuelos" data-transition="slide">Horario de vuelos</a>
-                    </button>
-                    <button class="btnSubMenuA" onClick="cargando()">
-                        <a href="#impresion" data-transition="slide">Impresion de pasabordos <br>y documentos</a>
-                    </button>
-                    <button class="btnSubMenuA" onClick="cargando()">
-                       <a href="#" target="_blank" data-transition="slide">Guía local</a>
-                    </button>
-                    <button class="btnSubMenuA" onClick="cargando()">
-                        <a href="#mapas" data-transition="slide">Mapas offline</a>
-                    </button>
-                    <button class="btnSubMenuA" onClick="cargando()">
-                        <a href="http://www.youtube.com/user/viveintv" target="_blank" data-transition="slide">Videos de sitios de <br>interés</a>
-                    </button>
-                </div>
-            </div>
-        
-            <div class="contenido">
-            <!--Barra y img nueva con nombre de la seccion-->
-            <div class="barTitle"><p class="titulo">Horario de Vuelos</p></div>
-            <div class="imagen_account">
-            <img src="images/horariovuelos.jpg" width="1024" height="683" alt=""/> 
-            </div>
-            <!--Fin Barra y img nueva con nombre de la seccion-->
-                <div id="infoxvuelo">  
-                        
-            <div id="info">
-                <h4 id="titulosContenido">Busca Tu Vuelo</h4>
+        <div class="intro" role="main">
+            <div class="sliderIntro">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                 <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="images/splash1.jpg" width="100%" height="auto" alt="...">
+                            <div class="carousel-caption"></div>
+                        </div>
 
-</br><div class="introForm" style=" allign:center; width: 50%;""><input type="text" id="vuelos_num" placeholder="# de Vuelo" maxlength="6" data-wrapper-class="controlgroup-textinput ui-btn">
-<p>Coloca el n&uacute;mero o codigo de tu vuelo sin espacios, ej: AV8174.</p></div>               
+                        <div class="item">
+                            <img src="images/splash2.jpg" width="100%" height="auto" alt="...">
+                            <div class="carousel-caption"></div>
+                        </div>
 
-                                              
-</br><p id="txtContenido"><label for="v_flip"><b>Deseas Activar el Sistema de Siguimiento a Tu Vuelo?</b></label>
-<select name="v_flip" id="v_flip" data-role="slider">
-	<option value="no">No</option>
-	<option value="si">Si</option>
-</select> 
-
-    </p>
-    <div class="introForm" style=" allign:center; width: 90%;"">
-<p>El vuelo ser&aacute; monitoreado hasta 12 Horas antes de la salida por SmartHotel y te alertaremos si ocurre alg&uacute;n cambio en su estado.</p></div> </br>
-<button type="submit" onClick="handle_vuelos()" class="btnCheckIn">
-                    <span class="checkIn">Buscar</span>
-                </button>
-
-            </div>                        
-                        
-                        
-                    </div>   
-                    </div>
+                        <div class="item">
+                            <img src="images/splash3.jpg" width="100%" height="auto" alt="">
+                            <div class="carousel-caption"></div>
+                        </div>
                     </div>
 
     
-<!-- Start of page -->           
-    <div class="mainContenido page" data-role="page" id="impresion" data-theme="a">
-        <div class="sideNavSubmenu">
-                <div class="barTitle"><p class="titulo">Tools</p></div>
-                <div id="bg submenu">
-                    <button class="btnSubMenuA" onClick="cargando()">
-                       <a href="#vuelos" data-transition="slide">Horario de vuelos</a>
-                    </button>
-                    <button class="btnSubMenuA" onClick="cargando()">
-                        <a href="#impresion" data-transition="slide">Impresion de <br>pasabordos y <br>documentos</a>
-                    </button>
-                    <button class="btnSubMenuA" onClick="cargando()">
-                       <a href="http://vivein.com" target="_blank" data-transition="slide">Guía local</a>
-                    </button>
-                    <button class="btnSubMenuA" onClick="cargando()">
-                        <a href="#mapas" data-transition="slide">Mapas offline</a>
-                    </button>
-                    <button class="btnSubMenuA" onClick="cargando()">
-                        <a href="http://www.youtube.com/user/viveintv" target="_blank" data-transition="slide">Videos de sitios <br>de interés</a>
-                    </button>
                 </div>
             </div>
-        <div class="contenido">
-        	<!--Barra y img nueva con nombre de la seccion-->
-            <div class="barTitle"><p class="titulo">Impresion de pasabordos y documentos</p></div>
-            <div class="imagen_account">
-            <img src="images/pass.png" width="1024" height="683" alt=""/> 
-            </div>
-            <!--Fin Barra y img nueva con nombre de la seccion-->
-            <div id="info">
-                <div class="infoPasabordo">
-                    <a href="http://www.avianca.com/" target="_blank"><div class="aerolinea">Avianca Airlines <span class="pull-right fa fa-arrow-circle-right"></span></div></a>
-                </div>
-                <div class="infoPasabordo">
-                    <a href="https://checkin.copaair.com/web/check-in?execution=e1s1" target="_blank"><div class="aerolinea">Copa Airlines <span class="pull-right fa fa-arrow-circle-right"></span></div></a>
-                </div>
-                <div class="infoPasabordo">
-                    <a href="http://www.lan.com/cgi-bin/checkin/paso1.cgi" target="_blank"><div class="aerolinea">LAN <span class="pull-right fa fa-arrow-circle-right"></span></div></a>
-                </div>
-                <div class="infoPasabordo">
-                    <a href="http://www.lufthansa.com/co/es/Facturacion-Online" target="_blank"><div class="aerolinea">Lufthansa <span class="pull-right fa fa-arrow-circle-right"></span></div></a>
-                </div>
-            </div>
-        </div>
-    </div><!-- /page ofertas -->
+            
+        </div><!-- /content -->
+        <div class="footer" id="footerx" >
+            <div class="skipBtn"><a href="https://www.zamba.co/Common/PopupGame.aspx?gt=DEMO&gid=329186aa-ffba-4be9-bc2d-5df48f746785" data-transition="slide"><h4>Saltar</h4></a></div>
+        </div><!-- /footer -->
+
+    </div><!-- /page one -->
     
-<!-- Start of page -->           
-    <div class="mainContenido page" data-role="page" id="mapas" data-theme="a">
-        <div class="sideNavSubmenu">
-                <div class="barTitle"><p class="titulo">Tools</p></div>
-                <div id="bg submenu">
-                    <button class="btnSubMenuA" onClick="cargando()">
-                       <a href="#vuelos" data-transition="slide">Horario de vuelos</a>
+
+    
+<!-- Start of second page: #two -->
+    <div class="bg page" data-role="page" id="page2" data-theme="a">
+        
+        <div class="pag_tablet" role="main">
+            <div class="logoSmart">
+                <img src="images/smarthotelLogo.png" width="200" height="auto" alt="">
+            </div>
+            
+            <div class="introForm"><p style="font-size: smaller;">Esta aplicaci&oacute;n require conexi&oacute;n a internet para funcionar.</p>
+                <p style="font-size: medium;">Por favor ingrese el código de su hotel</p>
+                <div data-role="controlgroup" data-type="horizontal">
+                    <input type="text" id="search-control-group" placeholder="Código" data-wrapper-class="controlgroup-textinput ui-btn">
+                    
+                    <button class="btnIntro btn-sm" data-theme="a" style=" color:#FFF;" onClick="login()">
+                        Go!
                     </button>
-                    <button class="btnSubMenuA" onClick="cargando()">
-                        <a href="#impresion" data-transition="slide">Impresion de <br>pasabordos y <br>documentos</a>
-                    </button>
-                    <button class="btnSubMenuA" onClick="cargando()">
-                       <a href="#" target="_blank" data-transition="slide">Guía local</a>
-                    </button>
-                    <button class="btnSubMenuA" onClick="cargando()">
-                        <a href="#mapas" target="_blank" data-transition="slide">Mapas offline</a>
-                    </button>
-                    <button class="btnSubMenuA" onClick="cargando()">
-                        <a href="http://www.youtube.com/user/viveintv" target="_blank" data-transition="slide">Videos de sitios <br>de interés</a>
+                    
+                   
+                </div>
+                </br>
+                    </br>
+                <div data-role="controlgroup" data-type="horizontal">
+                  <button class="btnIntro btn-sm" data-theme="a" style=" color:#FFF;" onClick="scanear()">
+                        Escanear C&oacute;digo QR
                     </button>
                 </div>
             </div>
-        <div class="contenido">
-        	<!--Barra y img nueva con nombre de la seccion-->
-            <div class="barTitle"><p class="titulo">Mapas offline</p></div>
-            <div class="imagen_account">
-            <img src="images/map.jpg" width="1024" height="683" alt=""/> 
+            
+            <div class="logoWifiIntro">
+                <img src="images/wifiLogo.png" width="120px" height="auto">
             </div>
-            <!--Fin Barra y img nueva con nombre de la seccion-->
-            <div id="info">
-                <button class="btnSubMenuA" onClick="cargando()">
-                        <a href="http://wifienter.net/app/smartmaps/index.html" target="_blank" data-transition="slide">Iniciar GeoLocalizaci&oacute;n</a>
-                    </button>
+            
+        </div><!-- /content -->
+
+    </div><!-- /page two -->
+    
+    
+    <div class="bg page" data-role="page" id="qr" data-theme="a">
+        
+        <div class="pag_tablet" role="main">
+            <div class="logoSmart">
+                <img src="images/smarthotelLogo.png" width="200" height="auto" alt="">
             </div>
-        </div>
-    </div><!-- /page ofertas -->
+            
+            <div class="introForm">
+                <p style="font-size: medium;">Autenticaci&oacute;n QR</p>
+                <div data-role="controlgroup" data-type="horizontal">
+                 <div id="print_qr"></div>             
+                </div>
+                </br>
+                    </br>
+              </div>
+            
+            <div class="logoWifiIntro">
+                <img src="images/wifiLogo.png" width="120px" height="auto">
+            </div>
+            
+        </div><!-- /content -->
+
+    </div><!-- /page two -->
+    
+        <script type="text/javascript" src="js/control.js"></script>        
+ <script charset="utf&minus;8" type="text/javascript">
+function login()
+{
+ var control = $("#search-control-group").val();	
+ $.get("http://190.145.24.146/app/hotel_login.php",{id_hotel: control}, loginres, "jsonp");
+ 
+ function loginres(respuesta){
+				if (respuesta.licencia != "" && respuesta.licencia != "no") {
+                        var licencia = respuesta.licencia;
+                        var alias = respuesta.alias;	
+						var contenido = respuesta.contenido;				
+					                            localStorage.setItem("mem_licencia", licencia);
+												localStorage.setItem("mem_alias", alias);
+												localStorage.setItem("mem_varcont", contenido);
+												localStorage.setItem("mem_request", respuesta.request);
+												localStorage.setItem("mem_tools", respuesta.tools);
+												localStorage.setItem("mem_remote", respuesta.remote);
+												localStorage.setItem("mem_account", respuesta.account);
+																							
+						console.log("Acceso a hotel request:" + respuesta.request);
+		
+						document.location.href = "hotel.html";
+                    } else {
+						console.log("Acceso denegado" + respuesta);
+                        alert("Hotel no encontrado, porfavor solicita el código de tu hotel en recepción... Gracias!");
+						document.location.href = "index.html#page2";
+                           }
+				
+				    }
+}
+
+</script>    
+    
+    
+    <script type="text/javascript">
+    	
+			</script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript" src="js/notificaciones.js"></script>
         <!-- initialize -->
         <script type="text/javascript">
-            app.initialize();	
+            app.initialize();
         </script>
-		<script type="text/javascript" src="js/servicios.js"></script> 
 </body>
 </html>
-
-
-
-
-
-
