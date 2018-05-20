@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns		= "http://www.w3.org/ns/widgets"
         xmlns:gap	= "http://phonegap.com/ns/1.0"
-        id		   = "http___wifientercuentaefro.com"
+        id		   = "http___wifienterhotelcuenta.com"
         version 	= "1.0.0">
 
    <name>Revisa tu Cuenta</name>
