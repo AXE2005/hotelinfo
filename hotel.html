@@ -6,24 +6,13 @@
     
 	<meta name="viewport" content="width=device-width, initial-scale=1">
    
+   <link rel="stylesheet" href="css/jquery.mobile-1.4.3.css">
+   <link rel="stylesheet" href="css/theme/jquery.mobile-1.4.3.css">
+   <link rel="stylesheet" href="css/bootstrap.css">
+   <link rel="stylesheet" href="css/font-awesome.css">
+   <link rel="stylesheet" href="css/style.css">
+   
     <script src="js/jquery.min.js"></script>
-    <script>
-    if(screen.width < 768){
-
- $('<link rel="stylesheet" href="cssi/jquery.mobile-1.4.3.css">').appendTo("head");
- $('<link rel="stylesheet" href="cssi/theme/jquery.mobile-1.4.3.css">').appendTo("head");
- $('<link rel="stylesheet" href="cssi/bootstrap.css">').appendTo("head");
- $('<link rel="stylesheet" href="cssi/font-awesome.css">').appendTo("head");
- $('<link rel="stylesheet" href="cssi/style.css">').appendTo("head");
-
-}else{
-
- $('<link rel="stylesheet" href="css/jquery.mobile-1.4.3.css">').appendTo("head");
- $('<link rel="stylesheet" href="css/theme/jquery.mobile-1.4.3.css">').appendTo("head");
- $('<link rel="stylesheet" href="css/bootstrap.css">').appendTo("head");
- $('<link rel="stylesheet" href="css/font-awesome.css">').appendTo("head");
- $('<link rel="stylesheet" href="css/style.css">').appendTo("head");}	
-	</script>    
     <script src="js/jquery.mobile-1.4.3.min.js"></script>
     <script src="js/funciones.js"></script>
 
@@ -32,8 +21,53 @@
 <!--Fin Estilos Daniel-->   
 
     <script src="js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+	function login_guest()
+{
+		var hab = '616';	
+		$.get("http://190.145.24.146/app/sh_login.php",{username: hab }, loginres2, "jsonp");
 
+		function loginres2(respuesta){
+			if (respuesta.room != "no") {
+			var hab_db = respuesta.room;
+			var nom_db = respuesta.nombre;
+			var fol_db = respuesta.folio;
+			var sal_db = respuesta.salida;
+			var lle_db = respuesta.llegada;	
+					localStorage.setItem("roomdb", hab_db);
+					localStorage.setItem("nombredb", nom_db);
+					localStorage.setItem("foliodb", fol_db);
+					localStorage.setItem("salidadb", sal_db);
+					localStorage.setItem("llegadadb", lle_db);					
+			console.log("logeado Sr" + nom_db);
+				} else {
+			console.log("Acceso denegado" + respuesta);
+				localStorage.setItem("roomdb",null);
+					localStorage.setItem("nombredb",null);
+					localStorage.setItem("foliodb", null);
+					localStorage.setItem("salidadb", null);
+					localStorage.setItem("llegadadb", null);	
+			}
+
+		}
+		}
+	</script>
+   
+	<script>
+	function actualiza() {
+	var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);
+	var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);
+	var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);
+	var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);
+	}
+
+
+	function timeoutgo() {
+	deamon = setTimeout(actualiza, 500);
+	}  
+
+	</script>
+   
     <style type="text/css">
     #landscape #cena .contenido #info {
 	font-weight: bold;
@@ -65,9 +99,8 @@
     </style>
   
 <link rel="stylesheet" href="jquery.loader.min.css" /><script src="jquery.loader.min.js"></script> </head>
-<body id="landscape">
-            
-	         
+<body id="landscape" onLoad="login_guest(),timeoutgo()">
+                        
 <div class="mainContenido page" data-role="page" id="hotel" data-theme="a">
             <div class="sideNavSubmenu">
                 <div class="barTitle"><p class="titulo">Acerca del Hotel</p></div>
@@ -76,21 +109,19 @@
                     <a href="#hotel" data-transition="slide"><button class="btnSubMenuA">
                        Acerca del Hotel
                     </button></a>
-                    <a href="#servicios" data-transition="slide"><button class="btnSubMenuA">
-                        Servicios 
-                    </button></a>
+
                      <div id="accordionOne">
                         <button class="btnSubMenuA">
                             <div data-toggle="collapse" data-parent="#accordionOne" href="#collapseOne">Habitaciones</div>
                         </button></a>
                         <div id="collapseOne" class="panel-collapse collapse">   
-                            <a href="#suited" data-transition="slide"><button class="btnSubMenuC">Estándar Queen/Twin
+                            <a href="#suited" data-transition="slide"><button class="btnSubMenuC">Junior Suite
                             </button></a>
-                            <a href="#suiteds" data-transition="slide"><button class="btnSubMenuC">Superior Queen
+                            <a href="#suiteds" data-transition="slide"><button class="btnSubMenuC">Twin
                             </button></a>
-                             <a href="#suitej" data-transition="slide"><button class="btnSubMenuC">Junior Suite
+                             <a href="#suitej" data-transition="slide"><button class="btnSubMenuC">Superior
                             </button></a>
-                             <a href="#suitem" data-transition="slide"><button class="btnSubMenuC">Discapacitados
+                             <a href="#suitem" data-transition="slide"><button class="btnSubMenuC">Bussines
                             </button></a>
                        </div>
                     </div>
@@ -104,6 +135,15 @@
                         Ofertas especiales <br>y proximas reservas
                     </button></a>
               </div>
+                                  <br />
+                                   <div id="p_nombre" class="bgUsuarioLog nombreUsuarioLog line">Bienvenido Sr(a) <span>Nombre usuario</span></div>
+            <script>var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);</script>
+                            <div id="p_llegada" class="datosUsuario line">Check In:<span></span></div>
+              <script>var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);</script>
+                <div id="p_salida" class="datosUsuario line">Check Out: <span></span></div>
+              <script>var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);</script>
+                <div id="p_room" class="datosUsuario line">Room: <span></span></div>
+              <script>var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);</script>
             </div>
         
             <div class="contenido">
@@ -119,7 +159,7 @@
                         <div class="item active">
                           <table width="100%">
                             <tr>
-                              <td><iframe width="100%" height="auto" src="https://www.youtube.com/embed/-SqohYH70xQ" frameborder="0" allowfullscreen></iframe></td>
+                              <td align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/y4CzWcK6R3M" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></td>
                             </tr>
                           </table>
                           <div class="carousel-caption"></div>
@@ -127,36 +167,17 @@
                       </div>
                   </div> </div>
  <div id="info">
-                    <h5 id="titulosContenido" align="center">Hotel Movich Buró 26</h5>
-                    <div>
-                      <div>
-                        <div>
-                          <p id="contenido">El Hotel Movich Buró 26 es un hotel de lujo, de diseño sofisticado, inspirado en texturas, sabores y colores que exaltan el sabor Colombiano. Su cercanía al Aeropuerto Internacional El Dorado, lo hace la opción perfecta para viajeros de negocios y aquellos que buscan desconectarse de la rutina.<u></u><u></u></p>
-                          <p id="contenido"><u></u>El diseño del Hotel fue realizado desde el concepto de la portuguesa Nini Andrade, evocando lo mejor de la cultura de nuestro país dando como resultado una identidad visual única. Los materiales usados para la arquitectura son orgánicos y cálidos. <u></u><u></u></p>
-<p>Nuestros espacios son amplios y glamurosos, inspirados en texturas como la madera, hierro, caucho reciclado, y caña flecha, con la cual se fabrica el tradicional sombrero vueltiao, típico de la región Caribe colombiana. <u></u><u></u></p>
-                          <p id="contenido"><u></u>El servicio del hotel se destaca por su calidez y amabilidad. Aquí logrará tener una estadía plácida y relajante en una ubicación perfecta. Venga y compruebe porque somos el Hotel que superará todas sus expectativas y le brindará una experiencia única en cada uno de nuestros espacios.</p>
-                          <p id="contenido">Nos esforzamos por ofrece​r a nuestros huéspedes una experiencia diferente. Nos apasiona servir y brindar productos y servicios de la más alta calidad para sorprender positivamente a nuestros visitantes. ​</p>
-                          <p id="contenido"><br />
-                            <strong>MISIÓN</strong><br />
-                          Nos apasiona servir, ser los mejores anfitriones y sorprender positivamente a nuestros clientes para ganar su lealtad.</p>
-                          <p id="contenido"><strong>VISIÓN​</strong><br />
-                          Ser una organización hotelera innovadora y sostenible en expansión internacional. Donde nuestros clientes se sienten personas visibles, comprendidas y encantadas. Su equipo humano la reconoce y valora como un motor impulsor de felicidad y desarrollo. Seremos promotores del cuidado del medio ambiente y el mejoramiento de las condiciones de las comunidades aledañas. Sus accionistas se sienten satisfechos del valor que les genera.</p>
-                          <p id="contenido"><strong>NUESTRA POLÍTICA DE SOSTENIBILIDAD</strong><br />
-                          Estamos comprometidos con la sostenibilidad, promoviendo acciones encaminadas a la minimización de impactos y al mejoramiento de nuestro entorno. Resaltamos el patri​monio cultural y los más grandes elementos representativos de nuestro país de manera responsable; trabajamos día a día por el mejoramiento de los  productos y servicios que ofrecemos, para lograr un alto nivel de satisfacción en nuestros clientes. Respetamos los derechos y deberes de nuestros colaboradores, proveedores, clientes y huéspedes, y rechazamos la explotación sexual de niños, niñas y adolescentes, y demás formas de violencia sexual.​</p>
-                       &nbsp;</div>
-                      </div>
-                    </div>
-      <div>
-                      <div>
-                         <p id="txtContenido"><h2>Hotel Movich Buró 26</h2></p>
-                      </div>
-      </div>
-                    <p id="txtContenido">&nbsp;</p>
-      <p id="txtContenido">&nbsp;</p>
-      <p id="txtContenido">&nbsp;</p>
-                    <p id="txtContenido">&nbsp;</p>
+                    <h5 id="titulosContenido">VIVA CON NOSOTROS UNA EXPERIENCIA DORADA!</h5>
 
-              </div>
+          
+                    <p id="txtContenido">
+En el coraz&oacute;n de Bogot&aacute;, ubicado en la zona del Parque de la 93, se encuentra uno de los hoteles de lujo m&aacute;s exclusivos de la ciudad. Envuelto en dorados relucientes, inmerso en la leyenda del Dorado, el Hotel el Dorado Bogot&aacute; es una joya moderna y de dise&ntilde;o, que mezcla el lujo con lo minimalista.&nbsp;<span style="color:rgb(0, 0, 0)">En total son 76 habitaciones, ubicadas en un lugar tur&iacute;stico y empresarial, ideal para aquellos que vienen a la ciudad en un viaje de negocios y que visitan la ciudad por turismo. Nos preocupamos por ofrecer el mejor servicio y de brindar una experiencia dorada.&nbsp;</span><br /></p>
+                    <p id="txtContenido">    RESERVA ANTICIPADA<br />
+Reserve ahora a trav&eacute;s de nuestra p&aacute;gina web un mes anticipado y reciba los mejores beneficios en tarifa. Reciba hasta un 20% de descuento sobre nuestra MEJOR TARIFA DISPONIBLE, incluye desayuno y acceso a Internet Wi-Fi. Paquete es no reembolsable.&nbsp;<br />&#8203;&#8203;<br />
+TARIFA ESPECIAL POR TRES NOCHES <br />
+                   Reserve por tres noches y reciba una tarifa especial por cada una. Reciba hasta un 15% de descuento sobre nuestra MEJOR TARIFA DISPONIBLE, incluye desayuno y acceso a Internet Wi-Fi. Pol&iacute;tica de cancelaci&oacute;n 48 horas previas a su llegada.&nbsp;<br />&#8203;<br />     </p>
+
+                </div>
            
         </div>
     </div><!-- /page hotel -->
@@ -171,21 +192,19 @@
                     <a href="#hotel" data-transition="slide"><button class="btnSubMenuA">
                        Acerca del Hotel
                     </button></a>
-                    <a href="#servicios" data-transition="slide"><button class="btnSubMenuA">
-                        Servicios 
-                    </button></a>
+
                      <div id="accordion2">
                         <button class="btnSubMenuA">
                             <div data-toggle="collapse" data-parent="#accordion2" href="#collapse3">Habitaciones</div>
                         </button></a>
                         <div id="collapse3" class="panel-collapse collapse">   
-                            <a href="#suited" data-transition="slide"><button class="btnSubMenuC">Estándar Queen/Twin
+                            <a href="#suited" data-transition="slide"><button class="btnSubMenuC">Junior Suite
                             </button></a>
-                            <a href="#suiteds" data-transition="slide"><button class="btnSubMenuC">Superior Queen
+                            <a href="#suiteds" data-transition="slide"><button class="btnSubMenuC">Twin
                             </button></a>
-                             <a href="#suitej" data-transition="slide"><button class="btnSubMenuC">Junior Suite
+                             <a href="#suitej" data-transition="slide"><button class="btnSubMenuC">Superior
                             </button></a>
-                             <a href="#suitem" data-transition="slide"><button class="btnSubMenuC">Discapacitados
+                             <a href="#suitem" data-transition="slide"><button class="btnSubMenuC">Bussines
                             </button></a>
                        </div>
                     </div>
@@ -222,25 +241,16 @@
                   <!-- Wrapper for slides -->
                   <div class="carousel-inner">
                     <div class="item active">
-                      <img src="images/menu1.jpg" alt="..."><div class="carousel-caption"></div>
+                      <img src="https://c1.staticflickr.com/8/7363/27988292536_796cf168d2_b.jpg" alt="..." width="100%"><div class="carousel-caption"></div>
                     </div>
                     <div class="item ui-flipswitch-active">
-                      <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/restaurante/slider-restaurante-buro26/bog-buro26-slider3.jpg" alt="..."><div class="carousel-caption"></div>
+                      <img src="https://exp.cdn-hotels.com/hotels/16000000/15840000/15833800/15833788/7ea2b201_z.jpg" alt="..."><div class="carousel-caption"></div>
                     </div>
                     <div class="item">
-                     <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/restaurante/slider-restaurante-buro26/bog-buro26-slider6.jpg" alt="..."><div class="carousel-caption"></div>
+                     <img src="https://restorando-res.cloudinary.com/image/upload/b_rgb:000000,c_pad,f_auto,g_center,h_720,w_1280/v1/restaurant_photos/x//10709/100022/restaurante_origen-hotel-el-dorado_chico_6.jpg" alt="..."><div class="carousel-caption"></div>
                     </div>
                     <div class="item">
-                     <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/restaurante/slider-restaurante-buro26/bog-buro26-slider7.jpg" alt="..."><div class="carousel-caption"></div>
-                    </div>
-                    <div class="item">
-                      <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/restaurante/slider-restaurante-buro26/bog-buro26-slider8.jpg" alt="..."><div class="carousel-caption"></div>
-                    </div>
-                    <div class="item">
-                      <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/restaurante/slider-restaurante-buro26/bog-buro26-slider4.jpg" alt="..."><div class="carousel-caption"></div>
-                    </div>
-                    <div class="item">
-                      <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/restaurante/slider-restaurante-buro26/bog-buro26-slider6.jpg" alt="..."><div class="carousel-caption"></div>
+                     <img src="https://c1.staticflickr.com/8/7363/27988292536_796cf168d2_b.jpg" alt="..."><div class="carousel-caption"></div>
                     </div>
                   </div>
                 <!-- Controls -->
@@ -251,9 +261,9 @@
                     <span class="glyphicon glyphicon-chevron-right"></span>
                   </a>
                 </div>
-				<a href="http://menu.appsmarthotel.com" data-transition="slide">
+				<a href="https://bogota.restorando.com.co/restaurante/mai-tai-sushi-bar-hotel-el-dorado" data-transition="slide">
                  <button class="btnSubMenuA">
-                        Menú & Room Service
+                        Ver Menú & Room Service
                     </button></a>
                </div>
         </div>
@@ -268,21 +278,19 @@
                     <a href="#hotel" data-transition="slide"><button class="btnSubMenuA">
                        Acerca del Hotel
                     </button></a>
-                    <a href="#servicios" data-transition="slide"><button class="btnSubMenuA">
-                        Servicios 
-                    </button></a>
+
                      <div id="accordion44">
                         <button class="btnSubMenuA">
                             <div data-toggle="collapse" data-parent="#accordion44" href="#collapse44">Habitaciones</div>
                         </button></a>
                         <div id="collapse44" class="panel-collapse collapse">   
-                            <a href="#suited" data-transition="slide"><button class="btnSubMenuC">Estándar Queen/Twin
+                            <a href="#suited" data-transition="slide"><button class="btnSubMenuC">Junior Suite
                             </button></a>
-                            <a href="#suiteds" data-transition="slide"><button class="btnSubMenuC">Superior Queen
+                            <a href="#suiteds" data-transition="slide"><button class="btnSubMenuC">Twin
                             </button></a>
-                             <a href="#suitej" data-transition="slide"><button class="btnSubMenuC">Junior Suite
+                             <a href="#suitej" data-transition="slide"><button class="btnSubMenuC">Superior
                             </button></a>
-                             <a href="#suitem" data-transition="slide"><button class="btnSubMenuC">Discapacitados
+                             <a href="#suitem" data-transition="slide"><button class="btnSubMenuC">Bussines
                             </button></a>
                        </div>
                     </div>
@@ -309,22 +317,17 @@
                     <li data-target="#carousel-salones para eventos" data-slide-to="0" class="active"></li>
                     <li data-target="#carousel-salones para eventos" data-slide-to="1"></li>
                     <li data-target="#carousel-salones para eventos" data-slide-to="2"></li> 
-                    <li data-target="#carousel-salones para eventos" data-slide-to="3"></li> 
-
                   </ol>
                   <!-- Wrapper for slides -->
                   <div class="carousel-inner">
                     <div class="item active">
-                      <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/reuniones/eventos1.jpg" alt="..."><div class="carousel-caption"></div>
-                    </div>
-                    <div class="item acrive">
-                      <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/reuniones/eventos1.jpg" alt="..."><div class="carousel-caption"></div>
+                      <img src="https://c1.staticflickr.com/8/7456/27920985322_0490b7458c_b.jpg" alt="..."><div class="carousel-caption"></div>
                     </div>
                     <div class="item">
-                      <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/reuniones/eventos1.jpg" alt="..."><div class="carousel-caption"></div>
+                      <img src="https://c1.staticflickr.com/8/7364/27409899104_2dd6d97f1e_b.jpg" alt="..."><div class="carousel-caption"></div>
                     </div>
                     <div class="item">
-                      <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/reuniones/eventos1.jpg" alt="..."><div class="carousel-caption"></div>
+                      <img src="https://c1.staticflickr.com/8/7435/28022944905_5fa291185b_b.jpg" alt="..."><div class="carousel-caption"></div>
                     </div>
                   </div>
                   <!-- Controls -->
@@ -336,30 +339,16 @@
                     <span class="glyphicon glyphicon-chevron-right"></span>
                   </a>
                 </div>
+                
+               <p id="txtContenido"> <h1> <span class="wsite-text wsite-headline">
+	<strong>EVENTOS SOCIALES &amp; EMPRESARIALES</strong>
+</span> </h1> 
+	<h2 class="wsite-content-title"><strong>&#8203;MODERNOS ESPACIOS PARA REUNIONES&nbsp;</strong></h2>
 
-                <div>
-                  <div>
-                    <h4>EXPERIENCIAS INDESCRIPTIBLES</h4>
-                  </div>
-                </div>
-                <div>
-                  <div>
-                    <div>
-                      <p id="txtContenido">Nuestra misión es y será construir el entorno perfecto para poder fabricar un momento inolvidable. Para ello, además de la infraestructura, contamos con un equipo especializado que está en capacidad de asesorarle y orientarle acerca de cada detalle que permitirá obtener el resultado propuesto. Contamos con capacidad real para planear, organizar y atender:</p>
-                      <ul>
-                        <li>Seminarios</li>
-                        <li>Congresos</li>
-                        <li>Lanzamientos</li>
-                        <li>Entrenamientos</li>
-                        <li>Cocktails</li>
-                        <li>Eventos Sociales</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
+               Contamos con 6 espacios ideales para reuniones empresariales y sociales. Desde sesiones ejecutivas y clases, hasta conferencias de ventas en auditorios, presentaciones de producto y banquetes sociales, ofrecemos una variedad de configuraciones y servicios flexibles con tecnolog&iacute;a de punta.&nbsp;<br /><br />Combinando un moderno dise&ntilde;o con la &uacute;ltima tecnolog&iacute;a de conferencias, el Hotel el Dorado es el lugar ideal para organizar su evento. Cada una de nuestras salas cuenta con modernos equipos de presentaci&oacute;n, sonido integrado, canal dedicado de internet Wi-Fi de alta velocidad y servicios adicionales de soporte de traducci&oacute;n.&nbsp;
                 <h4>&nbsp;</h4>
 
-                <p id="txtContenido">&nbsp;</p>
+                &nbsp;</p>
             </div>
         </div>
     </div><!-- /page eventos -->
@@ -374,21 +363,19 @@
                     <a href="#hotel" data-transition="slide"><button class="btnSubMenuA">
                        Acerca del Hotel
                     </button></a>
-                    <a href="#servicios" data-transition="slide"><button class="btnSubMenuA">
-                        Servicios 
-                    </button></a>
+
                      <div id="accordion55">
                         <button class="btnSubMenuA">
                             <div data-toggle="collapse" data-parent="#accordion55" href="#collapse55">Habitaciones</div>
                         </button></a>
                         <div id="collapse55" class="panel-collapse collapse">   
-                            <a href="#suited" data-transition="slide"><button class="btnSubMenuC">Estándar Queen/Twin
+                            <a href="#suited" data-transition="slide"><button class="btnSubMenuC">Junior Suite
                             </button></a>
-                            <a href="#suiteds" data-transition="slide"><button class="btnSubMenuC">Superior Queen
+                            <a href="#suiteds" data-transition="slide"><button class="btnSubMenuC">Twin
                             </button></a>
-                             <a href="#suitej" data-transition="slide"><button class="btnSubMenuC">Junior Suite
+                             <a href="#suitej" data-transition="slide"><button class="btnSubMenuC">Superior
                             </button></a>
-                             <a href="#suitem" data-transition="slide"><button class="btnSubMenuC">Discapacitados
+                             <a href="#suitem" data-transition="slide"><button class="btnSubMenuC">Bussines
                             </button></a>
                        </div>
                     </div>
@@ -405,9 +392,9 @@
             </div>
         <div class="contenido">
             <div id="info">
-              <h4>Reservaciones<img src="http://www.biohotelcolombia.com/wp-content/uploads/2016/09/galeria_7.jpg" width="100%" height="auto" alt="..."></h4>
+              <h4>Reservaciones</h4><img src="https://static.hotel-imagenes.info/uploads/hotel/12157/photo/hotel-el-dorado-capital_14720389401.jpg" width="100%" height="auto" alt="...">
                 <p id="txtContenido">Aqui podr&aacute; realizar reservas para sus pr&oacute;ximas estad&iacute;as incluso cuando este fuera del hotel, porfavor ingrese fecha apr&oacute;ximada de llegada y salida para iniciar la reservaci&oacute;n ... Gracias !!.</p>
-                    <div class="introForm" style=" allign:center; width: 90%;"">
+                    <div class="introForm" style=" allign:center; width: 90%;">
                     <label for="envio_reserva">Fecha de Llegada:</label>
                     <input type="date" id="llegada_reserva"  data-wrapper-class="controlgroup-textinput ui-btn"><br>
                     <label for="envio_reserva">Fecha de Llegada:</label>
@@ -430,21 +417,19 @@
                     <a href="#hotel" data-transition="slide"><button class="btnSubMenuA">
                        Acerca del Hotel
                     </button></a>
-                    <a href="#servicios" data-transition="slide"><button class="btnSubMenuA">
-                        Servicios 
-                    </button></a>
+
                      <div id="accordion77">
                         <button class="btnSubMenuA">
                             <div data-toggle="collapse" data-parent="#accordion77" href="#collapse77">Habitaciones</div>
                         </button>
                         <div id="collapse77" class="panel-collapse collapse">   
-                            <a href="#suited" data-transition="slide"><button class="btnSubMenuC">Estándar Queen/Twin
+                            <a href="#suited" data-transition="slide"><button class="btnSubMenuC">Junior Suite
                             </button></a>
-                            <a href="#suiteds" data-transition="slide"><button class="btnSubMenuC">Superior Queen
+                            <a href="#suiteds" data-transition="slide"><button class="btnSubMenuC">Twin
                             </button></a>
-                             <a href="#suitej" data-transition="slide"><button class="btnSubMenuC">Junior Suite
+                             <a href="#suitej" data-transition="slide"><button class="btnSubMenuC">Superior
                             </button></a>
-                             <a href="#suitem" data-transition="slide"><button class="btnSubMenuC">Discapacitados
+                             <a href="#suitem" data-transition="slide"><button class="btnSubMenuC">Bussines
                             </button></a>
                        </div>
                     </div>
@@ -464,96 +449,184 @@
         	<!--Barra nueva con nombre de la seccion-->
            <div class="barTitle"><p class="titulo">Servicios </p></div>
            <div class="imagen_account">
-       	     <img src="https://www.movichhotels.com/PublishingImages/esp-cabezotes/reuniones-cabezote.jpg" width="100%" alt=""/> 
-         </div>
+               	    <img src="https://lettofurniture.com/wp-content/uploads/2015/12/dorado-1.jpg" width="100%" height="auto" alt=""/> 
+                    </div>
             <!--Fin Barra nueva con nombre de la seccion-->
             <div id="info">
-              <p>&nbsp;</p>
-              <div id="pageTitle">
-                <h2>MOVICH DREAMS</h2>
+            <br>
+            <div>
+              <div>
+                <h5 id="titulosContenido">MASAJE RELAJANTE</h5>
               </div>
-              <div id="encabezado">
-                <div data-name="WebPartZone">
+            </div>
+            <div>
+              <div></div>
+            </div>
+            <div>
+              <div>
+                <p id="txtContenido">Reciba toda la salud natural y profesional directamente en el cuerpo, un masaje para adormecer, aquellos que necesitan una sensación de bienestar en todo su ser.<br>
+                  <strong>Duración: 40 minutos<br>
+                    Precio: $120.000COP</strong></p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <h5 id="titulosContenido">MASAJE TEJIDO PROFUNDO</h5>
+                <h5 id="titulosContenido"></h5>
+              </div>
+            </div>
+            <div>
+              <div></div>
+            </div>
+            <div>
+              <div>
+                <p id="txtContenido">Masajes saludables con efectos multiplicados por las bondades científicamente comprobadas de la aromaterapia, ayudarán a disminuir el estrés, eliminar nudos dejando una sensación de completa relajación.<br>
+                  <strong>Duración: 60 minutos<br>
+                    Precio: $150.000COP</strong></p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <h5 id="titulosContenido">MASAJE DE PIEDRAS CALIENTES</h5>
+                <h5 id="titulosContenido"></h5>
+              </div>
+            </div>
+            <div>
+              <div></div>
+            </div>
+            <div>
+              <div>
+                <p id="txtContenido">Desde las más sanas técnicas de terapias utilizadas en Tailandia, se ofrecerá un ritual de cuerpo de estiramientos con Bambú y oxigenación profunda.<br>
+                  <strong>Duración: 60 minutos<br>
+                    Precio: $170.000COP</strong></p>
+              </div>
+            </div>
+            <div><br>
+              <div>
+                <div>
+                  <div></div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
                   <div>
-                    <div>
-                      <div id="MSOZoneCell_WebPartWPQ5">
-                        <div>
-                          <div id="WebPartWPQ5_ChromeTitle"><span title="Editor de contenido [1] - Permite a los autores escribir contenido de texto enriquecido." id="WebPartTitleWPQ5"> </span></div>
-                          <div webpartid="5a6ece1f-1185-4acf-ab91-d6060df0324f" haspers="false" id="WebPartWPQ5" width="100%" allowdelete="false">
-                            <div>
-                              <div>
-                                <div id="quienes-somosc1">
-                                  <div id="imagen1" align="center"><img src="https://www.movichhotels.com/PublishingImages/Movich%20dreams/dreams_1.png" alt="Acerca de Hoteles Movich" align="middle"> </div>
-                                </div>
-                              </div>
-                              <div>
-                                <h3 align="justify">ES EL PROGRAMA DE LEALTAD DE MOVICH HOTELS E INTERCONTINENTAL MEDELLÍN, DISEÑADO​ PARA AGRADECER SU LEALTAD Y PREFERENCIA. ESTE PROGRAMA PERMITE ACUMULAR PUNTOS POR SUS NOCHES DE RESERVA EFECTIVA PARA CANJEAR POR NOCHES EN CUALQUIERA DE NUESTROS HOTELES. ​</h3>
-                                <p>​<br>
-                                </p>
-                                <p>En Movich Hotels queremos que nuestros huéspedes salgan de la rutina y disfruten de otra forma nuestros servicios. Acumule puntos y disfrute un fin de semana con una excelente compañía; o, ¿qué tal si redime una noche para que en su próximo viaje de trabajo su familia lo acompañe? Incluso, ahorre costos en su próximo viaje redimiendo sus puntos acumulados.</p>
-                                <p><br>
-                                </p>
-                                <p><br>
-                                </p>
-                              </div>
-                            </div>
-                            <div></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+
                   </div>
                 </div>
               </div>
-              <div id="cuerpo">
+              <div>
                 <div>
-                  <div data-name="WebPartZone">
+                  <div>
+   
                     <div>
                       <div>
-                        <div id="MSOZoneCell_WebPartWPQ6">
-                          <div>
-                            <div id="WebPartWPQ6_ChromeTitle"><span title="Editor de contenido [2] - Permite a los autores escribir contenido de texto enriquecido." id="WebPartTitleWPQ6"> </span></div>
-                            <div webpartid="6eca0942-3e42-4d4e-9eaa-4bc2b3519106" haspers="false" id="WebPartWPQ6" width="100%" allowdelete="false">
-                              <div>
-                                <h2>HAGA PARTE DE MOVICH DREAMS, LA FORMA DE CONECTAR SUEÑOS!​</h2>
-                                <p>A Movich Dreams puede pertenecer cualquier persona natural mayor de edad en Colombia. Tan solo debe:<br>
-                                </p>
-                                <p>1. Afiliarse</p>
-                                <p>2.  Al hacer su reserva hotelera mencione el número de documento de identidad con el cuál se inscribió</p>
-                                <p>3. 48 horas después de hacer Check-out los puntos por las noches de su estadía serán acumulados en la cuenta del titular de la reserva.</p>
-                                <p>4. Acumule la cantidad de puntos requeridos, para redimir la noche que desea en alguno de nuestros hoteles.</p>
-                                <p>5. ¡Disfrute su redención! ​</p>
-                                <br>
-                                <p>Para incribirse haga <a href="http://movichdreams.com/register.php" title="Movich Dreams" target="_blank"><strong>click aquí</strong></a></p>
-                                <p>Si ya está inscrito y desea ingresar a su cuent​a haga <a href="http://movichdreams.com/index.php" title="Movich Dreams" target="_blank"><strong>click aquí</strong>​</a>​.​</p>
-                                <p>*Si hace click, será dirigido a la página web de Mov​ich Dreams. <a href="http://www.movichdreams.com/" target="_blank"><strong>www.movichdreams.com</strong></a></p>
-                                <p><img src="https://www.movichhotels.com/PublishingImages/Movich%20dreams/tablas_movichdreams.jpg" alt="">​ <br>
-                                </p>
-                                <p>1. AFILIACIÓN<br>
-                                  • Es gra​tis<br>
-                                  • Se realiza a través de la página <a href="https://www.movichdreams.com/"><strong>www.movichdreams.com</strong></a><br>
-                                  • Solo pueden afiliarse personas naturales mayores de 18 años con el doc​umento de identificación personal.<br>
-                                </p>
-                                <p>2. ACUMU​LACIÓN<br>
-                                  • Solo por alojamiento. Los puntos se acumulan por noche por habitación al titular de la reserva.<br>
-                                  • 48 horas después del Check-out.​</p>
-                                <p>3. REDENCIÓN<br>
-                                  • Noches de alojamiento en Hoteles Movich e InterContinental Medellín para el/la <br>
-                                  titular de la cuenta o la persona que éste (a) indique.<br>
-                                  • Redención con mínimo 8 días de anticipación a la fecha de estadía.</p>
-                                <p>Ver condiciones y restricciones en <a href="https://www.movichdreams.com/"><strong>www.movichdreams.com</strong></a>​</p>
-                                <p>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​</p>
-                              </div>
-                            </div>
-                          </div>
+                        <div>
+                          <p id="txtContenido">Nuestro Plan Feria incluye:</p>
+                          <ul>
+                            <li>Servicio de transporte Biohotel-Corferias</li>
+                            <li>Upgrade en habitación Deluxe Superior</li>
+                            <li>Desayuno</li>
+                            <li>Acceso al circuito hídrico</li>
+                            <li>Wifi ilimitado</li>
+                          </ul>
                         </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <p id="txtContenido"><a href="https://app.thebookingbutton.com/properties/biohoteldirect?locale=es&check_in_date=&check_out_date=&currency=COP" target="_blank">RESERVAR AHORA</a></p>
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <p id="txtContenido">Tel:  +57 (1) 482 34 92 | Whatsapp: +57 301 696 59 01</p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <p>&nbsp;</p>
-              <p>&nbsp;</p>
+            </div>
+            <div>
+              <div>
+                <div>
+                  <div>
+                    <div>
+                      <div>
+                        <h4>PLAN NOCHE ROMÁNTICA</h4>
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <div>
+                          <p id="txtContenido">Plan Noche Romántica Decoración de la habitación con pétalos de rosa Botella de vino Acceso a zonas húmedas Desayuno en la habitación Impuestos y seguros.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <h4>DESDE $280,000</h4>
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <p id="txtContenido"><strong>Plan noche romántica</strong></p>
+                        <ul>
+                          <li>Decoración de la habitación con pétalos de rosa</li>
+                          <li>Botella de vino</li>
+                          <li>Acceso a zonas húmedas</li>
+                          <li>Desayuno en la habitación</li>
+                          <li>Impuestos y seguros</li>
+                        </ul>
+                        <p id="txtContenido">La cena tiene valor adiconal de <strong>70mil pesos</strong></p>
+                        <p id="txtContenido"><strong>Hotel 5 estrellas Bogotá</strong></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <div>
+                    <div>
+                      <div>
+                        <h4>EXPERIENCIA SOSTENIBLE JUNIOR SUITE</h4>
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <div>
+                          <p id="txtContenido">¡En <strong><a href="http://www.biohotelcolombia.com/">Biohotel</a> </strong>cada fin de semana es puente! 4 pasos para relajarte: Disfruta dos cocteles en nuestro bar La Huerta Relájate en un tu habitación Junior Suite con…</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <h4>DESDE $379,000</h4>
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <p id="txtContenido"><strong>¡En Biohotel cada fin de semana es puente!</strong></p>
+                        <ul>
+                          4 pasos para relajarte:
+                        </ul>
+                        <ul>
+                          <li>Disfruta dos cocteles en nuestro bar La Huerta</li>
+                          <li>Relájate en un tu habitación Junior Suite con Jacuzzi</li>
+                          <li>Desayuna en tu habitación</li>
+                          <li>Despeja tu mente en nuestras zonas húmedas</li>
+                        </ul>
+                        <p id="txtContenido">No te preocupes por el tiempo, puedes hacer late check out a las 3 de la tarde, Valido viernes – sabados y domingos. Todo por $379.000 + impuestos</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h2 data-wow-duration="1s" data-wow-delay=".6s">&nbsp;</h2>
+            <p data-wow-duration="1s" data-wow-delay=".7s">&nbsp;</p>
             </div>
  </div> 
  </div>
@@ -569,21 +642,19 @@
                     <a href="#hotel" data-transition="slide"><button class="btnSubMenuA">
                        Acerca del Hotel
                     </button></a>
-                    <a href="#servicios" data-transition="slide"><button class="btnSubMenuA">
-                        Servicios 
-                    </button></a>
+
                      <div id="accordionSE">
                         <button class="btnSubMenuA">
                             <div data-toggle="collapse" data-parent="#accordionSE" href="#collapseSE">Habitaciones</div>
                         </button></a>
                         <div id="collapseSE" class="panel-collapse collapse">   
-                            <a href="#suited" data-transition="slide"><button class="btnSubMenuC">Estándar Queen/Twin
+                            <a href="#suited" data-transition="slide"><button class="btnSubMenuC">Junior Suite
                             </button></a>
-                            <a href="#suiteds" data-transition="slide"><button class="btnSubMenuC">Superior Queen
+                            <a href="#suiteds" data-transition="slide"><button class="btnSubMenuC">Twin
                             </button></a>
-                             <a href="#suitej" data-transition="slide"><button class="btnSubMenuC">Junior Suite
+                             <a href="#suitej" data-transition="slide"><button class="btnSubMenuC">Superior
                             </button></a>
-                             <a href="#suitem" data-transition="slide"><button class="btnSubMenuC">Discapacitados
+                             <a href="#suitem" data-transition="slide"><button class="btnSubMenuC">Bussines
                             </button></a>
                        </div>
                     </div>
@@ -614,13 +685,13 @@
                   <!-- Wrapper for slides -->
                   <div class="carousel-inner">
                     <div class="item active">
-                      <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/recorrido-visual/Habitaciones/habitacion1.jpg" alt=""><div class="carousel-caption"></div>
+                      <img src="http://www.hoteleldoradobogota.com/uploads/9/8/6/9/98696210/business-1_orig.png" alt=""><div class="carousel-caption"></div>
                     </div>
                     <div class="item">
-                      <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/recorrido-visual/Habitaciones/habitacion2.jpg" alt="..."><div class="carousel-caption"></div>
+                      <img src="https://c1.staticflickr.com/8/7346/27920665612_13c964b448_b.jpg" alt="..."><div class="carousel-caption"></div>
                     </div>
                     <div class="item">
-                      <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/recorrido-visual/Habitaciones/habitacion3.jpg" alt="..."><div class="carousel-caption"></div>
+                      <img src="http://www.hoteleldoradobogota.com/uploads/9/8/6/9/98696210/jr-suite-2_orig.png" alt="..."><div class="carousel-caption"></div>
                     </div>
                   </div>
                   <!-- Controls -->
@@ -632,40 +703,37 @@
                   </a>
                 </div>
 
-                <h5 id="titulosContenido">Estandar Queen/Twin</h5>
-                    <p id="txtContenido">
+                <h5 id="titulosContenido">JUNIOR SUITE</h5>
+                   <p id="txtContenido">Si vienes frecuentemente, bien sea por trabajo o temas personales, y quieres encontrar un espacio amplio y confortable, esta es tu habitación. Tendrás 24 mt2, acomodación máxima para 2 personas, cama king o twin disponibles y lencería de 300 hilos de algodón orgánico. Baño privado, cafetera, televisión por cable, Internet WIFI las 24 horas del día, caja de seguridad, servicio de minibar, llamadas internacionales a líneas fijas en 60 países y llamadas locales a teléfonos fijos incluidos en la tarifa. Ventanas insonorizadas que aseguran un descanso renovador. Tienes la posibilidad de conectar una habitación Deluxe superior o Deluxe estándar para grupos o familias.</p>
                 </div>
-                <p id="txtContenido">Habitación de 21 mts² con cama Queen o dos camas, aire acondicionado, ventanas antiruido, escritorio y televisor pantalla plana. Además la habitación cuenta con reproductor de dispositivos de audio​, clóset, minibar, cafetera, cajilla de seguridad, plancha y baño con amenities, bata de baño, pantuflas y secador de pelo​​.</p>
+
                 
             </div>
-        </div>
     </div><!-- /page Suite Master King -->
     
     <!-- Start of second page: #grand -->
 <div class="mainContenido page" data-role="page" id="suiteds" data-theme="a">
         <div class="sideNavSubmenu">
             <div class="barTitle">
-              <p class="titulo">Superior Queen</p></div>
+              <p class="titulo">Twin</p></div>
         
             <div id="bg submenu">
                     <a href="#hotel" data-transition="slide"><button class="btnSubMenuA">
                        Acerca del Hotel
                     </button></a>
-                    <a href="#servicios" data-transition="slide"><button class="btnSubMenuA">
-                        Servicios 
-                    </button></a>
+
                      <div id="accordionGS">
                         <button class="btnSubMenuA">
                             <div data-toggle="collapse" data-parent="#accordionGS" href="#collapseGS">Habitaciones</div>
                         </button></a>
                         <div id="collapseGS" class="panel-collapse collapse">   
-                            <a href="#suited" data-transition="slide"><button class="btnSubMenuC">Estándar Queen/Twin
+                            <a href="#suited" data-transition="slide"><button class="btnSubMenuC">Junior Suite
                             </button></a>
-                            <a href="#suiteds" data-transition="slide"><button class="btnSubMenuC">Superior Queen
+                            <a href="#suiteds" data-transition="slide"><button class="btnSubMenuC">Twin
                             </button></a>
-                             <a href="#suitej" data-transition="slide"><button class="btnSubMenuC">Junior Suite
+                             <a href="#suitej" data-transition="slide"><button class="btnSubMenuC">Superior
                             </button></a>
-                             <a href="#suitem" data-transition="slide"><button class="btnSubMenuC">Discapacitados
+                             <a href="#suitem" data-transition="slide"><button class="btnSubMenuC">Bussines
                             </button></a>
                        </div>
                     </div>
@@ -683,7 +751,7 @@
         
         <div class="contenido">
         	<!--Barra nueva con nombre de la seccion-->
-            <div class="barTitle"><p class="titulo">Superior Queen </p></div>
+            <div class="barTitle"><p class="titulo">Twin </p></div>
             <!--Fin Barra nueva con nombre de la seccion-->
             <div id="info">
                 <div id="carousel-suit" class="carousel slide" data-ride="carousel">
@@ -696,15 +764,17 @@
                   <!-- Wrapper for slides -->
                   <div class="carousel-inner">
                     <div class="item active">
-                      <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/recorrido-visual/Habitaciones/habitacion1.jpg" alt=""><div class="carousel-caption"></div>
+                      <img src="http://www.hoteleldoradobogota.com/uploads/9/8/6/9/98696210/business-1_orig.png" alt=""><div class="carousel-caption"></div>
                     </div>
                     <div class="item">
-                      <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/recorrido-visual/Habitaciones/habitacion2.jpg" alt="..."><div class="carousel-caption"></div>
+                      <img src="https://c1.staticflickr.com/8/7346/27920665612_13c964b448_b.jpg" alt="..."><div class="carousel-caption"></div>
                     </div>
                     <div class="item">
-                      <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/recorrido-visual/Habitaciones/habitacion3.jpg" alt="..."><div class="carousel-caption"></div>
+                      <img src="http://www.hoteleldoradobogota.com/uploads/9/8/6/9/98696210/jr-suite-2_orig.png" alt="..."><div class="carousel-caption"></div>
                     </div>
                   </div>
+
+                  
                   <!-- Controls -->
                   <a class="left carousel-control" href="#carousel-suit" role="button" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left"></span>
@@ -714,8 +784,8 @@
                   </a>
                 </div>
    
-                <h5 id="titulosContenido">Superior Queen</h5>
-                <p id="txtContenido">Habitación de 21 mts² con acceso al salón VIP ubicado en el piso Ejecutivo. Cuenta con una cama Queen, aire acondicionado, ventanas antiruido, escritorio y televisor pantalla plana. Además la habitación cuenta con reproductor de dispositivos de audio​, clóset, minibar, cafetera, cajilla de seguridad, plancha y baño con amenities, bata de baño, pantuflas y secador de pelo​​.</p>
+                <h5 id="titulosContenido">TWIN</h5>
+                <p id="txtContenido">Para que te sientas como en tu casa, esta habitación tiene todos los servicios que estás esperando en 30 mt2. Su amplitud y distribución te hará sentir aún más la paz y el descanso que buscas en tu hospedaje. Acomodación máxima para 3 personas, cama king o twin disponibles y lencería de 300 hilos de algodón orgánico. Baño privado, cafetera, televisión por cable, Internet WIFI las 24 horas del día, caja de seguridad, servicio de minibar, llamadas internacionales a líneas fijas en 60 países y llamadas locales a teléfonos fijos incluidos en la tarifa. Ventanas insonorizadas que aseguran un descanso renovador. Tienes la posibilidad de conectar una habitación Deluxe superior o Deluxe estándar para grupos o familias.</p>
                  
             </div>
         </div>
@@ -725,27 +795,25 @@
 <div class="mainContenido page" data-role="page" id="suitem" data-theme="a">
         <div class="sideNavSubmenu">
             <div class="barTitle">
-              <p class="titulo">Discapacitados</p></div>
+              <p class="titulo">Bussines Suite</p></div>
         
             <div id="bg submenu">
                     <a href="#hotel" data-transition="slide"><button class="btnSubMenuA">
                        Acerca del Hotel
                     </button></a>
-                    <a href="#servicios" data-transition="slide"><button class="btnSubMenuA">
-                        Servicios 
-                    </button></a>
+
                      <div id="accordionM">
                         <button class="btnSubMenuA">
                             <div data-toggle="collapse" data-parent="#accordionM" href="#collapseM">Habitaciones</div>
                         </button></a>
                         <div id="collapseM" class="panel-collapse collapse">   
-                            <a href="#suited" data-transition="slide"><button class="btnSubMenuC">Estándar Queen/Twin
+                            <a href="#suited" data-transition="slide"><button class="btnSubMenuC">Junior Suite
                             </button></a>
-                            <a href="#suiteds" data-transition="slide"><button class="btnSubMenuC">Superior Queen
+                            <a href="#suiteds" data-transition="slide"><button class="btnSubMenuC">Twin
                             </button></a>
-                             <a href="#suitej" data-transition="slide"><button class="btnSubMenuC">Junior Suite
+                             <a href="#suitej" data-transition="slide"><button class="btnSubMenuC">Superior
                             </button></a>
-                             <a href="#suitem" data-transition="slide"><button class="btnSubMenuC">Discapacitados
+                             <a href="#suitem" data-transition="slide"><button class="btnSubMenuC">Bussines
                             </button></a>
                        </div>
                     </div>
@@ -763,7 +831,7 @@
         
         <div class="contenido">
         	<!--Barra nueva con nombre de la seccion-->
-            <div class="barTitle"><p class="titulo">Discapacitados</p></div>
+            <div class="barTitle"><p class="titulo">Master Suite</p></div>
             <!--Fin Barra nueva con nombre de la seccion-->
             <div id="info">
                 <div id="carousel-suit" class="carousel slide" data-ride="carousel">
@@ -776,38 +844,36 @@
                   <!-- Wrapper for slides -->
                   <div class="carousel-inner">
                     <div class="item active">
-                      <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/recorrido-visual/Habitaciones/habitacion1.jpg" alt=""><div class="carousel-caption"></div>
+                      <img src="http://www.hoteleldoradobogota.com/uploads/9/8/6/9/98696210/business-1_orig.png" alt=""><div class="carousel-caption"></div>
                     </div>
                     <div class="item">
-                      <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/recorrido-visual/Habitaciones/habitacion2.jpg" alt="..."><div class="carousel-caption"></div>
+                      <img src="https://c1.staticflickr.com/8/7346/27920665612_13c964b448_b.jpg" alt="..."><div class="carousel-caption"></div>
                     </div>
                     <div class="item">
-                      <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/recorrido-visual/Habitaciones/habitacion3.jpg" alt="..."><div class="carousel-caption"></div>
+                      <img src="http://www.hoteleldoradobogota.com/uploads/9/8/6/9/98696210/jr-suite-2_orig.png" alt="..."><div class="carousel-caption"></div>
                     </div>
-                  </div>
-                  <!-- Controls -->
+                  </div>                <!-- Controls -->
                   <a class="left carousel-control" href="#carousel-suit" role="button" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                   </a>
                   <a class="right carousel-control" href="#carousel-suit" role="button" data-slide="next">
                     <span class="glyphicon glyphicon-chevron-right"></span>
-
                   </a>
                 </div>
    
                 <div>
                   <div>
-                    <h5 id="titulosContenido">Discapacitados</h5>
+                    <h5 id="titulosContenido">BUSSINES SUITE</h5>
                   </div>
                 </div>
                 <div>
                   <div>
-                    <h2>Habitaci&oacute;n para Discapacitados</h2>
+                    <h2>Bussines Suite Dorado Capital</h2>
                   </div>
                 </div>
                 <div>
                   <div>
-                    <p id="txtContenido">Habitación especial de 26 mts² con todos los estándares para cubrir las necesidades de personas en situación de discapacidad: puerta más amplia y dos miras en ésta. La habitación dispone de una cama Queen, aire acondicionado, ventanas antiruido, escritorio y televisor pantalla plana. Además cuenta con reproductor de dispositivos de audio​, clóset, minibar, cafetera, cajilla de seguridad, plancha y baño con barandas, amenities, bata de baño, pantuflas y secador de pelo​​.​</p>
+                    <p id="txtContenido"><span lang="ES-CO">El servicio exclusivo que quieres también lo puedes encontrar eco-amigable. 64 mt2, dos ambientes que bien pueden usarse ambos como dormitorios, o uno como dormitorio y otro como espacio de negocios. La habitación tiene cama king y lencería de 300 hilos de algodón orgánico. Baño privado, jacuzzi, batas, cafetera, televisión por cable, Internet WIFI las 24 horas del día, caja de seguridad, servicio de minibar, </span><span lang="ES-TRAD">llamadas internacionales a líneas fijas en 60 países y llamadas locales a teléfonos fijos incluidos en la tarifa.</span><span lang="ES-CO"> Ventanas insonorizadas que aseguran un descanso renovador. El otro espacio cuenta con televisor con cable, baño, clóset, 2 sofás cama de 1.20 x 2 mt2; perfecto para tener tus citas de negocios o hospedar a tu staff.</span></p>
                   </div>
                 </div>
                 <h2>&nbsp;</h2>
@@ -825,21 +891,19 @@
                     <a href="#hotel" data-transition="slide"><button class="btnSubMenuA">
                        Acerca del Hotel
                     </button></a>
-                    <a href="#servicios" data-transition="slide"><button class="btnSubMenuA">
-                        Servicios 
-                    </button></a>
+
                      <div id="accordionSP">
                         <button class="btnSubMenuA">
                             <div data-toggle="collapse" data-parent="#accordionSP" href="#collapseSP">Habitaciones</div>
                         </button></a>
                         <div id="collapseSP" class="panel-collapse collapse">   
-                            <a href="#suited" data-transition="slide"><button class="btnSubMenuC">Estándar Queen/Twin
+                            <a href="#suited" data-transition="slide"><button class="btnSubMenuC">Junior Suite
                             </button></a>
-                            <a href="#suiteds" data-transition="slide"><button class="btnSubMenuC">Superior Queen
+                            <a href="#suiteds" data-transition="slide"><button class="btnSubMenuC">Twin
                             </button></a>
-                             <a href="#suitej" data-transition="slide"><button class="btnSubMenuC">Junior Suite
+                             <a href="#suitej" data-transition="slide"><button class="btnSubMenuC">Superior
                             </button></a>
-                             <a href="#suitem" data-transition="slide"><button class="btnSubMenuC">Discapacitados
+                             <a href="#suitem" data-transition="slide"><button class="btnSubMenuC">Bussines
                             </button></a>
                        </div>
                     </div>
@@ -857,7 +921,7 @@
         
         <div class="contenido">
         	<!--Barra nueva con nombre de la seccion-->
-            <div class="barTitle"><p class="titulo">Junior Suite</p></div>
+            <div class="barTitle"><p class="titulo">Superior Suite</p></div>
             <!--Fin Barra nueva con nombre de la seccion-->
             <div id="info">
                 <div id="carousel-grands" class="carousel slide" data-ride="carousel">
@@ -870,13 +934,13 @@
                   <!-- Wrapper for slides -->
                   <div class="carousel-inner">
                     <div class="item active">
-                      <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/recorrido-visual/Habitaciones/habitacion1.jpg" alt=""><div class="carousel-caption"></div>
+                      <img src="http://www.hoteleldoradobogota.com/uploads/9/8/6/9/98696210/business-1_orig.png" alt=""><div class="carousel-caption"></div>
                     </div>
                     <div class="item">
-                      <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/recorrido-visual/Habitaciones/habitacion2.jpg" alt="..."><div class="carousel-caption"></div>
+                      <img src="https://c1.staticflickr.com/8/7346/27920665612_13c964b448_b.jpg" alt="..."><div class="carousel-caption"></div>
                     </div>
                     <div class="item">
-                      <img src="https://www.movichhotels.com/PublishingImages/ciudades/bogota/buro26/recorrido-visual/Habitaciones/habitacion3.jpg" alt="..."><div class="carousel-caption"></div>
+                      <img src="http://www.hoteleldoradobogota.com/uploads/9/8/6/9/98696210/jr-suite-2_orig.png" alt="..."><div class="carousel-caption"></div>
                     </div>
                   </div>
                   <!-- Controls -->
@@ -890,17 +954,17 @@
                 
                  <div>
                    <div>
-                    <h5 id="titulosContenido">Junior Suite</h5>
+                    <h5 id="titulosContenido">SUPERIOR SUITE</h5>
                    </div>
                  </div>
                  <div>
                    <div>
-                     <h2>Habitaci&oacute;n Junior Suite</h2>
+                     <h2>Superior Suite Dorado Capital</h2>
                    </div>
                  </div>
                  <div>
                    <div>
-                     <p id="txtContenido">Habitación de 30 mts² con acceso al salón VIP ubicado en el piso Ejecutivo. Cuenta con una cama Queen, una amplia sala con sofá cama y mesa de centro​, aire acondicionado, ventanas antiruido, escritorio y televisor pantalla plana. Además la habitación cuenta con reproductor de dispositivos de audio​, clóset, minibar, cafetera, cajilla de seguridad, plancha y baño con amenities, bata de baño, pantuflas y secador de pelo​​.</p>
+                     <p id="txtContenido"><span lang="ES-TRAD">Si lo tuyo es consentir o consentirte, dar o darte gusto, esta habitación es la que estás buscando. Son 37 mt2 con acomodación máxima para 3 personas.</span><span lang="ES-TRAD">Cama king disponible y lencería de 300 hilos de algodón orgánico. Baño privado, jacuzzi, batas, cafetera, televisión por cable, Internet WIFI las 24 horas del día, caja de seguridad, servicio de minibar, llamadas internacionales a líneas fijas en 60 países y llamadas locales a teléfonos fijos incluidos en la tarifa. Ventanas insonorizadas que aseguran un descanso renovador. Tienes la posibilidad de conectar una habitación Deluxe superior o Deluxe estándar para grupos o familias.</span></p>
                    </div>
                  </div>
                   
@@ -913,7 +977,7 @@
         <!-- initialize -->
         <script type="text/javascript">
 		function menu() {
-			window.open("http://www.biohotelcolombia.com/wp-content/uploads/2016/09/MENU-GREENPIECE-es-JUNIO21.pdf", "_blank", "location=no"); }
+			window.open("https://bogota.restorando.com.co/restaurante/mai-tai-sushi-bar-hotel-el-dorado", "_blank", "location=no"); }
 			
             app.initialize();
         </script>
