@@ -6,24 +6,13 @@
     
 	<meta name="viewport" content="width=device-width, initial-scale=1">
    
+   <link rel="stylesheet" href="css/jquery.mobile-1.4.3.css">
+   <link rel="stylesheet" href="css/theme/jquery.mobile-1.4.3.css">
+   <link rel="stylesheet" href="css/bootstrap.css">
+   <link rel="stylesheet" href="css/font-awesome.css">
+   <link rel="stylesheet" href="css/style.css">
+   
     <script src="js/jquery.min.js"></script>
-    <script>
-    if(screen.width < 768){
-
- $('<link rel="stylesheet" href="cssi/jquery.mobile-1.4.3.css">').appendTo("head");
- $('<link rel="stylesheet" href="cssi/theme/jquery.mobile-1.4.3.css">').appendTo("head");
- $('<link rel="stylesheet" href="cssi/bootstrap.css">').appendTo("head");
- $('<link rel="stylesheet" href="cssi/font-awesome.css">').appendTo("head");
- $('<link rel="stylesheet" href="cssi/style.css">').appendTo("head");
-
-}else{
-
- $('<link rel="stylesheet" href="css/jquery.mobile-1.4.3.css">').appendTo("head");
- $('<link rel="stylesheet" href="css/theme/jquery.mobile-1.4.3.css">').appendTo("head");
- $('<link rel="stylesheet" href="css/bootstrap.css">').appendTo("head");
- $('<link rel="stylesheet" href="css/font-awesome.css">').appendTo("head");
- $('<link rel="stylesheet" href="css/style.css">').appendTo("head");}	
-	</script>    
     <script src="js/jquery.mobile-1.4.3.min.js"></script>
     <script src="js/funciones.js"></script>
 
@@ -32,7 +21,53 @@
 <!--Fin Estilos Daniel-->   
 
     <script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	function login_guest()
+{
+		var hab = '616';	
+		$.get("http://190.145.24.146/app/sh_login.php",{username: hab }, loginres2, "jsonp");
 
+		function loginres2(respuesta){
+			if (respuesta.room != "no") {
+			var hab_db = respuesta.room;
+			var nom_db = respuesta.nombre;
+			var fol_db = respuesta.folio;
+			var sal_db = respuesta.salida;
+			var lle_db = respuesta.llegada;	
+					localStorage.setItem("roomdb", hab_db);
+					localStorage.setItem("nombredb", nom_db);
+					localStorage.setItem("foliodb", fol_db);
+					localStorage.setItem("salidadb", sal_db);
+					localStorage.setItem("llegadadb", lle_db);					
+			console.log("logeado Sr" + nom_db);
+				} else {
+			console.log("Acceso denegado" + respuesta);
+				localStorage.setItem("roomdb",null);
+					localStorage.setItem("nombredb",null);
+					localStorage.setItem("foliodb", null);
+					localStorage.setItem("salidadb", null);
+					localStorage.setItem("llegadadb", null);	
+			}
+
+		}
+		}
+	</script>
+   
+	<script>
+	function actualiza() {
+	var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);
+	var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);
+	var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);
+	var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);
+	}
+
+
+	function timeoutgo() {
+	deamon = setTimeout(actualiza, 500);
+	}  
+
+	</script>
+   
     <style type="text/css">
     #landscape #cena .contenido #info {
 	font-weight: bold;
@@ -64,8 +99,8 @@
     </style>
   
 <link rel="stylesheet" href="jquery.loader.min.css" /><script src="jquery.loader.min.js"></script> </head>
-<body id="landscape">
-            
+<body id="landscape" onLoad="login_guest(),timeoutgo()">
+                        
 <div class="mainContenido page" data-role="page" id="hotel" data-theme="a">
             <div class="sideNavSubmenu">
                 <div class="barTitle"><p class="titulo">Acerca del Hotel</p></div>
@@ -100,6 +135,15 @@
                         Ofertas especiales <br>y proximas reservas
                     </button></a>
               </div>
+                                  <br />
+                                   <div id="p_nombre" class="bgUsuarioLog nombreUsuarioLog line">Bienvenido Sr(a) <span>Nombre usuario</span></div>
+            <script>var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);</script>
+                            <div id="p_llegada" class="datosUsuario line">Check In:<span></span></div>
+              <script>var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);</script>
+                <div id="p_salida" class="datosUsuario line">Check Out: <span></span></div>
+              <script>var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);</script>
+                <div id="p_room" class="datosUsuario line">Room: <span></span></div>
+              <script>var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);</script>
             </div>
         
             <div class="contenido">
@@ -217,7 +261,7 @@ TARIFA ESPECIAL POR TRES NOCHES <br />
                     <span class="glyphicon glyphicon-chevron-right"></span>
                   </a>
                 </div>
-				<a href="http://menu.appsmarthotel.com" data-transition="slide">
+				<a href="https://bogota.restorando.com.co/restaurante/mai-tai-sushi-bar-hotel-el-dorado" data-transition="slide">
                  <button class="btnSubMenuA">
                         Ver Menú & Room Service
                     </button></a>
@@ -298,7 +342,7 @@ TARIFA ESPECIAL POR TRES NOCHES <br />
                 
                <p id="txtContenido"> <h1> <span class="wsite-text wsite-headline">
 	<strong>EVENTOS SOCIALES &amp; EMPRESARIALES</strong>
-</span> </h1> <div class="wsite-elements wsite-not-footer">
+</span> </h1> 
 	<h2 class="wsite-content-title"><strong>&#8203;MODERNOS ESPACIOS PARA REUNIONES&nbsp;</strong></h2>
 
                Contamos con 6 espacios ideales para reuniones empresariales y sociales. Desde sesiones ejecutivas y clases, hasta conferencias de ventas en auditorios, presentaciones de producto y banquetes sociales, ofrecemos una variedad de configuraciones y servicios flexibles con tecnolog&iacute;a de punta.&nbsp;<br /><br />Combinando un moderno dise&ntilde;o con la &uacute;ltima tecnolog&iacute;a de conferencias, el Hotel el Dorado es el lugar ideal para organizar su evento. Cada una de nuestras salas cuenta con modernos equipos de presentaci&oacute;n, sonido integrado, canal dedicado de internet Wi-Fi de alta velocidad y servicios adicionales de soporte de traducci&oacute;n.&nbsp;
@@ -348,7 +392,7 @@ TARIFA ESPECIAL POR TRES NOCHES <br />
             </div>
         <div class="contenido">
             <div id="info">
-              <h4>Reservaciones<img src="https://static.hotel-imagenes.info/uploads/hotel/12157/photo/hotel-el-dorado-capital_14720389401.jpg" width="100%" height="auto" alt="..."></h4>
+              <h4>Reservaciones</h4><img src="https://static.hotel-imagenes.info/uploads/hotel/12157/photo/hotel-el-dorado-capital_14720389401.jpg" width="100%" height="auto" alt="...">
                 <p id="txtContenido">Aqui podr&aacute; realizar reservas para sus pr&oacute;ximas estad&iacute;as incluso cuando este fuera del hotel, porfavor ingrese fecha apr&oacute;ximada de llegada y salida para iniciar la reservaci&oacute;n ... Gracias !!.</p>
                     <div class="introForm" style=" allign:center; width: 90%;">
                     <label for="envio_reserva">Fecha de Llegada:</label>
@@ -660,12 +704,11 @@ TARIFA ESPECIAL POR TRES NOCHES <br />
                 </div>
 
                 <h5 id="titulosContenido">JUNIOR SUITE</h5>
-                    <p id="txtContenido">
+                   <p id="txtContenido">Si vienes frecuentemente, bien sea por trabajo o temas personales, y quieres encontrar un espacio amplio y confortable, esta es tu habitación. Tendrás 24 mt2, acomodación máxima para 2 personas, cama king o twin disponibles y lencería de 300 hilos de algodón orgánico. Baño privado, cafetera, televisión por cable, Internet WIFI las 24 horas del día, caja de seguridad, servicio de minibar, llamadas internacionales a líneas fijas en 60 países y llamadas locales a teléfonos fijos incluidos en la tarifa. Ventanas insonorizadas que aseguran un descanso renovador. Tienes la posibilidad de conectar una habitación Deluxe superior o Deluxe estándar para grupos o familias.</p>
                 </div>
-                <p id="txtContenido">Si vienes frecuentemente, bien sea por trabajo o temas personales, y quieres encontrar un espacio amplio y confortable, esta es tu habitación. Tendrás 24 mt2, acomodación máxima para 2 personas, cama king o twin disponibles y lencería de 300 hilos de algodón orgánico. Baño privado, cafetera, televisión por cable, Internet WIFI las 24 horas del día, caja de seguridad, servicio de minibar, llamadas internacionales a líneas fijas en 60 países y llamadas locales a teléfonos fijos incluidos en la tarifa. Ventanas insonorizadas que aseguran un descanso renovador. Tienes la posibilidad de conectar una habitación Deluxe superior o Deluxe estándar para grupos o familias.</p>
+
                 
             </div>
-        </div>
     </div><!-- /page Suite Master King -->
     
     <!-- Start of second page: #grand -->
@@ -730,6 +773,7 @@ TARIFA ESPECIAL POR TRES NOCHES <br />
                       <img src="http://www.hoteleldoradobogota.com/uploads/9/8/6/9/98696210/jr-suite-2_orig.png" alt="..."><div class="carousel-caption"></div>
                     </div>
                   </div>
+
                   
                   <!-- Controls -->
                   <a class="left carousel-control" href="#carousel-suit" role="button" data-slide="prev">
@@ -933,11 +977,11 @@ TARIFA ESPECIAL POR TRES NOCHES <br />
         <!-- initialize -->
         <script type="text/javascript">
 		function menu() {
-			window.open("http://www.biohotelcolombia.com/wp-content/uploads/2016/09/MENU-GREENPIECE-es-JUNIO21.pdf", "_blank", "location=no"); }
+			window.open("https://bogota.restorando.com.co/restaurante/mai-tai-sushi-bar-hotel-el-dorado", "_blank", "location=no"); }
 			
             app.initialize();
         </script>
-		
+		<script type="text/javascript" src="js/servicios.js"></script>
 	
 </body>
 </html>

@@ -40,7 +40,7 @@ function cargando()
 	 xcargando();
 }
  
- 
+
 function controlsesion()
 //controla el nivel de acceso a cada pag asi como la existencia de la informac necesaria para imprimirla.
 {
@@ -612,12 +612,10 @@ function handle_encuestas()
 
 function handle_reserva()
 {
-	var control_encuestascodigo = localStorage.getItem("mem_encuestascodigo");
 	var reserva_llegada = $("#llegada_reserva").val();
 	var reserva_salida = $("#salida_reserva").val();
 	
-	
-	window.open('https://gc.synxis.com/rez.aspx?Hotel=58762&Chain=10237&shell=BOGLS2&locale=es-es&arrive='+reserva_llegada+'&depart='+reserva_salida+'&adult=1&child=0', '_system');
+	window.open('https://reservations.travelclick.com/103294?&hotelId=103294&DateIn='+reserva_llegada+'&DateOut='+reserva_salida+'&Rooms=1&Adults=1&languageid=1&_ga=2.182397283.590890274.1526776455-1466659237.1525454905#/accommodation/room', '_system');
 	
 	                     
 }                       
