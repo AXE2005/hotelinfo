@@ -499,16 +499,13 @@ console.log('min seg diffmins: '+resultInMinutes);
 function tryagvuelos() {localStorage.setItem("mem_vuelosnum", "");localStorage.setItem("mem_estadovuelos", "");localStorage.setItem("mem_salidavuelos", "");localStorage.setItem("mem_vuelosseg", "");document.location.href = "tools.html";}
 
 
+
  function print_cuenta()
 {
 	var control_room_cuenta = localStorage.getItem("roomdb");
 	var control_nombre_cuenta = localStorage.getItem("nombredb");
 	var control_folio_cuenta = localStorage.getItem("foliodb");
 	var control_llegada_cuenta = localStorage.getItem("llegadadb");
-	console.log(control_llegada_cuenta);
-	console.log('folio:' + control_folio_cuenta);
-	console.log(control_nombre_cuenta);
-	console.log(control_room_cuenta);
 		                        
 						$.get("http://190.145.24.146/app/cuenta.php",{nombre: control_nombre_cuenta,room: control_room_cuenta, folio: control_folio_cuenta, llegada: control_llegada_cuenta}, cuentares, "jsonp");
  function cuentares(respuesta){

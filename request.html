@@ -2,17 +2,29 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <link rel="shortcut icon" href="../favicon.ico">
 	<title>smartHotel</title>
     
 	<meta name="viewport" content="width=device-width, initial-scale=1">
    
-   <link rel="stylesheet" href="css/jquery.mobile-1.4.3.css">
-   <link rel="stylesheet" href="css/theme/jquery.mobile-1.4.3.css">
-   <link rel="stylesheet" href="css/bootstrap.css">
-   <link rel="stylesheet" href="css/font-awesome.css">
-   <link rel="stylesheet" href="css/style.css">
-   
     <script src="js/jquery.min.js"></script>
+    <script>
+    if(screen.width < 768){
+
+ $('<link rel="stylesheet" href="cssi/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/theme/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/bootstrap.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/font-awesome.css">').appendTo("head");
+ $('<link rel="stylesheet" href="cssi/style.css">').appendTo("head");
+
+}else{
+
+ $('<link rel="stylesheet" href="css/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/theme/jquery.mobile-1.4.3.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/bootstrap.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/font-awesome.css">').appendTo("head");
+ $('<link rel="stylesheet" href="css/style.css">').appendTo("head");}	
+	</script>    
     <script src="js/jquery.mobile-1.4.3.min.js"></script>
     <script src="js/funciones.js"></script>
 
@@ -21,90 +33,10 @@
 <!--Fin Estilos Daniel-->   
 
     <script src="js/bootstrap.min.js"></script>
-<script type="text/javascript">
-	function login_guest()
-{
-		var hab = '616';	
-		$.get("http://190.145.24.146/app/sh_login.php",{username: hab }, loginres2, "jsonp");
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
-		function loginres2(respuesta){
-			if (respuesta.room != "no") {
-			var hab_db = respuesta.room;
-			var nom_db = respuesta.nombre;
-			var fol_db = respuesta.folio;
-			var sal_db = respuesta.salida;
-			var lle_db = respuesta.llegada;	
-					localStorage.setItem("roomdb", hab_db);
-					localStorage.setItem("nombredb", nom_db);
-					localStorage.setItem("foliodb", fol_db);
-					localStorage.setItem("salidadb", sal_db);
-					localStorage.setItem("llegadadb", lle_db);					
-			console.log("logeado Sr" + nom_db);
-				} else {
-			console.log("Acceso denegado" + respuesta);
-				localStorage.setItem("roomdb",null);
-					localStorage.setItem("nombredb",null);
-					localStorage.setItem("foliodb", null);
-					localStorage.setItem("salidadb", null);
-					localStorage.setItem("llegadadb", null);	
-			}
-
-		}
-		}
-	</script>
-   
-	<script>
-	function actualiza() {
-	var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);
-	var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);
-	var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);
-	var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);
-	}
-
-
-	function timeoutgo() {
-	deamon = setTimeout(actualiza, 500);
-	} 
-	
-	function nodisp() {
-	alert('Disculpe, esta funcionalidad no esta habilitada en este momento, intente de nuevo luego o llame a la operadora');
-	}  
-
-
-	</script>
-   
-    <style type="text/css">
-    #landscape #cena .contenido #info {
-	font-weight: bold;
-}
-    .poli {
-	font-size: 36px;
-}
-    .texto {
-	font-size: 12em;
-}
-    #landscape #suite .contenido ul li {
-	font-size: 13px;
-}
-    .st {
-	font-size: 14px;
-	}
-    #landscape #suitep .contenido ul li {
-	font-size: 13px;
-	}
-    #landscape #grands .contenido ul li {
-	font-size: 13px;
-}
-    .amen {
-	font-size: 16px;
-}
-    .as {
-	font-size: 18px;
-}
-    </style>
-  
 <link rel="stylesheet" href="jquery.loader.min.css" /><script src="jquery.loader.min.js"></script> </head>
-<body id="landscape" onLoad="login_guest(),timeoutgo()">
+<body id="landscape">
 
     
     
@@ -123,7 +55,7 @@
                 <a href="#mantenimiento" data-transition="slide"><button class="btnSubMenuA">
                    Mantenimiento
                 </button></a>
-                <a href="#" onClick="nodisp()" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                <a href="chat.html" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
                     Chat
                 </button></a>
                 <div id="accordion1" href="#collapse1">
@@ -147,15 +79,6 @@
                 </button></a>
                 
             </div>
-                                  <br />
-                                   <div id="p_nombre" class="bgUsuarioLog nombreUsuarioLog line">Bienvenido Sr(a) <span>Nombre usuario</span></div>
-            <script>var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);</script>
-                            <div id="p_llegada" class="datosUsuario line">Check In:<span></span></div>
-              <script>var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);</script>
-                <div id="p_salida" class="datosUsuario line">Check Out: <span></span></div>
-              <script>var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);</script>
-                <div id="p_room" class="datosUsuario line">Room: <span></span></div>
-              <script>var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);</script>            
         </div>
 
         <div class="contenido">
@@ -205,7 +128,7 @@
             <div class="checkbox">
                    <label class="labelTxt"><input type="checkbox" id="checkboxamadellaves"> Deseo asistencia en mi habitaci&oacute;n</label>
                 </div>
-<button class="btnCheckIn" onClick="nodisp()">
+<button class="btnCheckIn" onClick="handle_amadellaves()">
                     <span class="checkIn">Solicitar</span>
                 </button></p>
             </div>
@@ -226,7 +149,7 @@
                 <a href="#mantenimiento" data-transition="slide"><button class="btnSubMenuA">
                    Mantenimiento
                 </button></a>
-                <a href="#" onClick="nodisp()" data-ajax="false" data-transition="slide"><button class="btnSubMenuA">
+                <a href="chat.html" data-ajax="false" data-transition="slide"><button class="btnSubMenuA">
                     Chat
                 </button></a>
                 <div id="accordion2" href="#collapse2">
@@ -249,15 +172,6 @@
                     Encuestas de <br>satisfacción
                 </button></a>
             </div>
-                                              <br />
-                                   <div id="p_nombre" class="bgUsuarioLog nombreUsuarioLog line">Bienvenido Sr(a) <span>Nombre usuario</span></div>
-            <script>var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);</script>
-                            <div id="p_llegada" class="datosUsuario line">Check In:<span></span></div>
-              <script>var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);</script>
-                <div id="p_salida" class="datosUsuario line">Check Out: <span></span></div>
-              <script>var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);</script>
-                <div id="p_room" class="datosUsuario line">Room: <span></span></div>
-              <script>var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);</script>  
         </div>
 
         <div class="contenido">
@@ -305,7 +219,7 @@
                     <label class="labelTxt"><input id="lavanderia_op2" type="checkbox"> Lavado Express</label>
                     <label class="labelTxt"><input id="lavanderia_op3" type="checkbox"> Lavado y Planchado</label>
                 </div>
-                <button class="btnCheckIn" onClick="nodisp()">
+                <button class="btnCheckIn" onClick="handle_lavanderia()">
                     <span class="checkIn">Solicitar</span>
                 </button>
             </form>
@@ -331,7 +245,7 @@
                 <a href="#mantenimiento" data-transition="slide"><button class="btnSubMenuA">
                    Mantenimiento
                 </button></a>
-                <a href="#" onClick="nodisp()" data-ajax="false" data-transition="slide"><button class="btnSubMenuA">
+                <a href="chat.html" data-ajax="false" data-transition="slide"><button class="btnSubMenuA">
                     Chat
                 </button></a>
                 <div id="accordion3" href="#collapse3">
@@ -354,15 +268,6 @@
                     Encuestas de <br>satisfacción
                 </button></a>
             </div>
-                                              <br />
-                                   <div id="p_nombre" class="bgUsuarioLog nombreUsuarioLog line">Bienvenido Sr(a) <span>Nombre usuario</span></div>
-            <script>var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);</script>
-                            <div id="p_llegada" class="datosUsuario line">Check In:<span></span></div>
-              <script>var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);</script>
-                <div id="p_salida" class="datosUsuario line">Check Out: <span></span></div>
-              <script>var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);</script>
-                <div id="p_room" class="datosUsuario line">Room: <span></span></div>
-              <script>var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);</script>  
         </div>
 
         <div class="contenido">
@@ -391,7 +296,7 @@
                 <div class="spacer"></div>
                 <label class="txt">Comentarios</label>
                 <textarea class="form-control" id="comentariostxt" rows="3"></textarea>
-                <button type="submit" onClick="nodisp()" class="btnCheckIn">
+                <button type="submit" onClick="handle_mantenimiento();" class="btnCheckIn">
                     <span class="checkIn">Solicitar</span>
                 </button>
             </form>
@@ -413,7 +318,7 @@
                 <a href="#mantenimiento" data-transition="slide"><button class="btnSubMenuA">
                    Mantenimiento
                 </button></a>
-                <a href="#" onClick="nodisp()" data-ajax="false" data-transition="slide"><button class="btnSubMenuA">
+                <a href="chat.html" data-ajax="false" data-transition="slide"><button class="btnSubMenuA">
                     Chat
                 </button></a>
                 <div id="accordion4">
@@ -436,15 +341,6 @@
                     Encuestas de <br>satisfacción
                 </button></a>
             </div>
-                                              <br />
-                                   <div id="p_nombre" class="bgUsuarioLog nombreUsuarioLog line">Bienvenido Sr(a) <span>Nombre usuario</span></div>
-            <script>var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);</script>
-                            <div id="p_llegada" class="datosUsuario line">Check In:<span></span></div>
-              <script>var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);</script>
-                <div id="p_salida" class="datosUsuario line">Check Out: <span></span></div>
-              <script>var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);</script>
-                <div id="p_room" class="datosUsuario line">Room: <span></span></div>
-              <script>var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);</script>  
         </div>
 
         <div class="contenido">
@@ -615,7 +511,7 @@
                                 <label class="txt">Sugerencias para mejorar en su pr&oacute;xima estad&iacute;a</label>
                 <textarea class="form-control" name="comentariosen" rows="3"></textarea>
                                 
-                <button type="submit" class="btnCheckIn" onClick="nodisp()">
+                <button type="submit" class="btnCheckIn" onClick="handle_encuestas()">
                 
                     <span class="checkIn">Enviar</span>
                 </button>
@@ -640,7 +536,7 @@
                 <a href="#mantenimiento" data-transition="slide"><button class="btnSubMenuA">
                    Mantenimiento
                 </button></a>
-                <a href="#" onClick="nodisp()" data-ajax="false" data-transition="slide"><button class="btnSubMenuA">
+                <a href="chat.html" data-ajax="false" data-transition="slide"><button class="btnSubMenuA">
                     Chat
                 </button></a>
                 <div id="accordion5">
@@ -663,15 +559,6 @@
                     Encuestas de <br>satisfacción
                 </button></a>
             </div>
-                                              <br />
-                                   <div id="p_nombre" class="bgUsuarioLog nombreUsuarioLog line">Bienvenido Sr(a) <span>Nombre usuario</span></div>
-            <script>var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);</script>
-                            <div id="p_llegada" class="datosUsuario line">Check In:<span></span></div>
-              <script>var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);</script>
-                <div id="p_salida" class="datosUsuario line">Check Out: <span></span></div>
-              <script>var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);</script>
-                <div id="p_room" class="datosUsuario line">Room: <span></span></div>
-              <script>var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);</script>  
         </div>
 
         <div class="contenido">
@@ -701,7 +588,7 @@
                     <input type="time" id="res_taxi_hora"  data-wrapper-class="controlgroup-textinput ui-btn"><br>
                 <label class="txt">Comentarios</label>
                 <textarea class="form-control" id="res_taxi_comentarios" rows="3"></textarea>
-                <button type="submit" onClick="nodisp()" class="btnCheckIn">
+                <button type="submit" onClick="handle_reservas_serv();" class="btnCheckIn">
                     <span class="checkIn">Solicitar</span>
                 </button>
             </form>
@@ -725,7 +612,7 @@
                 <a href="#mantenimiento" data-transition="slide"><button class="btnSubMenuA">
                    Mantenimiento
                 </button></a>
-                <a href="#" onClick="nodisp()" data-ajax="false" data-transition="slide"><button class="btnSubMenuA">
+                <a href="chat.html" data-ajax="false" data-transition="slide"><button class="btnSubMenuA">
                     Chat
                 </button></a>
                 <div id="accordion6">
@@ -748,15 +635,6 @@
                     Encuestas de <br>satisfacción
                 </button></a>
             </div>
-                                              <br />
-                                   <div id="p_nombre" class="bgUsuarioLog nombreUsuarioLog line">Bienvenido Sr(a) <span>Nombre usuario</span></div>
-            <script>var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);</script>
-                            <div id="p_llegada" class="datosUsuario line">Check In:<span></span></div>
-              <script>var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);</script>
-                <div id="p_salida" class="datosUsuario line">Check Out: <span></span></div>
-              <script>var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);</script>
-                <div id="p_room" class="datosUsuario line">Room: <span></span></div>
-              <script>var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);</script>  
         </div>
 
         <div class="contenido">
@@ -786,7 +664,7 @@
                     <input type="time" id="res_res_hora"  data-wrapper-class="controlgroup-textinput ui-btn"><br>
                 <label class="txt">Comentarios</label>
                 <textarea class="form-control" id="res_res_comentarios" rows="3"></textarea>
-                <button type="submit" onClick="nodisp()" class="btnCheckIn">
+                <button type="submit" onClick="handle_reservas_serv();" class="btnCheckIn">
                     <span class="checkIn">Reservar</span>
                 </button>
             </form>
@@ -810,7 +688,7 @@
                 <a href="#mantenimiento" data-transition="slide"><button class="btnSubMenuA">
                    Mantenimiento
                 </button></a>
-                <a href="#" onClick="nodisp()" data-ajax="false" data-transition="slide"><button class="btnSubMenuA">
+                <a href="chat.html" data-ajax="false" data-transition="slide"><button class="btnSubMenuA">
                     Chat
                 </button></a>
                 <div id="accordion7">
@@ -833,15 +711,6 @@
                     Encuestas de <br>satisfacción
                 </button></a>
             </div>
-                                              <br />
-                                   <div id="p_nombre" class="bgUsuarioLog nombreUsuarioLog line">Bienvenido Sr(a) <span>Nombre usuario</span></div>
-            <script>var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);</script>
-                            <div id="p_llegada" class="datosUsuario line">Check In:<span></span></div>
-              <script>var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);</script>
-                <div id="p_salida" class="datosUsuario line">Check Out: <span></span></div>
-              <script>var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);</script>
-                <div id="p_room" class="datosUsuario line">Room: <span></span></div>
-              <script>var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);</script>  
         </div>
 
         <div class="contenido">
@@ -895,7 +764,7 @@
                     <input type="time" id="res_spa_hora"  data-wrapper-class="controlgroup-textinput ui-btn"><br>
                 <label class="txt">Comentarios</label>
                 <textarea class="form-control" id="res_spa_comentarios" rows="3"></textarea>
-                <button type="submit" onClick="nodisp()" class="btnCheckIn">
+                <button type="submit" onClick="handle_reservas_serv();" class="btnCheckIn">
                     <span class="checkIn">Reservar</span>
                 </button>
             </form>
@@ -919,7 +788,7 @@
                 <a href="#mantenimiento" data-transition="slide"><button class="btnSubMenuA">
                    Mantenimiento
                 </button></a>
-                <a href="#" onClick="nodisp()" onClick="nodisp()" data-ajax="false" data-transition="slide"><button class="btnSubMenuA">
+                <a href="chat.html" data-ajax="false" data-transition="slide"><button class="btnSubMenuA">
                     Chat
                 </button></a>
                 <div id="accordion8">
@@ -942,15 +811,6 @@
                     Encuestas de <br>satisfacción
                 </button></a>
             </div>
-                                              <br />
-                                   <div id="p_nombre" class="bgUsuarioLog nombreUsuarioLog line">Bienvenido Sr(a) <span>Nombre usuario</span></div>
-            <script>var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);</script>
-                            <div id="p_llegada" class="datosUsuario line">Check In:<span></span></div>
-              <script>var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);</script>
-                <div id="p_salida" class="datosUsuario line">Check Out: <span></span></div>
-              <script>var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);</script>
-                <div id="p_room" class="datosUsuario line">Room: <span></span></div>
-              <script>var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);</script>  
         </div>
 
         <div class="contenido">
@@ -1004,7 +864,7 @@
                     <input type="time" id="res_salon_hora"  data-wrapper-class="controlgroup-textinput ui-btn"><br>
                 <label class="txt">Servicios Adicionales ? (video beam, tablero, marcador, etc...)</label>
                 <textarea class="form-control" id="res_salon_comentarios" rows="3"></textarea>
-                <button type="submit" onClick="nodisp()" class="btnCheckIn">
+                <button type="submit" onClick="handle_reservas_serv();" class="btnCheckIn">
                     <span class="checkIn">Reservar</span>
                 </button>
             </form>

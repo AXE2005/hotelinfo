@@ -51,19 +51,27 @@
 
 		}
 		}
-
-	function refresh() {
-
-	setTimeout(function () {
-	 print_cuenta()
-	}, 4000);
-	}
-	
-	function timeoutgo() {
-  	deamon = setInterval(refresh(), 80000);
-	}  
 	</script>
+   
+	<script>
+	function actualiza() {
+	var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);
+	var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);
+	var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);
+	var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);
+	}
 
+
+	function timeoutgo() {
+	deamon = setTimeout(actualiza, 500);
+	} 
+	
+	function nodisp() {
+	alert('Disculpe, esta funcionalidad no esta habilitada en este momento, intente de nuevo luego o llame a la operadora');
+	}  
+
+
+	</script>
    
     <style type="text/css">
     #landscape #cena .contenido #info {
@@ -98,25 +106,912 @@
 <link rel="stylesheet" href="jquery.loader.min.css" /><script src="jquery.loader.min.js"></script> </head>
 <body id="landscape" onLoad="login_guest(),timeoutgo()">
 
-        
-<!-- Start of page -->           
-    <div class="mainContenido page" data-role="page" id="mapas" data-theme="a">
-            <div class="revisionCuenta">
-                <div class="barTitle"><p class="titulo">Revisión de la cuenta</p></div>
-
-                <div class="cuenta">
-                	<div class="imagen_account" align="center">
-               	    <img src="images/bill.jpg" width="1024" height="683" alt=""/> 
-                    </div>
-                  <div id="print_cuenta">
-                  <div class="roomUsuario">Cargando ....</div>
-                    
-                </div></div>
-            </div>
-
-    </div><!-- /page -->
-
     
+    
+<!-- Start of second page: #page1 -->
+    <div class="mainContenido page" data-role="page" id="amallaves" data-theme="a">
+        <div class="sideNavSubmenu">
+            <div class="barTitle"><p class="titulo">Request</p></div>
+
+            <div id="bg submenu">
+                <a href="#amallaves" data-transition="slide"><button class="btnSubMenuA">
+                   Ama de llaves
+                </button></a>
+               <a onClick=" print_lavanderia();" href="#" data-transition="slide"><button class="btnSubMenuA">
+                    Lavandería
+                </button></a>
+                <a href="#mantenimiento" data-transition="slide"><button class="btnSubMenuA">
+                   Mantenimiento
+                </button></a>
+                <a href="#" onClick="nodisp()" data-transition="slide" data-ajax="false"><button class="btnSubMenuA">
+                    Chat
+                </button></a>
+                <div id="accordion1" href="#collapse1">
+                    <a href="#collapse1"><button class="btnSubMenuA">
+                        <div data-toggle="collapse" data-parent="#accordion1" href="#collapse1">Reserva de Servicios</div>
+                    </button></a>
+                    <div id="collapse1" class="panel-collapse collapse">   
+                        <a href="#transporte" data-transition="slide"><button class="btnSubMenuC">Transporte
+                        </button></a>
+                        <a href="#restaurantes" data-transition="slide"><button class="btnSubMenuC">Restaurantes
+                        </button></a>
+                        <a href="#spa" data-transition="slide"><button class="btnSubMenuC">Spa
+                        </button></a>
+                        <a href="#saladejuntas" data-transition="slide"><button class="btnSubMenuC">Sala de Juntas
+                        </button></a>
+                        
+                    </div>
+                </div>
+                <a   onClick="print_encuestas();" data-transition="slide"><button class="btnSubMenuA">
+                    Encuestas de <br>satisfacción
+                </button></a>
+                
+            </div>
+                                  <br />
+                                   <div id="p_nombre" class="bgUsuarioLog nombreUsuarioLog line">Bienvenido Sr(a) <span>Nombre usuario</span></div>
+            <script>var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);</script>
+                            <div id="p_llegada" class="datosUsuario line">Check In:<span></span></div>
+              <script>var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);</script>
+                <div id="p_salida" class="datosUsuario line">Check Out: <span></span></div>
+              <script>var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);</script>
+                <div id="p_room" class="datosUsuario line">Room: <span></span></div>
+              <script>var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);</script>            
+        </div>
+
+        <div class="contenido">
+        	<!--Barra y img nueva con nombre de la seccion-->
+            <div class="barTitle"><p class="titulo">Ama de llaves</p></div>
+            <div class="imagen_account">
+               	    <img src="images/amadellaves.jpg" width="1024" height="683" alt=""/> 
+                    </div>
+            <!--Fin Barra y img nueva con nombre de la seccion-->
+            <div id="info">
+                <h5 id="titulosContenido">Ama de llaves</h5>
+                <p id="txtContenido"><label for="flip-1">Desea limpieza de habitaci&oacute;n ?:</label>
+<select name="flip-1" id="flip-1" data-role="slider">
+	<option value="si">Si</option>
+	<option value="no">No</option>
+</select> </p>
+<p id="txtContenido"><label for="flip-2">No molestar?:</label>
+<select name="flip-2" id="flip-2" data-role="slider">
+	<option value="no">No</option>
+	<option value="si">Si</option>
+</select> </p>
+                <div class="form-group">
+                    <label class="labelTxt" for="amadellaves_toallas">Desea Toallas adicionales ?</label>
+                    <select id="amadellaves_toallas" class="form-control ">
+						<option></option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div></br>
+                <div class="form-group">
+                    <label class="labelTxt" for="amadellaves_almohadas">Desea Almohadas adicionales ?</label>
+                    <select id="amadellaves_almohadas" class="form-control ">
+						<option></option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div>                
+<p id="txtContenido"><label for="flip-3">Desea Snacks re-Fill?</label>
+<select name="flip-3" id="flip-3" data-role="slider">
+	<option value="no">No</option>
+	<option value="si">Si</option>
+</select> </p></br>
+
+<p id="txtContenido">
+            <div class="checkbox">
+                   <label class="labelTxt"><input type="checkbox" id="checkboxamadellaves"> Deseo asistencia en mi habitaci&oacute;n</label>
+                </div>
+<button class="btnCheckIn" onClick="nodisp()">
+                    <span class="checkIn">Solicitar</span>
+                </button></p>
+            </div>
+        </div>
+    </div><!-- /page two -->
+  <!-- Start of second page: #page1 -->
+    <div class="mainContenido page" data-role="page" id="lavanderia" data-theme="a">
+        <div class="sideNavSubmenu">
+            <div class="barTitle"><p class="titulo">Request</p></div>
+
+            <div id="bg submenu">
+                <a href="#amallaves" data-transition="slide"><button class="btnSubMenuA">
+                   Ama de llaves
+                </button></a>
+                <a onClick=" print_lavanderia();" href="#" data-transition="slide"><button class="btnSubMenuA">
+                    Lavandería
+                </button></a>
+                <a href="#mantenimiento" data-transition="slide"><button class="btnSubMenuA">
+                   Mantenimiento
+                </button></a>
+                <a href="#" onClick="nodisp()" data-ajax="false" data-transition="slide"><button class="btnSubMenuA">
+                    Chat
+                </button></a>
+                <div id="accordion2" href="#collapse2">
+                    <a href="#collapse2"><button class="btnSubMenuA">
+                        <div data-toggle="collapse" data-parent="#accordion2" href="#collapse2">Reserva de Servicios</div>
+                    </button></a>
+                    <div id="collapse2" class="panel-collapse collapse">   
+                        <a href="#transporte" data-transition="slide"><button class="btnSubMenuC">Transporte
+                        </button></a>
+                        <a href="#restaurantes" data-transition="slide"><button class="btnSubMenuC">Restaurantes
+                        </button></a>
+                        <a href="#spa" data-transition="slide"><button class="btnSubMenuC">Spa
+                        </button></a>
+                        <a href="#saladejuntas" data-transition="slide"><button class="btnSubMenuC">Sala de Juntas
+                        </button></a>
+                        
+                    </div>
+                </div>
+                <a   onClick="print_encuestas();" data-transition="slide"><button class="btnSubMenuA">
+                    Encuestas de <br>satisfacción
+                </button></a>
+            </div>
+                                              <br />
+                                   <div id="p_nombre" class="bgUsuarioLog nombreUsuarioLog line">Bienvenido Sr(a) <span>Nombre usuario</span></div>
+            <script>var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);</script>
+                            <div id="p_llegada" class="datosUsuario line">Check In:<span></span></div>
+              <script>var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);</script>
+                <div id="p_salida" class="datosUsuario line">Check Out: <span></span></div>
+              <script>var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);</script>
+                <div id="p_room" class="datosUsuario line">Room: <span></span></div>
+              <script>var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);</script>  
+        </div>
+
+        <div class="contenido">
+        
+        	<!--Barra y img nueva con nombre de la seccion-->
+            <div class="barTitle"><p class="titulo">Lavandería</p></div>
+            <div class="imagen_account">
+            <img src="images/lavanderia.jpg" width="1024" height="683" alt=""/> 
+            </div>
+            <!--Fin Barra y img nueva con nombre de la seccion-->
+            <div id="info">
+<form  role="form">
+                <div class="form-group">
+                    <label class="labelTxt" for="exampleInputEmail1">Pantalones</label>
+                    <select id="lavanderia_pantalones" class="form-control ">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="labelTxt" for="exampleInputEmail1">Camisa</label>
+                    <select id="lavanderia_camisa" class="form-control input-sm">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="labelTxt" for="exampleInputEmail1">Chaqueta</label>
+                    <select id="lavanderia_chaqueta" class="form-control input-sm">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="checkbox">
+                    <label class="labelTxt"><input id="lavanderia_op1" class="form-control input-sm" type="checkbox"> Lavado de seda</label>
+                    <label class="labelTxt"><input id="lavanderia_op2" type="checkbox"> Lavado Express</label>
+                    <label class="labelTxt"><input id="lavanderia_op3" type="checkbox"> Lavado y Planchado</label>
+                </div>
+                <button class="btnCheckIn" onClick="nodisp()">
+                    <span class="checkIn">Solicitar</span>
+                </button>
+            </form>
+            </div>
+ 
+                <div class="spacer2"></div>
+
+        </div>
+    </div>
+        <!-- Start of second page: #page1 -->
+   
+    <div class="mainContenido page" data-role="page" id="mantenimiento" data-theme="a">
+        <div class="sideNavSubmenu">
+            <div class="barTitle"><p class="titulo">Request</p></div>
+
+            <div id="bg submenu">
+                <a href="#amallaves" data-transition="slide"><button class="btnSubMenuA">
+                   Ama de llaves
+                </button></a>
+               <a onClick=" print_lavanderia();" href="#" data-transition="slide"><button class="btnSubMenuA">
+                    Lavandería
+                </button></a>
+                <a href="#mantenimiento" data-transition="slide"><button class="btnSubMenuA">
+                   Mantenimiento
+                </button></a>
+                <a href="#" onClick="nodisp()" data-ajax="false" data-transition="slide"><button class="btnSubMenuA">
+                    Chat
+                </button></a>
+                <div id="accordion3" href="#collapse3">
+                    <a href="#collapse3"><button class="btnSubMenuA">
+                        <div data-toggle="collapse" data-parent="#accordion3" href="#collapse3">Reserva de Servicios</div>
+                    </button></a>
+                    <div id="collapse3" class="panel-collapse collapse">   
+                        <a href="#transporte" data-transition="slide"><button class="btnSubMenuC">Transporte
+                        </button></a>
+                        <a href="#restaurantes" data-transition="slide"><button class="btnSubMenuC">Restaurantes
+                        </button></a>
+                        <a href="#spa" data-transition="slide"><button class="btnSubMenuC">Spa
+                        </button></a>
+                        <a href="#saladejuntas" data-transition="slide"><button class="btnSubMenuC">Sala de Juntas
+                        </button></a>
+                        
+                    </div>
+                </div>
+                <a   onClick="print_encuestas();" data-transition="slide"><button class="btnSubMenuA">
+                    Encuestas de <br>satisfacción
+                </button></a>
+            </div>
+                                              <br />
+                                   <div id="p_nombre" class="bgUsuarioLog nombreUsuarioLog line">Bienvenido Sr(a) <span>Nombre usuario</span></div>
+            <script>var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);</script>
+                            <div id="p_llegada" class="datosUsuario line">Check In:<span></span></div>
+              <script>var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);</script>
+                <div id="p_salida" class="datosUsuario line">Check Out: <span></span></div>
+              <script>var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);</script>
+                <div id="p_room" class="datosUsuario line">Room: <span></span></div>
+              <script>var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);</script>  
+        </div>
+
+        <div class="contenido">
+        
+        	<!--Barra y img nueva con nombre de la seccion-->
+            <div class="barTitle"><p class="titulo">Mantenimiento</p></div>
+            <div class="imagen_account">
+            <img src="images/mantenimiento.jpg" width="1024" height="683" alt=""/> 
+            </div>
+            <!--Fin Barra y img nueva con nombre de la seccion-->
+            <div id="info">
+            
+                <h5 id="titulosContenido">Mantenimiento</h5>
+                <p class="txt">Que tipo de asistencia necesita?</p>
+            </div>
+ 
+            <form  role="form">
+                <div class="checkbox">
+                    <label class="labelTxt"><input id="bano" class="form-control input-sm" type="checkbox"> Baño</label>
+                    <label class="labelTxt"><input id="ducha" type="checkbox"> Ducha</label>
+                    <label class="labelTxt"><input id="ventanas" type="checkbox"> Ventanas</label>
+                    <label class="labelTxt"><input id="puerta" class="form-control input-sm" type="checkbox"> Puerta</label>
+                    <label class="labelTxt"><input id="luces" type="checkbox"> Luces</label>
+                    <label class="labelTxt"><input id="otros" type="checkbox"> Otros</label>
+                </div>
+                <div class="spacer"></div>
+                <label class="txt">Comentarios</label>
+                <textarea class="form-control" id="comentariostxt" rows="3"></textarea>
+                <button type="submit" onClick="nodisp()" class="btnCheckIn">
+                    <span class="checkIn">Solicitar</span>
+                </button>
+            </form>
+                <div class="spacer2"></div>
+          
+        </div>
+    </div><!-- /page two -->
+    <div class="mainContenido page" data-role="page" id="encuestas" data-theme="a">
+        <div class="sideNavSubmenu">
+            <div class="barTitle"><p class="titulo">Request</p></div>
+
+            <div id="bg submenu">
+                <a href="#amallaves" data-transition="slide"><button class="btnSubMenuA">
+                   Ama de llaves
+                </button></a>
+               <a onClick=" print_lavanderia();" href="#" data-transition="slide"><button class="btnSubMenuA">
+                    Lavandería
+                </button></a>
+                <a href="#mantenimiento" data-transition="slide"><button class="btnSubMenuA">
+                   Mantenimiento
+                </button></a>
+                <a href="#" onClick="nodisp()" data-ajax="false" data-transition="slide"><button class="btnSubMenuA">
+                    Chat
+                </button></a>
+                <div id="accordion4">
+                    <button class="btnSubMenuA">
+                        <div data-toggle="collapse" data-parent="#accordion4" href="#collapse4">Reserva de Servicios</div>
+                    </button>
+                    <div id="collapse4" class="panel-collapse collapse">   
+                        <a href="#transporte" data-transition="slide"><button class="btnSubMenuC">Transporte
+                        </button></a>
+                        <a href="#restaurantes" data-transition="slide"><button class="btnSubMenuC">Restaurantes
+                        </button></a>
+                        <a href="#spa" data-transition="slide"><button class="btnSubMenuC">Spa
+                        </button></a>
+                        <a href="#saladejuntas" data-transition="slide"><button class="btnSubMenuC">Sala de Juntas
+                        </button></a>
+                        
+                    </div>
+                </div>
+                <a   onClick="print_encuestas();" data-transition="slide"><button class="btnSubMenuA">
+                    Encuestas de <br>satisfacción
+                </button></a>
+            </div>
+                                              <br />
+                                   <div id="p_nombre" class="bgUsuarioLog nombreUsuarioLog line">Bienvenido Sr(a) <span>Nombre usuario</span></div>
+            <script>var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);</script>
+                            <div id="p_llegada" class="datosUsuario line">Check In:<span></span></div>
+              <script>var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);</script>
+                <div id="p_salida" class="datosUsuario line">Check Out: <span></span></div>
+              <script>var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);</script>
+                <div id="p_room" class="datosUsuario line">Room: <span></span></div>
+              <script>var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);</script>  
+        </div>
+
+        <div class="contenido">
+        	<!--Barra y img nueva con nombre de la seccion-->
+            <div class="barTitle"><p class="titulo">Encuestas</p></div>
+            <div class="imagen_account">
+            <img src="images/encuesta.jpg" width="1024" height="683" alt=""/> 
+            </div>
+            <!--Fin Barra y img nueva con nombre de la seccion-->
+            <div id="info">
+                <h5 id="titulosContenido">Encuestas</h5>
+            </div>
+            <form  role="form">
+            <h4 id="titulosContenido">Recepci&oacute;n</h4>
+                <div class="radio">
+                    <label class="labelTxt"> La actitud de servicio y amabilidad del personal es:</label>
+                    <label class="labelTxt"><input type="radio" name="en1" value="Excelente">Excelente</label>
+                    <label class="labelTxt"><input type="radio" name="en1" value="Bueno">Buena</label>
+                    <label class="labelTxt"><input type="radio" name="en1" value="Aceptable">Aceptable</label>
+                    <label class="labelTxt"><input type="radio" name="en1" value="Malo">Mala</label>
+                </div>                                <label class="txt">Porque ?</label>
+                <textarea class="form-control" name="comentariosen" rows="3"></textarea>  
+				<div class="radio">
+                    <label class="labelTxt" id="en2t"><br>La eficacia y rapidez en solucionarle su requerimiento fue:</label>
+                    <label class="labelTxt"><input type="radio" name="en2" value="Excelente">Excelente</label>
+                    <label class="labelTxt"><input type="radio" name="en2" value="Bueno">Buena</label>
+                    <label class="labelTxt"><input type="radio" name="en2" value="Aceptable">Aceptable</label>
+                    <label class="labelTxt"><input type="radio" name="en2" value="Malo">Mala</label>
+                </div>                                <label class="txt">Porque ?</label>
+                <textarea class="form-control" name="comentariosen" rows="3"></textarea>  
+                <div class="radio">
+                    <label class="labelTxt" id="en3t"><br>Presentaci&oacute;n personal de recepci&oacute;n es:</label>
+                    <label class="labelTxt"><input type="radio" name="en3" value="Excelente">Excelente</label>
+                    <label class="labelTxt"><input type="radio" name="en3" value="Bueno">Buena</label>
+                    <label class="labelTxt"><input type="radio" name="en3" value="Aceptable">Aceptable</label>
+                    <label class="labelTxt"><input type="radio" name="en3" value="Mala">Mala</label>
+                </div>                                <label class="txt">Porque ?</label>
+                <textarea class="form-control" name="comentariosen" rows="3"></textarea>  
+                <div class="radio">
+                    <label class="labelTxt" id="en4t"><br>La informaci&oacute;n sobre los servicios del hotel fue:</label>
+                    <label class="labelTxt"><input type="radio" name="en4" value="Excelente">Excelente</label>
+                    <label class="labelTxt"><input type="radio" name="en4" value="Bueno">Buena</label>
+                    <label class="labelTxt"><input type="radio" name="en4" value="Aceptable">Aceptable</label>
+                    <label class="labelTxt"><input type="radio" name="en4" value="Malo">Mala</label>
+                </div>                <label class="txt">Porque ?</label>
+                <textarea class="form-control" name="comentariosen" rows="3"></textarea>
+                </br>
+                <h4 id="titulosContenido">Botones</h4>
+                <div class="radio">
+                    <label class="labelTxt" id="en5t"><br>Bienvenida y atenci&oacute;n del botones:</label>
+                    <label class="labelTxt"><input type="radio" name="en5" value="Excelente">Excelente</label>
+                    <label class="labelTxt"><input type="radio" name="en5" value="Bueno">Buena</label>
+                    <label class="labelTxt"><input type="radio" name="en5" value="Aceptable">Aceptable</label>
+                    <label class="labelTxt"><input type="radio" name="en5" value="Malo">Mala</label>
+                </div>                                <label class="txt">Porque ?</label>
+                <textarea class="form-control" name="comentariosen" rows="3"></textarea>  
+                <div class="radio">
+                    <label class="labelTxt" id="en4t"><br>Asistencia a sus solicitudes:</label>
+                    <label class="labelTxt"><input type="radio" name="en6" value="Excelente">Excelente</label>
+                    <label class="labelTxt"><input type="radio" name="en6" value="Bueno">Buena</label>
+                    <label class="labelTxt"><input type="radio" name="en6" value="Aceptable">Aceptable</label>
+                    <label class="labelTxt"><input type="radio" name="en6" value="Malo">Mala</label>
+                </div>                                <label class="txt">Porque ?</label>
+                <textarea class="form-control" name="comentariosen" rows="3"></textarea>  
+                <div class="radio">
+                    <label class="labelTxt" id="en4t"><br>Asistencia de su equipaje:</label>
+                    <label class="labelTxt"><input type="radio" name="en7" value="Excelente">Excelente</label>
+                    <label class="labelTxt"><input type="radio" name="en7" value="Bueno">Buena</label>
+                    <label class="labelTxt"><input type="radio" name="en7" value="Aceptable">Aceptable</label>
+                    <label class="labelTxt"><input type="radio" name="en7" value="Malo">Mala</label>
+                </div>
+                                <label class="txt">Porque?</label>
+                <textarea class="form-control" name="comentariosen" rows="3"></textarea>
+                </br>
+                <h4 id="titulosContenido">Habitaciones</h4>
+                <div class="radio">
+                    <label class="labelTxt" id="en4t"><br>La limpieza de su habitaci&oacute;n fue:</label>
+                    <label class="labelTxt"><input type="radio" name="en8" value="Excelente">Excelente</label>
+                    <label class="labelTxt"><input type="radio" name="en8" value="Bueno">Buena</label>
+                    <label class="labelTxt"><input type="radio" name="en8" value="Aceptable">Aceptable</label>
+                    <label class="labelTxt"><input type="radio" name="en8" value="Malo">Mala</label>
+                </div>                                <label class="txt">Porque ?</label>
+                <textarea class="form-control" name="comentariosen" rows="3"></textarea>  
+                <div class="radio">
+                    <label class="labelTxt" id="en4t"><br>El confort y la comodidad de la habitaci&oacute;n fue:</label>
+                    <label class="labelTxt"><input type="radio" name="en9" value="Excelente">Excelente</label>
+                    <label class="labelTxt"><input type="radio" name="en9" value="Bueno">Buena</label>
+                    <label class="labelTxt"><input type="radio" name="en9" value="Aceptable">Aceptable</label>
+                    <label class="labelTxt"><input type="radio" name="en9" value="Malo">Mala</label>
+                </div>                                <label class="txt">Porque ?</label>
+                <textarea class="form-control" name="comentariosen" rows="3"></textarea>  
+                <div class="radio">
+                    <label class="labelTxt" id="en4t"><br>La calidad de los amenities:</label>
+                    <label class="labelTxt"><input type="radio" name="en10" value="Excelente">Excelente</label>
+                    <label class="labelTxt"><input type="radio" name="en10" value="Bueno">Buena</label>
+                    <label class="labelTxt"><input type="radio" name="en10" value="Aceptable">Aceptable</label>
+                    <label class="labelTxt"><input type="radio" name="en10" value="Malo">Mala</label>
+                </div>                                <label class="txt">Porque ?</label>
+                <textarea class="form-control" name="comentariosen" rows="3"></textarea>  
+                <div class="radio">
+                    <label class="labelTxt" id="en4t"><br>Arreglo de la habitaci&oacute;n a tiempo:</label>
+                    <label class="labelTxt"><input type="radio" name="en11" value="Excelente">Excelente</label>
+                    <label class="labelTxt"><input type="radio" name="en11" value="Bueno">Buena</label>
+                    <label class="labelTxt"><input type="radio" name="en11" value="Aceptable">Aceptable</label>
+                    <label class="labelTxt"><input type="radio" name="en11" value="Malo">Mala</label>
+                </div>
+                                <label class="txt">Porque ?</label>
+                <textarea class="form-control" name="comentariosen" rows="3"></textarea></br>
+                <h4 id="titulosContenido">Alimentos y Bebidas</h4>
+                <div class="radio">
+                    <label class="labelTxt" id="en4t"><br>Calidad de la comida:</label>
+                    <label class="labelTxt"><input type="radio" name="en12" value="Excelente">Excelente</label>
+                    <label class="labelTxt"><input type="radio" name="en12" value="Bueno">Buena</label>
+                    <label class="labelTxt"><input type="radio" name="en12" value="Aceptable">Aceptable</label>
+                    <label class="labelTxt"><input type="radio" name="en12" value="Malo">Mala</label>
+                </div>                                 <label class="txt">Porque ?</label>
+                <textarea class="form-control" name="comentariosen" rows="3"></textarea>                 <div class="radio">
+                    <label class="labelTxt" id="en4t"><br>El servicio en el restaurante fue:</label>
+                    <label class="labelTxt"><input type="radio" name="en13" value="Excelente">Excelente</label>
+                    <label class="labelTxt"><input type="radio" name="en13" value="Bueno">Buena</label>
+                    <label class="labelTxt"><input type="radio" name="en13" value="Aceptable">Aceptable</label>
+                    <label class="labelTxt"><input type="radio" name="en13" value="Malo">Mala</label>
+                </div>                                 <label class="txt">Porque ?</label>
+                <textarea class="form-control" name="comentariosen" rows="3"></textarea>                 <div class="radio">
+                    <label class="labelTxt" id="en4t"><br>El tiempo de su orden fue:</label>
+                    <label class="labelTxt"><input type="radio" name="en14" value="Excelente">Excelente</label>
+                    <label class="labelTxt"><input type="radio" name="en14" value="Bueno">Bueno</label>
+                    <label class="labelTxt"><input type="radio" name="en14" value="Aceptable">Aceptable</label>
+                    <label class="labelTxt"><input type="radio" name="en14" value="Malo">Malo</label>
+                </div>                                <label class="txt">Porque ?</label>
+                <textarea class="form-control" name="comentariosen" rows="3"></textarea>                  <div class="radio">
+                    <label class="labelTxt" id="en4t"><br>El servicio de roomservice fue:</label>
+                    <label class="labelTxt"><input type="radio" name="en15" value="Excelente">Excelente</label>
+                    <label class="labelTxt"><input type="radio" name="en15" value="Bueno">Bueno</label>
+                    <label class="labelTxt"><input type="radio" name="en15" value="Aceptable">Aceptable</label>
+                    <label class="labelTxt"><input type="radio" name="en15" value="Malo">Malo</label>
+                </div>
+                                <label class="txt">Porque ?</label>
+                <textarea class="form-control" name="comentariosen" rows="3"></textarea>
+                </br>
+                <h4 id="titulosContenido">Tecnolog&iacute;a</h4>
+                               <div class="radio">
+                    <label class="labelTxt" id="en4t"><br>La facilidad de conexi&oacute;n fue:</label>
+                    <label class="labelTxt"><input type="radio" name="en16" value="Excelente">Excelente</label>
+                    <label class="labelTxt"><input type="radio" name="en16" value="Bueno">Buena</label>
+                    <label class="labelTxt"><input type="radio" name="en16" value="Aceptable">Aceptable</label>
+                    <label class="labelTxt"><input type="radio" name="en16" value="Malo">Mala</label>
+                </div>                                <label class="txt">Porque ?</label>
+                <textarea class="form-control" name="comentariosen" rows="3"></textarea>                  <div class="radio">
+                    <label class="labelTxt" id="en4t"><br>La velocidad y calidad del internet fue:</label>
+                    <label class="labelTxt"><input type="radio" name="en17" value="Excelente">Excelente</label>
+                    <label class="labelTxt"><input type="radio" name="en17" value="Bueno">Buena</label>
+                    <label class="labelTxt"><input type="radio" name="en17" value="Aceptable">Aceptable</label>
+                    <label class="labelTxt"><input type="radio" name="en17" value="Malo">Mala</label>
+                </div>                                <label class="txt">Porque ?</label>
+                <textarea class="form-control" name="comentariosen" rows="3"></textarea>  
+                                <div class="radio">
+                    <label class="labelTxt" id="en4t"><br>Nuestro servicio de domotizaci&oacute;n con Ipad es:</label>
+                    <label class="labelTxt"><input type="radio" name="en18" value="Excelente">Excelente</label>
+                    <label class="labelTxt"><input type="radio" name="en18" value="Bueno">Bueno</label>
+                    <label class="labelTxt"><input type="radio" name="en18" value="Aceptable">Aceptable</label>
+                    <label class="labelTxt"><input type="radio" name="en18" value="Malo">Malo</label>
+                </div>             
+                                <label class="txt">Porque ?</label>
+                <textarea class="form-control" name="comentariosen" rows="3"></textarea>                                                                                                 
+                <label class="txt">Alg&uacute;n miembro de nuestro staff en particular so hizo sentirse comodo ?</label>
+                <textarea class="form-control" name="comentariosen" rows="3"></textarea>
+                                <label class="txt">Sugerencias para mejorar en su pr&oacute;xima estad&iacute;a</label>
+                <textarea class="form-control" name="comentariosen" rows="3"></textarea>
+                                
+                <button type="submit" class="btnCheckIn" onClick="nodisp()">
+                
+                    <span class="checkIn">Enviar</span>
+                </button>
+            </form>
+                <div class="spacer2"></div>
+            
+        </div>
+    </div>
+    
+    
+    <div class="mainContenido page" data-role="page" id="transporte" data-theme="a">
+        <div class="sideNavSubmenu">
+            <div class="barTitle"><p class="titulo">Reserva de Servicios</p></div>
+
+            <div id="bg submenu">
+                <a href="#amallaves" data-transition="slide"><button class="btnSubMenuA">
+                   Ama de llaves
+                </button></a>
+               <a onClick=" print_lavanderia();" href="#" data-transition="slide"><button class="btnSubMenuA">
+                    Lavandería
+                </button></a>
+                <a href="#mantenimiento" data-transition="slide"><button class="btnSubMenuA">
+                   Mantenimiento
+                </button></a>
+                <a href="#" onClick="nodisp()" data-ajax="false" data-transition="slide"><button class="btnSubMenuA">
+                    Chat
+                </button></a>
+                <div id="accordion5">
+                    <button class="btnSubMenuA">
+                        <div data-toggle="collapse" data-parent="#accordion5" href="#collapse5">Reserva de Servicios</div>
+                    </button>
+                    <div id="collapse5" class="panel-collapse collapse">   
+                        <a href="#transporte" data-transition="slide"><button class="btnSubMenuC">Transporte
+                        </button></a>
+                        <a href="#restaurantes" data-transition="slide"><button class="btnSubMenuC">Restaurantes
+                        </button></a>
+                        <a href="#spa" data-transition="slide"><button class="btnSubMenuC">Spa
+                        </button></a>
+                        <a href="#saladejuntas" data-transition="slide"><button class="btnSubMenuC">Sala de Juntas
+                        </button></a>
+                        
+                    </div>
+                </div>
+                <a   onClick="print_encuestas();" data-transition="slide"><button class="btnSubMenuA">
+                    Encuestas de <br>satisfacción
+                </button></a>
+            </div>
+                                              <br />
+                                   <div id="p_nombre" class="bgUsuarioLog nombreUsuarioLog line">Bienvenido Sr(a) <span>Nombre usuario</span></div>
+            <script>var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);</script>
+                            <div id="p_llegada" class="datosUsuario line">Check In:<span></span></div>
+              <script>var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);</script>
+                <div id="p_salida" class="datosUsuario line">Check Out: <span></span></div>
+              <script>var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);</script>
+                <div id="p_room" class="datosUsuario line">Room: <span></span></div>
+              <script>var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);</script>  
+        </div>
+
+        <div class="contenido">
+        
+        	<!--Barra y img nueva con nombre de la seccion-->
+            <div class="barTitle"><p class="titulo">Transporte</p></div>
+                        <div class="imagen_account">
+               	    <img src="images/transporte.jpg" width="1024" height="683" alt=""/> 
+                    </div>
+            <!--Fin Barra y img nueva con nombre de la seccion-->
+            <div id="info">
+            
+                <h5 id="titulosContenido">Reserva de Taxi y Transporte</h5>
+                <p class="txt">Que tipo de vehiculo necesita?</p>
+            </div>
+            <div>
+            <form  role="form">
+                <div class="radio">
+                    <label class="labelTxt"><input name="taxi" type="radio" value"Taxi estandar"> Taxi estandar, 5 puestos.</label>
+                    <label class="labelTxt"><input name="taxi" type="radio" value="Van"> Taxi van, 16 puestos.</label>
+                    <label class="labelTxt"><input name="taxi" type="radio" value="Van grande"> Mini van, 24 Puestos.</label>
+                    <label class="labelTxt"><input name="taxi" type="radio" value="Bus"> Bus, 32 puestos.</label>
+
+                </div>
+                <div class="spacer"></div>
+                <label for="reserva_transporte">Hora:</label>
+                    <input type="time" id="res_taxi_hora"  data-wrapper-class="controlgroup-textinput ui-btn"><br>
+                <label class="txt">Comentarios</label>
+                <textarea class="form-control" id="res_taxi_comentarios" rows="3"></textarea>
+                <button type="submit" onClick="nodisp()" class="btnCheckIn">
+                    <span class="checkIn">Solicitar</span>
+                </button>
+            </form>
+                <div class="spacer2"></div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="mainContenido page" data-role="page" id="restaurantes" data-theme="a">
+        <div class="sideNavSubmenu">
+            <div class="barTitle"><p class="titulo">Reserva de Restaurante</p></div>
+
+            <div id="bg submenu">
+                <a href="#amallaves" data-transition="slide"><button class="btnSubMenuA">
+                   Ama de llaves
+                </button></a>
+               <a onClick=" print_lavanderia();" href="#" data-transition="slide"><button class="btnSubMenuA">
+                    Lavandería
+                </button></a>
+                <a href="#mantenimiento" data-transition="slide"><button class="btnSubMenuA">
+                   Mantenimiento
+                </button></a>
+                <a href="#" onClick="nodisp()" data-ajax="false" data-transition="slide"><button class="btnSubMenuA">
+                    Chat
+                </button></a>
+                <div id="accordion6">
+                    <button class="btnSubMenuA">
+                        <div data-toggle="collapse" data-parent="#accordion6" href="#collapse6">Reserva de Servicios</div>
+                    </button>
+                    <div id="collapse6" class="panel-collapse collapse">   
+                        <a href="#transporte" data-transition="slide"><button class="btnSubMenuC">Transporte
+                        </button></a>
+                        <a href="#restaurantes" data-transition="slide"><button class="btnSubMenuC">Restaurantes
+                        </button></a>
+                        <a href="#spa" data-transition="slide"><button class="btnSubMenuC">Spa
+                        </button></a>
+                        <a href="#saladejuntas" data-transition="slide"><button class="btnSubMenuC">Sala de Juntas
+                        </button></a>
+                        
+                    </div>
+                </div>
+                <a   onClick="print_encuestas();" data-transition="slide"><button class="btnSubMenuA">
+                    Encuestas de <br>satisfacción
+                </button></a>
+            </div>
+                                              <br />
+                                   <div id="p_nombre" class="bgUsuarioLog nombreUsuarioLog line">Bienvenido Sr(a) <span>Nombre usuario</span></div>
+            <script>var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);</script>
+                            <div id="p_llegada" class="datosUsuario line">Check In:<span></span></div>
+              <script>var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);</script>
+                <div id="p_salida" class="datosUsuario line">Check Out: <span></span></div>
+              <script>var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);</script>
+                <div id="p_room" class="datosUsuario line">Room: <span></span></div>
+              <script>var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);</script>  
+        </div>
+
+        <div class="contenido">
+        
+        	<!--Barra y img nueva con nombre de la seccion-->
+            <div class="barTitle"><p class="titulo">Reserva de Restaurante</p></div>
+             <div class="imagen_account">
+               	    <img src="images/ayb.jpg" width="1024" height="683" alt=""/> 
+                    </div>
+            <!--Fin Barra y img nueva con nombre de la seccion-->
+            <div id="info">
+            
+                <h5 id="titulosContenido">Reserva de Restaurantes</h5>
+                <p class="txt">Mesa para Cuantos necesita?</p>
+            </div>
+            <div>
+            <form  role="form">
+                <div class="radio">
+                    <label class="labelTxt"><input name="res_res" class="form-control input-sm" type="radio" value="1 Puesto"> 1 Persona.</label>
+                    <label class="labelTxt"><input name="res_res" type="radio" value="2 Puestos"> 2 Personas.</label>
+                    <label class="labelTxt"><input name="res_res" type="radio" value="3 puestos" >  3 Personas.</label>
+                    <label class="labelTxt"><input name="res_res" class="form-control input-sm" type="radio" value="Bastantes"> 4 o Más Personas.</label>
+
+                </div>
+                <div class="spacer"></div>
+                <label for="reserva_transporte">Hora:</label>
+                    <input type="time" id="res_res_hora"  data-wrapper-class="controlgroup-textinput ui-btn"><br>
+                <label class="txt">Comentarios</label>
+                <textarea class="form-control" id="res_res_comentarios" rows="3"></textarea>
+                <button type="submit" onClick="nodisp()" class="btnCheckIn">
+                    <span class="checkIn">Reservar</span>
+                </button>
+            </form>
+                <div class="spacer2"></div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="mainContenido page" data-role="page" id="spa" data-theme="a">
+        <div class="sideNavSubmenu">
+            <div class="barTitle"><p class="titulo">Reserva de Spa</p></div>
+
+            <div id="bg submenu">
+                <a href="#amallaves" data-transition="slide"><button class="btnSubMenuA">
+                   Ama de llaves
+                </button></a>
+               <a onClick=" print_lavanderia();" href="#" data-transition="slide"><button class="btnSubMenuA">
+                    Lavandería
+                </button></a>
+                <a href="#mantenimiento" data-transition="slide"><button class="btnSubMenuA">
+                   Mantenimiento
+                </button></a>
+                <a href="#" onClick="nodisp()" data-ajax="false" data-transition="slide"><button class="btnSubMenuA">
+                    Chat
+                </button></a>
+                <div id="accordion7">
+                    <button class="btnSubMenuA">
+                        <div data-toggle="collapse" data-parent="#accordion7" href="#collapse7">Reserva de Servicios</div>
+                    </button>
+                    <div id="collapse7" class="panel-collapse collapse">   
+                        <a href="#transporte" data-transition="slide"><button class="btnSubMenuC">Transporte
+                        </button></a>
+                        <a href="#restaurantes" data-transition="slide"><button class="btnSubMenuC">Restaurantes
+                        </button></a>
+                        <a href="#spa" data-transition="slide"><button class="btnSubMenuC">Spa
+                        </button></a>
+                        <a href="#saladejuntas" data-transition="slide"><button class="btnSubMenuC">Sala de Juntas
+                        </button></a>
+                        
+                    </div>
+                </div>
+                <a   onClick="print_encuestas();" data-transition="slide"><button class="btnSubMenuA">
+                    Encuestas de <br>satisfacción
+                </button></a>
+            </div>
+                                              <br />
+                                   <div id="p_nombre" class="bgUsuarioLog nombreUsuarioLog line">Bienvenido Sr(a) <span>Nombre usuario</span></div>
+            <script>var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);</script>
+                            <div id="p_llegada" class="datosUsuario line">Check In:<span></span></div>
+              <script>var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);</script>
+                <div id="p_salida" class="datosUsuario line">Check Out: <span></span></div>
+              <script>var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);</script>
+                <div id="p_room" class="datosUsuario line">Room: <span></span></div>
+              <script>var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);</script>  
+        </div>
+
+        <div class="contenido">
+        
+        	<!--Barra y img nueva con nombre de la seccion-->
+            <div class="barTitle"><p class="titulo">Reserva de Spa</p></div>
+            <div id="carousel-servicios" class="carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#carousel-servicios" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-servicios" data-slide-to="1"></li>
+                    <li data-target="#carousel-servicios" data-slide-to="2"></li>
+                  </ol>
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner">
+                    <div class="item active">
+                      <img src="images/actividades1.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                    <div class="item">
+                      <img src="images/actividades2.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                    <div class="item">
+                      <img src="images/actividades3.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                  </div>
+                  <!-- Controls -->
+                  <a class="left carousel-control" href="#carousel-servicios" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                  </a>
+                  <a class="right carousel-control" href="#carousel-servicios" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                  </a>
+                </div>
+            <!--Fin Barra y img nueva con nombre de la seccion-->
+            <div id="info">
+            
+                <h5 id="titulosContenido">Reserva de Spa</h5>
+                <p class="txt">Que servicios necesita?</p>
+            </div>
+            <div>
+            <form  role="form">
+                <div class="checkbox">
+                    <label class="labelTxt"><input name="res_spa" class="form-control input-sm" type="checkbox" value="Jacuzzi">Jacuzzi.</label>
+                    <label class="labelTxt"><input name="res_spa" type="checkbox" value="Sauna"> Sauna.</label>
+                    <label class="labelTxt"><input name="res_spa" type="checkbox" value="Masaje corporal"> Masaje Corporal.</label>
+                    <label class="labelTxt"><input name="res_spa" class="form-control input-sm" type="checkbox" value="Peluqueria"> Peluqueria.</label>
+
+                </div>
+                <div class="spacer"></div>
+                <label for="res_spa_hora">Hora:</label>
+                    <input type="time" id="res_spa_hora"  data-wrapper-class="controlgroup-textinput ui-btn"><br>
+                <label class="txt">Comentarios</label>
+                <textarea class="form-control" id="res_spa_comentarios" rows="3"></textarea>
+                <button type="submit" onClick="nodisp()" class="btnCheckIn">
+                    <span class="checkIn">Reservar</span>
+                </button>
+            </form>
+                <div class="spacer2"></div>
+            </div>
+        </div>
+    </div>
+    
+    
+   <div class="mainContenido page" data-role="page" id="saladejuntas" data-theme="a">
+        <div class="sideNavSubmenu">
+            <div class="barTitle"><p class="titulo">Sala de Juntas</p></div>
+
+            <div id="bg submenu">
+                <a href="#amallaves" data-transition="slide"><button class="btnSubMenuA">
+                   Ama de llaves
+                </button></a>
+               <a onClick=" print_lavanderia();" href="#" data-transition="slide"><button class="btnSubMenuA">
+                    Lavandería
+                </button></a>
+                <a href="#mantenimiento" data-transition="slide"><button class="btnSubMenuA">
+                   Mantenimiento
+                </button></a>
+                <a href="#" onClick="nodisp()" onClick="nodisp()" data-ajax="false" data-transition="slide"><button class="btnSubMenuA">
+                    Chat
+                </button></a>
+                <div id="accordion8">
+                    <button class="btnSubMenuA">
+                        <div data-toggle="collapse" data-parent="#accordion8" href="#collapse8">Reserva de Servicios</div>
+                    </button>
+                    <div id="collapse8" class="panel-collapse collapse">   
+                        <a href="#transporte" data-transition="slide"><button class="btnSubMenuC">Transporte
+                        </button></a>
+                        <a href="#restaurantes" data-transition="slide"><button class="btnSubMenuC">Restaurantes
+                        </button></a>
+                        <a href="#spa" data-transition="slide"><button class="btnSubMenuC">Spa
+                        </button></a>
+                        <a href="#saladejuntas" data-transition="slide"><button class="btnSubMenuC">Sala de Juntas
+                        </button></a>
+                        
+                    </div>
+                </div>
+                <a   onClick="print_encuestas();" data-transition="slide"><button class="btnSubMenuA">
+                    Encuestas de <br>satisfacción
+                </button></a>
+            </div>
+                                              <br />
+                                   <div id="p_nombre" class="bgUsuarioLog nombreUsuarioLog line">Bienvenido Sr(a) <span>Nombre usuario</span></div>
+            <script>var p_nom = localStorage.getItem("nombredb");$("#p_nombre span").html(p_nom);console.log(p_nom);</script>
+                            <div id="p_llegada" class="datosUsuario line">Check In:<span></span></div>
+              <script>var p_lleg = localStorage.getItem("llegadadb");$("#p_llegada span").html(p_lleg);</script>
+                <div id="p_salida" class="datosUsuario line">Check Out: <span></span></div>
+              <script>var p_sal = localStorage.getItem("salidadb");$("#p_salida span").html(p_sal);</script>
+                <div id="p_room" class="datosUsuario line">Room: <span></span></div>
+              <script>var p_room = localStorage.getItem("roomdb");$("#p_room span").html(p_room);console.log(p_room);</script>  
+        </div>
+
+        <div class="contenido">
+        
+        	<!--Barra y img nueva con nombre de la seccion-->
+            <div class="barTitle"><p class="titulo">Reservación Sala de Juntas</p></div>
+            <div id="carousel-servicios" class="carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#carousel-servicios" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-servicios" data-slide-to="1"></li>
+                    <li data-target="#carousel-servicios" data-slide-to="2"></li>
+                  </ol>
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner">
+                    <div class="item active">
+                      <img src="images/actividades1.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                    <div class="item">
+                      <img src="images/actividades2.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                    <div class="item">
+                      <img src="images/actividades3.jpg" alt="..."><div class="carousel-caption"></div>
+                    </div>
+                  </div>
+                  <!-- Controls -->
+                  <a class="left carousel-control" href="#carousel-servicios" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                  </a>
+                  <a class="right carousel-control" href="#carousel-servicios" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                  </a>
+                </div>
+            <!--Fin Barra y img nueva con nombre de la seccion-->
+            <div id="info">
+            
+                <h5 id="titulosContenido">Reserva de Sala de Juntas</h5>
+                <p class="txt">Para Cuantas personas la requiere?</p>
+            </div>
+            <div>
+            <form  role="form">
+                <div class="checkbox">
+                    <label class="labelTxt"><input name="res_salon" class="form-control input-sm" type="checkbox" value="una">Una.</label>
+                    <label class="labelTxt"><input name="res_salon" type="checkbox" value="dos"> Dos.</label>
+                    <label class="labelTxt"><input name="res_salon" type="checkbox" value="Entre 4 y 10"> Entre 4 y 10.</label>
+                    <label class="labelTxt"><input name="res_salon" class="form-control input-sm" type="checkbox" value="Entre 10 y 20"> Entre 10 y 20.</label>
+
+                </div>
+                <div class="spacer"></div>
+                <label for="res_salon_hora">Hora:</label>
+                    <input type="time" id="res_salon_hora"  data-wrapper-class="controlgroup-textinput ui-btn"><br>
+                <label class="txt">Servicios Adicionales ? (video beam, tablero, marcador, etc...)</label>
+                <textarea class="form-control" id="res_salon_comentarios" rows="3"></textarea>
+                <button type="submit" onClick="nodisp()" class="btnCheckIn">
+                    <span class="checkIn">Reservar</span>
+                </button>
+            </form>
+                <div class="spacer2"></div>
+            </div>
+        </div>
+    </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript" src="js/notificaciones.js"></script>
@@ -125,7 +1020,7 @@
             app.initialize();
         </script>
 		<script type="text/javascript" src="js/servicios.js"></script> 
-</body>
+ </body>
 </html>
 
 
